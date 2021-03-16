@@ -1,0 +1,12 @@
+.nav-bottom {
+  height: 60px;
+  background-color: $app-ambar;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
