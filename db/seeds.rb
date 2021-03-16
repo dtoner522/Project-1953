@@ -7,9 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+LibraryBook.delete_all
+Library.delete_all
 User.delete_all
 Book.delete_all
-Library.delete_all
+
 
 
 # CREATE 3 USERS
@@ -51,7 +53,7 @@ p " Last user, N° #{User.last.id} : #{User.last.first_name} #{User.last.last_na
 library1 = Library.create(user_id: user1.id)
 library2 = Library.create(user_id: user2.id)
 
-p "created #{Library.count} Books"
+p "created #{Library.count} libraries"
 
 
 
@@ -111,7 +113,7 @@ book6.photo.attach(io: img6, filename: 'thumbnail.png', content_type: 'image/png
 book6.save
 
 p "created #{Book.count} Books"
-p "The last book was #{Book.Title}, from author #{Book.author}. It's #{Book.page_count} long !"
+p "The last book was #{Book.last.title}, from author #{Book.last.author}. It's #{Book.last.pageCount} long !"
 
 
 # BOOK SEED V2
@@ -128,18 +130,9 @@ books =  [ book1, book2, book3, book4, book5, book6 ]
 libraries =  [ library1, library2 ]
 conditions = [ "Very used", "Used", "Good condition", "Great condition", "New"]
 
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
-LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
+15.times do
+  LibraryBook.create( { library_id: libraries.sample.id, book_id: books.sample.id, condition: conditions.sample } )
+end
 
 p "created #{LibraryBook.count} Library_books"
 
