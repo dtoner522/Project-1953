@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+body {
+  font-size: 14px;
+  color: $app-dark;
+
+  h1 {
+    font-size: 22px;
+    font-weight: 900;
+    color: black;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-weight: 300;
+  }
+
+  h3 {
+   font-size: 12px;
+  }
+}
