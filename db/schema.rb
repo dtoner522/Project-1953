@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_03_16_155636) do
-
+ActiveRecord::Schema.define(version: 2021_03_17_082911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_155636) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.integer "ISBN"
+    t.integer "isbn"
     t.string "title"
     t.integer "year"
     t.string "genre"
@@ -48,8 +46,8 @@ ActiveRecord::Schema.define(version: 2021_03_16_155636) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
     t.string "author"
-    t.string "pageCount"
-    t.string "thumbnailUrl"
+    t.string "page_count"
+    t.string "thumbnail_url"
   end
 
   create_table "libraries", force: :cascade do |t|
