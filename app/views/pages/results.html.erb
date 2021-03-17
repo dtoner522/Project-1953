@@ -1,0 +1,108 @@
+<div class="fafafa">
+<div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
+  <h1>Explore</h1>
+  <%= link_to '#' do  %>
+  <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
+<div class="container sm-12 p-4">
+
+  <div class="text-center d-flex my-4 position-relative">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control white-bar b-sh text-center",
+          placeholder: "Search..."
+        %>
+    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+      <i class="fas fa-search"></i> 
+    <% end %>
+  </div>
+
+   <div class="d-flex justify-content-between">
+    <p class="p-3 nunito">Filter by</h2>
+    <p class="p-3 nunito">Sort by</h2> 
+  </div>
+  
+  <div class="d-flex justify-content-between">
+    <div class="dropdown show">
+      <a class="btn btn-primary-outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      All languages
+      </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+  
+
+    <div class="dropdown show">
+      <a class="btn btn-primary-outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        All Genres </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+
+     <div>
+      <p>A/Z</p>
+    </div>
+  </div>
+
+  
+    <div class="book-results-card d-flex b-sh my-4">
+      <div class="image" style="background-image: url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1588152105')"></div>
+      <div class="information p-3">
+        <h2>The king of drugs</h2>
+        <p>Nora Barret</p>
+        <div class="user-owner d-flex">
+          <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+              class: "avatar-20 mr-2", alt: "avatar" %>
+          <p>John Doe <span style="font-style: italic; color: gray; font-weight: 300">Berlin</span></p>
+        </div>
+        <div class="tags d-flex">
+            <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+            <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+        </div>
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+    <div class="book-results-card d-flex b-sh my-4">
+      <div class="image" style="background-image: url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1588152105')"></div>
+      <div class="information p-3">
+        <h2>The king of drugs</h2>
+        <p>Nora Barret</p>
+        <div class="user-owner d-flex">
+          <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+              class: "avatar-20 mr-2", alt: "avatar" %>
+          <p>John Doe <span style="font-style: italic; color: gray; font-weight: 300">Berlin</span></p>
+        </div>
+        <div class="tags d-flex">
+            <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+            <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+        </div>
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+  
+
+</div>
+
+<div class="nav-bottom">
+  <%= image_tag "navbar/home.png", class: "" %>
+  <div class="chat-bell">
+    <%= image_tag "navbar/chat.png", class: "" %>
+  </div>
+  <div class="notification-bell">
+    <%= image_tag "navbar/bell.png"%>
+  </div>
+  <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+            class: "avatar-30 mr-2", alt: "avatar" %>
+</div>
+</div>
+
+

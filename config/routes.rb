@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'uikit', to: 'pages#uikit'
+
+  get 'results', to: 'pages#results'
+
   resources :library_books, only: [ :index, :show]
   
   resources :users, only: [:show]
