@@ -5,28 +5,6 @@
   </div>
   <p class="tagline-2">Find books near you</p>
 
-<<<<<<< HEAD
-<div class="container d-flex justify-content-center mt-5">
-    <p class="text-black text-center tagline-2 flex-grow-1">Find books near you</p>
-</div>
-
-  <div class="d-flex container w-100 text-center pb-4 justify-content-center">
-    <div class="searchbar text-center mb-2">
-      <%= form_tag method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Barcelona",
-          style: "padding: 2px"
-        %>
-      <% end %>
-    </div>
-  </div>
-
-<div class="container d-flex justify-content-center img-fluid">
-<%= cl_image_tag("https://res.cloudinary.com/dtoner522/image/upload/v1615911570/home-img_tc3hke.png", class: "home_img") %>
-</div>
-=======
   <div class="text-center d-flex my-4 position-relative">
     <%= text_field_tag :query,
           params[:query],
@@ -42,4 +20,3 @@
     <%= cl_image_tag("https://res.cloudinary.com/dtoner522/image/upload/v1615911570/home-img_tc3hke.png", class: "home_img") %>
   </div>
 </div>
->>>>>>> 0f876f3b8d6d12e3351a44d39f7950993cf9f7fb
