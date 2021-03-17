@@ -57,56 +57,56 @@ p "created #{Library.count} libraries"
 
 
 
-# CREATE BOOKS (MANUAL)   - V2 is calling the google API with a ISBN id and use the Data in the JSON
+# CREATE BOOKS (MANUAL)   - V2 is calling the google API with a isbn id and use the Data in the JSON
 
-book1 = Book.new( {ISBN: '', title:'To Kill a Mockingbird', year: '1984', genre: 'science-fiction', language: 'EN',
+book1 = Book.new( {isbn: '', title:'To Kill a Mockingbird', year: '1984', genre: 'science-fiction', language: 'EN',
   description: 'Let your pen fly across the page in this sophisticated notebook, featuring Ernest Hemingway’s most inspiring words',
-  author: 'Harper Lee', pageCount: '534', thumbnailUrl: ''
+  author: 'Harper Lee', page_count: '534', thumbnail_url: ''
 })
 img1 = URI.open('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1553383690l/2657.jpg')
 book1.photo.attach(io: img1, filename: 'thumbnail.png', content_type: 'image/png')
 book1.save
 
 
-book2 = Book.new( {ISBN: '', title:'1984', year: '1984', genre: 'science-fiction', language: 'EN',
+book2 = Book.new( {isbn: '', title:'1984', year: '1984', genre: 'science-fiction', language: 'EN',
   description: 'Let your pen fly across the page in this sophisticated notebook, featuring Ernest Hemingway’s most inspiring words',
-  author: 'George Orwell', pageCount: '344', thumbnailUrl: ''
+  author: 'George Orwell', page_count: '344', thumbnail_url: ''
 })
 img2 = URI.open('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348990566l/5470.jpg')
 book2.photo.attach(io: img2, filename: 'thumbnail.png', content_type: 'image/png')
 book2.save
 
 
-book3 = Book.new( {ISBN: '', title:'The Lord of the Rings', year: '2001', genre: 'science-fiction', language: 'EN',
+book3 = Book.new( {isbn: '', title:'The Lord of the Rings', year: '2001', genre: 'science-fiction', language: 'EN',
   description: 'Let your pen fly across the page in this sophisticated notebook, featuring Ernest Hemingway’s most inspiring words',
-  author: 'J.R.R. Tolkien', pageCount: '120', thumbnailUrl: ''
+  author: 'J.R.R. Tolkien', page_count: '120', thumbnail_url: ''
 })
 img3 = URI.open('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1566425108l/33.jpg')
 book3.photo.attach(io: img3, filename: 'thumbnail.png', content_type: 'image/png')
 book3.save
 
 
-book4 = Book.new( {ISBN: '', title:'The Great Gatsby', year: '1984', genre: 'science-fiction', language: 'EN',
+book4 = Book.new( {isbn: '', title:'The Great Gatsby', year: '1984', genre: 'science-fiction', language: 'EN',
   description: 'Let your pen fly across the page in this sophisticated notebook, featuring Ernest Hemingway’s most inspiring words',
-  author: 'F.G. Fitzgerald', pageCount: '433', thumbnailUrl: ''
+  author: 'F.G. Fitzgerald', page_count: '433', thumbnail_url: ''
 })
 img4 = URI.open('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1490528560l/4671._SY475_.jpg')
 book4.photo.attach(io: img4, filename: 'thumbnail.png', content_type: 'image/png')
 book4.save
 
 
-book5 = Book.new( {ISBN: '', title:'Lord of the Flies', year: '1977', genre: 'science-fiction', language: 'EN',
+book5 = Book.new( {isbn: '', title:'Lord of the Flies', year: '1977', genre: 'science-fiction', language: 'EN',
   description: 'Let your pen fly across the page in this sophisticated notebook, featuring Ernest Hemingway’s most inspiring words',
-  author: 'William Golding', pageCount: '534', thumbnailUrl: ''
+  author: 'William Golding', page_count: '534', thumbnail_url: ''
 })
 img5 = URI.open('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1353029077l/100915.jpg')
 book5.photo.attach(io: img5, filename: 'thumbnail.png', content_type: 'image/png')
 book5.save
 
 
-book6 = Book.new( {ISBN: '', title:'Animal Farm', year: '1954', genre: 'science-fiction', language: 'EN',
+book6 = Book.new( {isbn: '', title:'Animal Farm', year: '1954', genre: 'science-fiction', language: 'EN',
   description: 'Let your pen fly across the page in this sophisticated notebook, featuring Ernest Hemingway’s most inspiring words',
-  author: 'George Orwell', pageCount: '534', thumbnailUrl: ''
+  author: 'George Orwell', page_count: '534', thumbnail_url: ''
 })
 img6 = URI.open('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1424037542l/7613.jpg')
 book6.photo.attach(io: img6, filename: 'thumbnail.png', content_type: 'image/png')
@@ -117,10 +117,10 @@ p "The last book was #{Book.last.title}, from author #{Book.last.author}. It's #
 
 
 # BOOK SEED V2
-  # Find 30 ISBN exact code
+  # Find 30 isbn exact code
   # Find the book with Google Api, Get the JSON file
   # Parse JSON and create the Instance
-    # "ISBN" "title" "year" ("publishedDate") "genre" "language"
+    # "isbn" "title" "year" ("publishedDate") "genre" "language"
     # needed : description, author, page_count, thumbnail_url, google_id
 
 
