@@ -113,7 +113,7 @@ book6.photo.attach(io: img6, filename: 'thumbnail.png', content_type: 'image/png
 book6.save
 
 p "created #{Book.count} Books"
-p "The last book was #{Book.last.title}, from author #{Book.last.author}. It's #{Book.last.pageCount} long !"
+p "The last book was #{Book.last.title}, from author #{Book.last.author}. It's #{Book.last.page_count} long !"
 
 
 # BOOK SEED V2

@@ -10,6 +10,7 @@
   }
 }
 
+.chat-bell,
 .notification-bell {
   position: relative;
 
@@ -22,5 +23,26 @@
     border-radius: 50%;
     top: 0;
     right: 0;
+  }
+}
+
+.chat-bell::after {
+  right: -6px;
+}
+
+
+.nav-top {
+  height: 70px;
+
+  a {
+    color: black;
+  }
+
+  .fa-ellipsis-v {
+    font-size: 18px;
+  }
+
+  .fa-chevron-left {
+    font-size: 20px;
   }
 }
