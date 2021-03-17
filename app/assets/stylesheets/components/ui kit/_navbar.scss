@@ -1,0 +1,26 @@
+.nav-bottom {
+  height: 60px;
+  background-color: $app-ambar;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+
+  img {
+    height: 30px;
+  }
+}
+
+.notification-bell {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+  }
+}
