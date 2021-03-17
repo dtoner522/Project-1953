@@ -1,0 +1,53 @@
+<div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
+  <h1>Profile</h1>
+
+  <%= link_to '#' do  %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
+<div class="container sm-12 p-4">
+
+  <div class="profile-card b-sh-strong pb-5">
+    <div class="d-flex align-items-center mb-3">
+      <div class="avatar-100 mr-5" style="background-image: url(' <%= cl_image_path @user.photo.key%>')"></div>
+      <div>
+        <h2> <%= @user.first_name%> <%= @user.last_name%> </h2>
+        <%= link_to "Edit my profile", "#", class: "btn genre" %>
+      </div>
+    </div>
+    
+    <p><strong>About me</strong></p>
+    <p> <%= @user.bio %> </p>
+    
+    <div class="user-counter">
+      <p><strong><%= @library_books.count %></strong> books</p>
+      <p><strong>X</strong> swaps</p>
+    </div>
+  </div>
+</div>
+
+<div class="container app-container b-sh-strong">
+  <%= link_to "My Bookshelf", '#' %>
+
+  <%= link_to "#", class: "btn btn-pink" do %>
+    <i class="fas fa-plus"></i>  Add a book
+  <% end %>
+
+  <div class="book-results-card d-flex b-sh my-4">
+    <div class="image" style="background-image: url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1588152105')"></div>
+    <div class="information p-3">
+      <h2>The king of drugs</h2>
+      <p>Nora Barret</p>
+      <div class="user-owner d-flex">
+        <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+            class: "avatar-20 mr-2", alt: "avatar" %>
+        <p>John Doe <span style="font-style: italic; color: gray; font-weight: 300">Berlin</span></p>
+      </div>
+      <div class="tags d-flex">
+          <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+      </div>
+    </div>
+  </div>
+
+</div>
