@@ -28,26 +28,37 @@
 </div>
 
 <div class="container app-container b-sh-strong">
-  <%= link_to "My Bookshelf", '#' %>
 
-  <%= link_to "#", class: "btn btn-pink" do %>
-    <i class="fas fa-plus"></i>  Add a book
-  <% end %>
+  <ul class="list-inline tabs-underlined p-3 justify-content-center">
+    <li>
+      <a href="#" class="tab-underlined active">My Bookshelf</a>
+    </li>
+    <li>
+      <a href="#" class="tab-underlined">My Wishlist</a>
+    </li>
+  </ul>
 
-  <div class="book-results-card d-flex b-sh my-4">
-    <div class="image" style="background-image: url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1588152105')"></div>
-    <div class="information p-3">
-      <h2>The king of drugs</h2>
-      <p>Nora Barret</p>
-      <div class="user-owner d-flex">
-        <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
-            class: "avatar-20 mr-2", alt: "avatar" %>
-        <p>John Doe <span style="font-style: italic; color: gray; font-weight: 300">Berlin</span></p>
-      </div>
-      <div class="tags d-flex">
-          <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
-      </div>
-    </div>
+  <div class="d-flex justify-content-center">
+    <%= link_to "#", class: "btn btn-pink" do %>
+      <i class="fas fa-plus"></i>  Add a book
+    <% end %>
   </div>
+
+  <% @library_books.each do |library_book| %>
+
+    <div class="book-results-card d-flex b-sh my-4">
+      <div class="image" style="background-image: url('<%= cl_image_path library_book.book.photo.key %>')"></div>
+      <div class="information p-3">
+        <h2><%= library_book.book.title %></h2> 
+        <p><%= library_book.book.author %></p>
+        <div class="tags d-flex">
+            <%= link_to library_book.book.genre, "#", class: "btn genre mr-2" %>
+        </div>
+      </div>
+      <i class="fas fa-heart"></i>
+    </div>
+
+  <% end %>
+  
 
 </div>
