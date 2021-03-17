@@ -1,28 +1,22 @@
-<div class="container d-flex justify-content-center pb-3 col-12">
-  <div class="d-flex flex-column">
-    <h1 class="text-white text-center logo mb-0 pb-0">1953</h1>
-    <p class="text-white text-center tagline">share your stories</p>
+<div class="home-container p-4 sm-col-12 text-center">
+  <div>
+    <h1 class="text-white logo mb-0 pb-0">1953</h1>
+    <p class="text-white tagline">share your stories</p>
   </div>
-</div>
+  <p class="tagline-2">Find books near you</p>
 
-<div class="container d-flex justify-content-center mt-5">
-    <p class="text-black text-center tagline-2">Find books near you</p>
-  </div>
-</div>
-
-<div class="d-flex container text-center pb-4 justify-content-center">
-  <div class="searchbar text-center mb-2">
-    <%= form_tag method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Barcelona",
-        style: "width: 700px; padding: 2px"
-      %>
+  <div class="text-center d-flex my-4 position-relative">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control white-bar b-sh text-center",
+          placeholder: "Barcelona..."
+        %>
+    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+      <i class="fas fa-search"></i> 
     <% end %>
   </div>
-</div>
 
-<div class="container d-flex justify-content-center img-fluid">
-<%= cl_image_tag("https://res.cloudinary.com/dtoner522/image/upload/v1615911570/home-img_tc3hke.png", class: "home_img") %>
+  <div class="d-flex justify-content-center img-fluid">
+    <%= cl_image_tag("https://res.cloudinary.com/dtoner522/image/upload/v1615911570/home-img_tc3hke.png", class: "home_img") %>
+  </div>
 </div>
