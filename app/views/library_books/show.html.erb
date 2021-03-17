@@ -27,8 +27,8 @@
     <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
             class: "avatar-30 mr-2", alt: "avatar" %>
     <div class="d-flex justify-content-between flex-grow-1 px-2">
-      <h2>John Doe</h2>
-      <p style="font-style: italic; color: gray; font-weight: 300">Berlin</p>
+      <h2><%= @lib_book.library.user.first_name %></h2>
+      <p style="font-style: italic; color: gray; font-weight: 300"><%= @lib_book.library.user.location %></p>
       <i class="fas fa-comment" style="font-size:20px"></i>
     </div>
   </div>
