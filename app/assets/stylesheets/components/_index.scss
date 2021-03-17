@@ -1,4 +1,12 @@
 // Import your components CSS files here.
 @import "alert";
-@import "avatar";
 @import "navbar";
+
+@import "ui kit/avatar";
+@import "ui kit/buttons";
+@import "ui kit/inputs";
+@import "ui kit/navbar";
+
+@import "ui kit/cards/books";
+@import "ui kit/cards/messages";
+@import "ui kit/cards/notifications";

@@ -1,0 +1,52 @@
+.book-results-card {
+  display: flex;
+  background-color: white;
+  border-radius: 24px;
+  margin-bottom: 8px;
+  position: relative;
+
+  .image {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 90px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  i {
+    color: $app-ambar;
+    font-size: 22px;
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+  }
+
+  h2 {
+    color: $app-green;
+    font-weight: 700;
+  }
+
+  p {
+    font-weight: 500;
+  };
+}
+
+.book-cover {
+  border-radius: 28px;
+  width: 180px;
+  height: 260px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  margin: 0 auto;
+
+  .add-wishlist {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    bottom: 12px;
+    right: 12px;
+  }
+}
