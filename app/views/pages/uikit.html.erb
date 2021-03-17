@@ -32,19 +32,18 @@
   <!-- FORMS -->
   <h2 class="mt-3 text-center border-top pt-3">Search form</h2>
   
-  <div class="search-bar text-center d-flex my-4 position-relative">
+  <div class="text-center d-flex my-4 position-relative">
     <%= text_field_tag :query,
           params[:query],
           class: "form-control white-bar b-sh text-center",
-          placeholder: "Barcelona...",
-          style: "padding: 20px; border-radius: 20px;"
+          placeholder: "Barcelona..."
         %>
     <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
       <i class="fas fa-search"></i> 
     <% end %>
   </div>
 
-  <div class="search-bar text-center my-4">
+  <div class="text-center my-4">
     <%= text_field_tag :query,
           params[:query],
           class: "form-control white-bar b-sh",
@@ -52,6 +51,25 @@
           style: "padding: 20px; border-radius: 20px;"
         %>
         <%= submit_tag "Search", class: "btn btn-green mt-2" %>
+  </div>
+
+  <div class="text-center d-flex my-4 position-relative">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control chat-bar"
+        %>
+    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+      <i class="fab fa-telegram-plane"></i>
+    <% end %>
+  </div>
+
+  <div class="input-bar text-center my-4 position-relative">
+    <h3>Email</h3>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control gray-bar"
+        %>
+    <h3 id="password-rem">Forgot my password</h3>
   </div>
 
   <!-- BOTTOM NAVBAR -->
@@ -62,10 +80,16 @@
 <div class="nav-bottom">
   <%= image_tag "navbar/home.png", class: "" %>
   <%= image_tag "navbar/chat.png", class: "" %>
-  <%= image_tag "navbar/bell.png", class: "" %>
+  <div class="notification-bell">
+    <%= image_tag "navbar/bell.png"%>
+  </div>
   <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
             class: "avatar-30 mr-2", alt: "avatar" %>
 </div>
+
+
+<!-- TOP NAVBAR -->
+
 
 <div class="container sm-12 px-4">
   
@@ -122,7 +146,7 @@
       <h2>John Doe</h2>
       <p>Cien años soledad</p>
     </div>
-    <div class="message-stats">
+    <div class="message-stats pr-2">
       <h3>2 hours ago</h3>
       <p class="icon-secondary">3</p>
     </div>
@@ -157,7 +181,7 @@
   <div class="card-message d-flex b-sh align-items-center px-2 py-1">
     <div class="notification not-wishlist mr-2"></div>
     <div class="message-info flex-grow-1">
-      <p><strong>Username</strong> uploaded <strong>Booktitle</strong> in <strong>Barcelona</strong>.</p>
+      <p><strong>Agustina</strong> uploaded <strong>Eterno resplandor...</strong> in <strong>Ciudad de Medellin</strong>.</p>
     </div>
   </div>
 
