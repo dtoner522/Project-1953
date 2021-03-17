@@ -1,0 +1,223 @@
+<div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
+  <%= link_to '#' do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+
+  <h1>UI Kit</h1>
+
+  <%= link_to '#' do  %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
+<div class="container sm-12 p-4">
+  <!-- TEXT STYLES -->
+
+  <h2 class="text-center">Text styles</h2>
+
+  <div class="p-3 mt-3" style="background-color: white">
+    <h1>Title</h1>
+    <h2>Subtitle</h2>
+    <p>Text</p>
+    <h3>Notes</h3>
+  </div>
+  
+  <!-- BUTTONS -->
+  <h2 class="mt-3 text-center border-top pt-3">Buttons</h2>
+
+  <%= link_to "Book now", "#", class: "btn btn-green" %>
+
+  <%= link_to "Fiction", "#", class: "btn genre" %>
+
+  <%= link_to "#", class: "btn icon-primary" do %>
+    <i class="fas fa-search"></i>
+  <% end %>
+  
+  <%= link_to "#", class: "btn btn-pink" do %>
+    <i class="fas fa-plus"></i>  Add a book
+  <% end %>
+  
+  <%= link_to "#", class: "btn icon-secondary" do %>
+    <i class="fas fa-plus"></i>
+  <% end %>
+
+  <!-- FORMS -->
+  <h2 class="mt-3 text-center border-top pt-3">Search form</h2>
+  
+  <div class="text-center d-flex my-4 position-relative">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control white-bar b-sh text-center",
+          placeholder: "Barcelona..."
+        %>
+    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+      <i class="fas fa-search"></i> 
+    <% end %>
+  </div>
+
+  <div class="text-center my-4">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control white-bar b-sh",
+          placeholder: "Barcelona...",
+          style: "padding: 20px; border-radius: 20px;"
+        %>
+        <%= submit_tag "Search", class: "btn btn-green mt-2" %>
+  </div>
+
+  <div class="text-center d-flex my-4 position-relative">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control chat-bar"
+        %>
+    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+      <i class="fab fa-telegram-plane"></i>
+    <% end %>
+  </div>
+
+  <div class="input-bar text-center my-4 position-relative">
+    <h3>Email</h3>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control gray-bar"
+        %>
+    <h3 id="password-rem">Forgot my password</h3>
+  </div>
+
+  <!-- BOTTOM NAVBAR -->
+  <h2 class="mt-3 text-center border-top pt-3">Bottom navbar</h2>
+
+</div>
+
+<div class="nav-bottom">
+  <%= image_tag "navbar/home.png", class: "" %>
+  <div class="chat-bell">
+    <%= image_tag "navbar/chat.png", class: "" %>
+  </div>
+  <div class="notification-bell">
+    <%= image_tag "navbar/bell.png"%>
+  </div>
+  <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+            class: "avatar-30 mr-2", alt: "avatar" %>
+</div>
+
+
+<!-- TOP NAVBAR -->
+
+<div class="nav-top d-flex p-4 justify-content-between align-items-center">
+  <%= link_to '#' do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+
+  <h1>Log in</h1>
+
+  <%= link_to '#' do  %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
+<div class="nav-top d-flex p-4 justify-content-between align-items-center">
+  <h1>Explore</h1>
+
+  <%= link_to '#' do  %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
+<div class="container sm-12 px-4">
+  
+  <!-- CARDS -->
+  <h2 class="mt-3 text-center pt-3">Cards</h2>
+
+  <div class="book-results-card d-flex b-sh my-4">
+    <div class="image" style="background-image: url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-thriller-book-cover-design-template-3675ae3e3ac7ee095fc793ab61b812cc_screen.jpg?ts=1588152105')"></div>
+    <div class="information p-3">
+      <h2>The king of drugs</h2>
+      <p>Nora Barret</p>
+      <div class="user-owner d-flex">
+        <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+            class: "avatar-20 mr-2", alt: "avatar" %>
+        <p>John Doe <span style="font-style: italic; color: gray; font-weight: 300">Berlin</span></p>
+      </div>
+      <div class="tags d-flex">
+          <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+          <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+      </div>
+      <i class="fas fa-heart"></i>
+    </div>
+  </div>
+
+  <div class="book-results-card d-flex b-sh my-4">
+    <div class="image" style="background-image: url('https://edit.org/images/cat/book-covers-big-2019101610.jpg')"></div>
+    <div class="information p-3">
+      <h2>Cien años soledad</h2>
+      <p>Gabriel García Márquez</p>
+      <div class="user-owner d-flex">
+        <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+            class: "avatar-20 mr-2", alt: "avatar" %>
+        <p>John Doe <span style="font-style: italic; color: gray; font-weight: 300">Berlin</span></p>
+      </div>
+      <div class="tags d-flex">
+          <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+          <%= link_to "Fiction", "#", class: "btn genre mr-2" %>
+      </div>
+      <i class="far fa-heart"></i>
+    </div>
+  </div>
+
+  <div class="book-cover b-sh-strong my-4" style="background-image: url('https://images.squarespace-cdn.com/content/v1/5ae2fce87e3c3ae275ea2c9f/1526464175408-W92Q4MSAM40I8YF4HM64/ke17ZwdGBToddI8pDm48kG42nK5MxReh9N1Tgs_dc9t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UXysNIcM8ERoy824r28kfN5DdNsbvYnFI46u1WARIoKesh_vZu_IHrh0xbom9DKbTA/tess-cover.jpg?format=1500w')">
+    <i class="fas fa-heart add-wishlist t-sh"></i>
+  </div>
+
+  <!-- MESSAGES -->
+  <h2 class="mt-3 text-center border-top pt-3">Messages</h2>
+
+  <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+    <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+            class: "avatar-50 mr-2", alt: "avatar" %>
+    <div class="message-info flex-grow-1">
+      <h2>John Doe</h2>
+      <p>Cien años soledad</p>
+    </div>
+    <div class="message-stats pr-2">
+      <h3>2 hours ago</h3>
+      <p class="icon-secondary">3</p>
+    </div>
+  </div>
+
+  <div class="card-user-message d-flex b-sh align-items-center px-2 py-1">
+    <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
+            class: "avatar-30 mr-2", alt: "avatar" %>
+    <div class="d-flex justify-content-between flex-grow-1 px-2">
+      <h2>John Doe</h2>
+      <p style="font-style: italic; color: gray; font-weight: 300">Berlin</p>
+      <i class="fas fa-comment" style="font-size:20px"></i>
+    </div>
+  </div>
+
+  <!-- NOTIFICATIONS -->
+  <h2 class="mt-3 text-center border-top pt-3">Notifications</h2>
+
+  <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+    <div class="notification not-chat mr-2"></div>
+    <div class="message-info flex-grow-1">
+      <p><strong>Username</strong> wants to swap <strong>Booktitle</strong> with you.</p>
+    </div>
+  </div>
+
+  <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+    <div class="notification not-discover mr-2"></div>
+    <div class="message-info flex-grow-1">
+      <p>Discover new books in <strong>Barcelona</strong>.</p>
+    </div>
+  </div>
+  <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+    <div class="notification not-wishlist mr-2"></div>
+    <div class="message-info flex-grow-1">
+      <p><strong>Agustina</strong> uploaded <strong>Eterno resplandor...</strong> in <strong>Ciudad de Medellin</strong>.</p>
+    </div>
+  </div>
+
+  <!-- ONLY FOR MARGIN -->
+  <div class="mb-5"></div>
+</div>

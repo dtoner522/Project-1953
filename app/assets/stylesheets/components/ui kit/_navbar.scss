@@ -1,0 +1,48 @@
+.nav-bottom {
+  height: 60px;
+  background-color: $app-ambar;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+
+  img {
+    height: 30px;
+  }
+}
+
+.chat-bell,
+.notification-bell {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+  }
+}
+
+.chat-bell::after {
+  right: -6px;
+}
+
+
+.nav-top {
+  height: 70px;
+
+  a {
+    color: black;
+  }
+
+  .fa-ellipsis-v {
+    font-size: 18px;
+  }
+
+  .fa-chevron-left {
+    font-size: 20px;
+  }
+}

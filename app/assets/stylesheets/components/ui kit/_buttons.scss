@@ -1,0 +1,50 @@
+.btn-green {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 24px;
+  background-color: $app-green;
+  transition: background 0.3s ease;
+}
+
+.btn-pink {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 24px;
+  background-color: $app-pink;
+  transition: background 0.3s ease;
+}
+
+.genre {
+  color: white;
+  padding: 4px 14px;
+  border-radius: 18px;
+  background-color: $app-pink;
+  font-size: 11px;
+}
+
+.icon-primary {
+  color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: $app-green;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-secondary {
+  color: white;
+  padding: 4px 6px;
+  border-radius: 50%;
+  background-color: $app-ambar;
+  font-size: 10px;
+  text-align: center;
+  width: 25px;
+  margin: 0 auto !important;
+}
+
+.fa-telegram-plane {
+  transform: translateX(-2px);
+}

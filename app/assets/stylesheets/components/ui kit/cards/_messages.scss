@@ -1,0 +1,26 @@
+.card-message {
+  background-color: white;
+  border-radius: 28px;
+  margin-bottom: 8px;
+
+  p,
+  h2 {
+    margin: 0;
+  }
+}
+
+.card-user-message {
+  background-color: white;
+  border-radius: 28px;
+  margin-bottom: 8px;
+  padding: 8px !important;
+
+  p,
+  h2 {
+    margin: 0;
+  }
+
+  i {
+    color: $app-green;
+  }
+}
