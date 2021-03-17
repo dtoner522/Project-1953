@@ -1,9 +1,25 @@
-<h2>Sign up</h2>
+<div class="nav-top d-flex p-4 justify-content-between align-items-center">
+  <%= link_to '#' do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <h1>Sign Up</h1>
+
+  <%= link_to '#' do  %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
+<div class="container sm-12 p-4">
+ <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-100 d-flex ml-auto mr-auto", alt: "avatar" %>
+
+
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+     <div class="input-bar my-4 position-relative">
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -15,11 +31,16 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up",  class: "btn btn-green log-in" %>
   </div>
-<% end %>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="mt-4">
+    <p class="text-center font-weight-bold">I have an account. <span><%= link_to "Log in", new_session_path(resource_name), class:"black" %></span></p>
+  </div
+
+</div>

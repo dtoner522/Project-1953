@@ -14,3 +14,18 @@ $headers-font: "Inter", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+
+// Custom
+.nunito {
+    font-family: 'Nunito', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    color: #0D253C;
+    letter-spacing: 0.75px;
+    line-height: 21px;
+}
+
+.black {
+    color: black;
+}
