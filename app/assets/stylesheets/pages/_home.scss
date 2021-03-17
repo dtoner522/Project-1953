@@ -2,6 +2,7 @@
 body {
   font-size: 14px;
   color: $app-dark;
+  background-color: $app-rose;
 
   h1 {
     font-size: 22px;
@@ -35,14 +36,17 @@ body {
   }
 }
 
-.background-style {
+.container {
   border-top-left-radius: 44px;
   border-bottom-left-radius: 0;
   border-top-right-radius: 44px;
   border-bottom-right-radius: 0;
   width: 100%;
   background-color: $app-gray;
-  /*    background-color: #FFE5E5; */
+}
+
+.background-style {
+  background-color: #FFE5E5;
 }
 
 .home_img {
