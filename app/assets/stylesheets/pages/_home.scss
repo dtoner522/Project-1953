@@ -36,13 +36,15 @@ body {
   }
 }
 
-.container {
+.app-container {
   border-top-left-radius: 44px;
   border-bottom-left-radius: 0;
   border-top-right-radius: 44px;
   border-bottom-right-radius: 0;
   width: 100%;
   background-color: $app-gray;
+  min-height: calc(100vh - 130px);
+  margin-bottom: 60px;
 }
 
 .background-style {
@@ -50,18 +52,17 @@ body {
 }
 
 .home_img {
-    height: 50pc;
-    width: 50pc;
+  max-width: 100%;
 }
 
 .logo {
-    font-size: 200px;
+  font-size: 4rem;
 }
 
 .tagline {
-    font-size: 100px;
+  font-size: 2rem;
 }
 
 .tagline-2 {
-    font-size: 50px;
+  font-size: 2rem;
 }

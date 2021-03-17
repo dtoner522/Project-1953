@@ -41,6 +41,7 @@
   background-size: cover;
   position: relative;
   margin: 0 auto;
+  transform: translateY(-50px);
 
   .add-wishlist {
     position: absolute;
@@ -49,4 +50,8 @@
     bottom: 12px;
     right: 12px;
   }
+}
+
+.book-info {
+  transform: translateY(-30px);
 }
