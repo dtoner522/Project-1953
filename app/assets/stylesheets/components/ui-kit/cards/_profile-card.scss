@@ -8,3 +8,19 @@
     font-size: 12px;
   }
 }
+
+.stats {
+  background-color: $app-light-green;
+  margin: 0 auto;
+  width: 160px;
+  border-radius: 40px;
+  color: white;
+  padding-right: 26px;
+  bottom: -50px;
+
+  .books-count {
+    background-color: $app-green;
+    padding: 16px 25px;
+    border-radius: 40px;
+  }
+}
