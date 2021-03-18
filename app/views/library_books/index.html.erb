@@ -1,3 +1,4 @@
+<div class="fafafa">
 <div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
   <h1>Explore</h1>
 
@@ -17,6 +18,32 @@
     <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
       <i class="fas fa-search"></i> 
     <% end %>
+  </div>
+
+  <div class="d-flex justify-content-between">
+
+      <div class="dropdown show">
+        <a class="btn btn-primary-outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        All languages
+        </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+     </div>
+  
+      <div class="dropdown show">
+          <a class="btn btn-primary-outline dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            All Genres </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+      </div>
+
+        <a class="font-weight-bold black btn">A/Z</a>
   </div>
 
   <% @library_books.each do |lib_book| %>
@@ -39,3 +66,4 @@
 </div>
 
 <%= render 'shared/nav-bottom' %>
+</div>
