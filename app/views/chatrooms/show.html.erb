@@ -11,6 +11,8 @@
   <% end %>
 </div>
 
+<%= @chatroom.book.title %>
+<%= @chatroom.book.author %>
 <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
   <%= f.input :content, label: false, placeholder: "Message..." %>
 <% end %>

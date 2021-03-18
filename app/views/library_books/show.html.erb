@@ -30,11 +30,22 @@
       <h2><%= @lib_book.library.user.first_name %></h2>
       <p style="font-style: italic; color: gray; font-weight: 300"><%= @lib_book.library.user.location %></p>
       
-      <%= simple_form_for @chatroom do |f| %>
-        <%= f.input :recipient_id, as: :hidden, input_html: {value: @lib_book.library.user.id} %>
-        <%= f.input :library_book_id, as: :hidden, input_html: {value: @lib_book.book.id} %>
-        <button class="bg-transparent"><i class="fas fa-comment" style="font-size:20px"></i></button>
+      
+      <% unless @lib_book.library.user == current_user %>
+        <% if Chatroom.existing(@lib_book.library.user, current_user, @lib_book.book).empty? %>
+          <%= simple_form_for @chatroom do |f| %>
+            <%= f.input :recipient_id, as: :hidden, input_html: {value: @lib_book.library.user.id} %>
+            <%= f.input :book_id, as: :hidden, input_html: {value: @lib_book.book_id} %>
+            <button class="bg-transparent"><i class="fas fa-comment" style="font-size:20px"></i></button>
+          <% end %>
+        <% else %>
+          <%= link_to chatroom_path(Chatroom.existing(@lib_book.library.user, current_user, @lib_book.book).first) do %>
+            <i class="fas fa-comment" style="font-size:20px"></i>
+          <% end %>
+        <% end %>
       <% end %>
+      
+      
     </div>
   </div>
 </div>
