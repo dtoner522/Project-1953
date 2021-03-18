@@ -34,14 +34,4 @@
   </div>
 </div>
 
-<div class="nav-bottom fixed-bottom">
-  <%= image_tag "navbar/home.png", class: "" %>
-  <div class="chat-bell">
-    <%= image_tag "navbar/chat.png", class: "" %>
-  </div>
-  <div class="notification-bell">
-    <%= image_tag "navbar/bell.png"%>
-  </div>
-  <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
-            class: "avatar-30 mr-2", alt: "avatar" %>
-</div>
+<%= render 'shared/nav-bottom' %>

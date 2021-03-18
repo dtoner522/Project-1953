@@ -1,42 +1,41 @@
+<div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
+  <h1>Explore</h1>
+
+  <%= link_to '#' do  %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
 <div class="container">
 
-<% @library_books.each do |lib_book| %>
- <div class="book-results-card d-flex b-sh my-4">
-    <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
-    <div class="information p-3">
-      <h2><%= lib_book.book.title %></h2>
-      <p><%= lib_book.book.author %></p>
-      <div class="user-owner d-flex">
-        <%= cl_image_tag lib_book.library.user.photo.key, class: "avatar-20 mr-2", alt: "avatar" %>
-        <p><%= lib_book.library.user.first_name %><span style="font-style: italic; color: gray; font-weight: 300"><%= lib_book.library.user.location %></span></p>
+  <div class="text-center d-flex my-4 position-relative">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control white-bar b-sh text-center",
+          placeholder: "Search..."
+        %>
+    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+      <i class="fas fa-search"></i> 
+    <% end %>
+  </div>
+
+  <% @library_books.each do |lib_book| %>
+  <div class="book-results-card d-flex b-sh my-4">
+      <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
+      <div class="information p-3">
+        <h2><%= lib_book.book.title %></h2>
+        <p><%= lib_book.book.author %></p>
+        <div class="user-owner d-flex">
+          <%= cl_image_tag lib_book.library.user.photo.key, class: "avatar-20 mr-2", alt: "avatar" %>
+          <p><%= lib_book.library.user.first_name %><span style="font-style: italic; color: gray; font-weight: 300"><%= lib_book.library.user.location %></span></p>
+        </div>
+        <div class="tags d-flex">
+            <%= link_to lib_book.book.genre , "#", class: "btn genre mr-2" %> <%#<< link doesn't work  %>
+        </div>
+        <i class="fas fa-heart"></i>
       </div>
-      <div class="tags d-flex">
-          <%= link_to lib_book.book.genre , "#", class: "btn genre mr-2" %> <%#<< link doesn't work  %>
-      </div>
-      <i class="fas fa-heart"></i>
     </div>
-  </div>
-<% end %>
-
-<div class="nav-bottom">
-  <%= image_tag "navbar/home.png", class: "" %>
-  <div class="chat-bell">
-    <%= image_tag "navbar/chat.png", class: "" %>
-  </div>
-  <div class="notification-bell">
-    <%= image_tag "navbar/bell.png"%>
-  </div>
-  <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
-            class: "avatar-30 mr-2", alt: "avatar" %>
+  <% end %>
 </div>
 
-
-</div>
-
-
-
-
-
-
-
-</div>
+<%= render 'shared/nav-bottom' %>
