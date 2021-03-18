@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
 
   get 'uikit', to: 'pages#uikit'
-  
+  get 'notifications', to: 'pages#notifications'
 end
