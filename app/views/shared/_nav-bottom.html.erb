@@ -1,0 +1,23 @@
+<div class="nav-bottom fixed-bottom">
+  <%= link_to library_books_path do %>
+    <%= image_tag "navbar/home.png", class: "" %>
+  <% end %>
+
+  <div class="chat-bell">
+    <%= image_tag "navbar/chat.png", class: "" %>
+  </div>
+  <div class="notification-bell">
+    <%= image_tag "navbar/bell.png"%>
+  </div>
+  
+  <% if user_signed_in? %>
+    <%= link_to user_path(current_user) do %>
+      <div class="avatar-30 mr-2" style="background-image: url(' <%= cl_image_path current_user.photo.key%>')"></div>
+    <% end %>
+  <% else %>
+    <%= link_to '#' do %>
+      <%= image_tag "navbar/user.png" %>
+    <% end %>
+  <% end %>
+  
+</div>
