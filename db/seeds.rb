@@ -36,7 +36,7 @@ user2 = User.new( {
     email: "guill@aume.fr",
     password: "password",
     bio: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
-    location: "Barcelona"
+    location: "Toulouse"
   } )
 avatar2 = URI.open('https://images.unsplash.com/photo-1581391528803-54be77ce23e3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')
 user2.photo.attach(io: avatar2, filename: 'pic.png', content_type: 'image/png')
