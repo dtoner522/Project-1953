@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   end
 
   get 'uikit', to: 'pages#uikit'
+  get 'messages', to: 'pages#messages'
   
 end

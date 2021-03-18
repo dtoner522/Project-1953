@@ -9,4 +9,11 @@ class PagesController < ApplicationController
 
   def results
   end
+
+  # TODO: PRIVATE
+
+  def messages
+    @user = current_user
+    @chatrooms = @user.chatrooms
+  end
 end

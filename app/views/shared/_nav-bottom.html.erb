@@ -4,7 +4,9 @@
   <% end %>
 
   <div class="chat-bell">
-    <%= image_tag "navbar/chat.png", class: "" %>
+    <%= link_to messages_path do %>
+      <%= image_tag "navbar/chat.png", class: "" %>
+    <% end %>
   </div>
   <div class="notification-bell">
     <%= image_tag "navbar/bell.png"%>
@@ -19,5 +21,4 @@
       <%= image_tag "navbar/user.png" %>
     <% end %>
   <% end %>
-  
 </div>
