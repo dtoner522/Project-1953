@@ -30,7 +30,6 @@
       <h2><%= @lib_book.library.user.first_name %></h2>
       <p style="font-style: italic; color: gray; font-weight: 300"><%= @lib_book.library.user.location %></p>
       
-      
       <% unless @lib_book.library.user == current_user %>
         <% if Chatroom.existing(@lib_book.library.user, current_user, @lib_book.book).empty? %>
           <%= simple_form_for @chatroom do |f| %>
@@ -44,8 +43,7 @@
           <% end %>
         <% end %>
       <% end %>
-      
-      
+
     </div>
   </div>
 </div>
