@@ -16,10 +16,10 @@
         <%= link_to "Edit my profile", "#", class: "btn genre" %>
       </div>
     </div>
-    
+
     <p><strong>About me</strong></p>
     <p> <%= @user.bio %> </p>
-    
+
     <div class="user-counter">
       <p><strong><%= @library_books.count %></strong> books</p>
       <p><strong>X</strong> swaps</p>
@@ -39,7 +39,7 @@
   </ul>
 
   <div class="d-flex justify-content-center">
-    <%= link_to "#", class: "btn btn-pink" do %>
+    <%= link_to new_book_path, class: "btn btn-pink" do %>
       <i class="fas fa-plus"></i>  Add a book
     <% end %>
   </div>
@@ -49,7 +49,7 @@
     <div class="book-results-card d-flex b-sh my-4">
       <div class="image" style="background-image: url('<%= cl_image_path library_book.book.photo.key %>')"></div>
       <div class="information p-3">
-        <h2><%= library_book.book.title %></h2> 
+        <h2><%= library_book.book.title %> - condition: <%= library_book.condition %></h2>
         <p><%= library_book.book.author %></p>
         <div class="tags d-flex">
             <%= link_to library_book.book.genre, "#", class: "btn genre mr-2" %>
@@ -59,6 +59,6 @@
     </div>
 
   <% end %>
-  
+
 
 </div>

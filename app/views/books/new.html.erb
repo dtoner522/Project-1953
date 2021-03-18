@@ -31,27 +31,51 @@
   <div style="height: 150px;"></div>
 
   <div>
-    <h2>Title of the book selected</h2>
-    <p>Author of book</p>
-    <p>1965</p>
 
-    <div class="text-center d-flex my-4 mt-3 mx-4">
-      <%= text_field_tag :query,
-            params[:query],
-            collection: ["Good estate", "bad condition"],
-            class: "form-control white-bar b-sh text-center",
-            placeholder: "Book condition V"
-          %>
+    <%= simple_form_for(@book) do |f| %>
+
+      <%= f.input :title, as: :hidden %>
+      <%= f.input :author, as: :hidden %>
+      <%= f.input :year, as: :hidden %>
+      <%= f.input :isbn, as: :hidden %>
+      <%= f.input :genre, as: :hidden %>
+      <%= f.input :language, as: :hidden %>
+      <%= f.input :description, as: :hidden %>
+      <%= f.input :page_count, as: :hidden %>
+      <%= f.input :thumbnail_url, as: :hidden %>
+
+    <div class="book-cover b-sh-strong my-4"
+         id="form-book-thumbnail_img"
+         style="background-image: url('')">
+         <i class="fas fa-heart add-wishlist t-sh"></i>
     </div>
 
-      <!--     <form action="">
-      <input type="collection">
-      <input type="submit">
-     </form> -->
+    <h2 id="form-book-title"></h2>
+    <p id="form-book-author"></p>
+    <p id="form-book-year"></p>
+
+    <div>
+      <select name="condition" id="condition">
+        <option value="good">Good</option>
+        <option value="bad">Bad</option>
+      </select>
+    </div>
+
+
+      <%= f.submit %>
+
+    <% end %>
+
+
+
+
+
   </div>
 
 </div>
 
+
+<!-- NAV BAR -->
 
 <div class="nav-bottom fixed-bottom">
   <%= image_tag "navbar/home.png", class: "" %>

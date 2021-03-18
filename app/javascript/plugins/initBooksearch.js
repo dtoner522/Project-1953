@@ -1,23 +1,75 @@
 
+const extractData = (data) => {
+
+  // Extract data from HTML dataset + fill the form inputs
+
+  const formBookTitle = document.querySelector('#book_title')
+  formBookTitle.value = data.title
+
+  const formBookAuthor = document.querySelector('#book_author')
+  formBookAuthor.value = data.author
+
+  const formBookYear = document.querySelector('#book_year')
+  formBookYear.value = data.year // Year format issue with simple_form ?
+
+  const formBookGenre = document.querySelector('#book_genre')
+  formBookGenre.value = data.genre
+
+  const formBookLanguage = document.querySelector('#book_language')
+  formBookLanguage.value = data.language
+
+  const formBookDescription = document.querySelector('#book_description')
+  formBookDescription.value = data.description
+
+  const formBookPageCount = document.querySelector('#book_page_count')
+  formBookPageCount.value = data.page_count
+
+  const formBookThumbnailUrl = document.querySelector('#book_thumbnail_url')
+  formBookThumbnailUrl.value = data.thumbnail_url
+
+  // const formBookGoogleId = document.querySelector('#book_google_id')
+  // formBookGoogleId.value = data.google_id
+
+  // const formBookThumbnailImg = document.querySelector('#form-book-thumbnail_img')
+  // formBookThumbnailImg.src = data.thumbnail_url
+
+  const formBookThumbnailImg = document.querySelector('#form-book-thumbnail_img')
+  formBookThumbnailImg.style.backgroundImage = `url(${data.thumbnail_url})`
+
+  const formBookIsbn = document.querySelector('#book_isbn')
+  formBookIsbn.value = data.isbn // Couldn't be parsed
+
+}
+
+
+
 
 const selectBook = () => {
+
+  // Select Card upon Click + Locate the Parent Div for Dataset + call ExtractData function
 
   const selectBookButtons = document.querySelectorAll('#btn-select'); // ARRAY
   console.log(selectBookButtons)
 
     selectBookButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
-        console.log("hello");
-        event.currentTarget // DO .dataset
+        event.preventDefault() // NOT SURE ABOUT THAT ? AVOID PAGE RELOAD ?
+        // Locate the Div with dataset
+        document.querySelector('#results').innerHTML = ""
+        const parentDiv = event.currentTarget.closest(".book-results-card")
+        // Call function with Dataset
+        extractData(parentDiv.dataset)
       })
     })
 }
 
 
 
-
 const initBooksearch = () => {
 
+  // Search autocomplete : fetch API, populate book cards
+
+  // If this ID is present on the page
   const searchAutoComplete = document.querySelector('#search-autocomplete');
 
   if (searchAutoComplete) {
@@ -27,9 +79,9 @@ const initBooksearch = () => {
 
     // TO DO - wait to type 5 x to Start the Autocomplete
 
-    input.addEventListener('keyup', () => {
+    input.addEventListener('keyup', (e) => {
       cards.innerHTML = "";
-      const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${input.value}`;
+      const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${input.value}&key=AIzaSyDOUUIk6Yw3a4YdJosG8IY9ikbXDIqo0sc`;
       fetch(url)
 
         .then(response => response.json())// response.json()) ==> then get (data)
@@ -50,14 +102,16 @@ const initBooksearch = () => {
 
           filteredBooks.forEach((book) => {
 
+            var isbn = (book.volumeInfo.industryIdentifiers) ? book.volumeInfo.industryIdentifiers[0].identifier : "Unknown"
             var author = (book.volumeInfo.authors) ? book.volumeInfo.authors[0] : "Unknown author"
             var category = (book.volumeInfo.categories) ? book.volumeInfo.categories[0] : "Unknown category"
             var thumbnail = (book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : "https://images-na.ssl-images-amazon.com/images/I/416Q4yh%2BGcL._AC_.jpg"
 
             cards.insertAdjacentHTML('beforeend',
 
-             `<div
-                  data-isbn="${book.volumeInfo.industryIdentifiers}"
+             `<div class="book-results-card d-flex b-sh my-4"
+
+                  data-isbn="${isbn}"
                   data-title="${book.volumeInfo.title}"
                   data-year="${book.volumeInfo.publishedDate}"
                   data-genre="${category}"
@@ -67,14 +121,12 @@ const initBooksearch = () => {
                   data-page_count="${book.volumeInfo.pageCount}"
                   data-thumbnail_url="${thumbnail}"
                   data-google_id="${book.id}"
-
-                  class="book-results-card d-flex b-sh my-4"
               >
                   <div class="image" style="background-image: url(${thumbnail});">
                   </div>
                   <div class="information p-3">
                     <h2>${book.volumeInfo.title}</h2>
-                    <p>Nora Barret (${book.volumeInfo.publishedDate})</p>
+                    <p>${author} (${book.volumeInfo.publishedDate})</p>
                     <div class="tags d-flex">
                       <a id="btn-select" class="btn genre mr-2" href="#">Select book</a>
                     </div>
@@ -83,11 +135,15 @@ const initBooksearch = () => {
              </div>`);
 
           });
+
         selectBook();
+
         });
     });
   }
 }
+
+
 
 export default initBooksearch
 
