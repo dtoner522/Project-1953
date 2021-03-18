@@ -1,4 +1,4 @@
-<h1><%= @chatroom.name %></h1>
+<h1><%= @chatroom.get_other_user(current_user).username %></h1>
 <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
   <% @chatroom.messages.each do |message| %>
     <div class="message-container" id="message-<%= message.id %>">
@@ -10,3 +10,9 @@
     </div>
   <% end %>
 </div>
+
+<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Message..." %>
+<% end %>
+
+<%= render 'shared/nav-bottom' %>

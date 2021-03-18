@@ -12,8 +12,7 @@
   
   <% if user_signed_in? %>
     <%= link_to user_path(current_user) do %>
-      <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
-                class: "avatar-30 mr-2", alt: "avatar" %>
+      <div class="avatar-30 mr-2" style="background-image: url(' <%= cl_image_path current_user.photo.key%>')"></div>
     <% end %>
   <% else %>
     <%= link_to '#' do %>

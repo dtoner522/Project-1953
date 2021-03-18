@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'chatrooms/show'
+  root to: 'pages#home'
+    
   devise_for :users
+  resources :users, only: [:show]
 
   resources :libraries do
     resources :library_books, except: [:index, :show]
@@ -8,14 +10,10 @@ Rails.application.routes.draw do
 
   resources :library_books, only: [:index, :show]
 
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :chatrooms, only: [:show, :create] do
+    resources :messages, only: :create
+  end
 
   get 'uikit', to: 'pages#uikit'
-
-  get 'results', to: 'pages#results'
-
-  resources :library_books, only: [ :index, :show]
   
-  resources :users, only: [:show]
 end

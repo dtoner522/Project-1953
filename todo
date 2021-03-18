@@ -1,0 +1,7 @@
+rails g model Chatroom name
+rails g model Message content chatroom:references user:references
+rails db:migrate
+
+rails g controller chatrooms show
+
+rails g controller messages

@@ -29,7 +29,12 @@
     <div class="d-flex justify-content-between flex-grow-1 px-2">
       <h2><%= @lib_book.library.user.first_name %></h2>
       <p style="font-style: italic; color: gray; font-weight: 300"><%= @lib_book.library.user.location %></p>
-      <i class="fas fa-comment" style="font-size:20px"></i>
+      
+      <%= simple_form_for @chatroom do |f| %>
+        <%= f.input :recipient_id, as: :hidden, input_html: {value: @lib_book.library.user.id} %>
+        <%= f.input :library_book_id, as: :hidden, input_html: {value: @lib_book.book.id} %>
+        <button class="bg-transparent"><i class="fas fa-comment" style="font-size:20px"></i></button>
+      <% end %>
     </div>
   </div>
 </div>

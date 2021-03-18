@@ -4,7 +4,7 @@ class LibraryBooksController < ApplicationController
   def index
     @library_books = LibraryBook.all
   end
-  
+
   def create
     @book = Book.new()
     @library_book = LibraryBook.new(book: @book, library_id: current_user.library)
@@ -13,5 +13,6 @@ class LibraryBooksController < ApplicationController
 
   def show
     @lib_book = LibraryBook.find(params[:id])
+    @chatroom = Chatroom.new
   end
 end
