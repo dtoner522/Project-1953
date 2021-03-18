@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_132602) do
+
+ActiveRecord::Schema.define(version: 2021_03_18_150802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +38,9 @@ ActiveRecord::Schema.define(version: 2021_03_18_132602) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.integer "isbn"
+    t.string "isbn"
     t.string "title"
-    t.integer "year"
+    t.string "year"
     t.string "genre"
     t.string "language"
     t.datetime "created_at", precision: 6, null: false
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_132602) do
     t.string "author"
     t.string "page_count"
     t.string "thumbnail_url"
+    t.string "google_id"
   end
 
   create_table "chatrooms", force: :cascade do |t|
