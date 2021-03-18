@@ -8,11 +8,14 @@
   <% end %>
 </div>
 
-<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message..." %>
-<% end %>
+<div class="text-center d-flex my-4 position-relative">
+  <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message...", class: "form-control chat-bar"%>
+  <% end %>
 
-<div class="m-5">
-  x
+  <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+    <i class="fab fa-telegram-plane"></i>
+  <% end %>
 </div>
+
 <%= render 'shared/nav-bottom' %>
