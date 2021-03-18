@@ -8,27 +8,23 @@
 
   <div class="container pt-3">
     <% @chatrooms.each do |chatroom|%>
-
-      <div class="card-message d-flex b-sh align-items-center px-2 py-1">
-        <%= image_tag 'https://res.cloudinary.com/dsz5gd9a3/image/upload/c_fill,h_140,w_140/v1615919274/pexels-taina%CC%81-bernard-3482526_vsfq1a.jpg',
-                class: "avatar-50 mr-2", alt: "avatar" %>
-        <div class="message-info flex-grow-1">
-          <h2> <%= chatroom.get_other_user(current_user).first_name %> </h2>
-          <p> <%= chatroom.book.title %> </p>
+      <%= link_to chatroom_path(chatroom) do %>
+        <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+          <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path current_user.photo.key%>')"></div>
+          <div class="message-info flex-grow-1">
+            <h2> <%= chatroom.get_other_user(current_user).first_name %> </h2>
+            <p> <%= chatroom.book.title %> </p>
+          </div>
+          <div class="message-stats pr-2">
+            <% if chatroom.messages.last %>
+              <h3>
+                <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
+              </h3>
+              <p class="icon-secondary">3</p>
+            <% end %>
+          </div>
         </div>
-        <div class="message-stats pr-2">
-          <% if chatroom.messages.last %>
-            <h3>
-              <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
-            </h3>
-
-            <p class="icon-secondary">3</p>
-          <% end %>
-          
-          
-        </div>
-      </div>
-      
+      <% end %>
     <% end %>
   </div>
 </div>
