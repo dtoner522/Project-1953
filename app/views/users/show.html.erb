@@ -39,7 +39,7 @@
   </ul>
 
   <div class="d-flex justify-content-center">
-    <%= link_to "#", class: "btn btn-pink" do %>
+    <%= link_to new_library_library_book_path(@user.libraries.first), class: "btn btn-pink" do %>
       <i class="fas fa-plus"></i>  Add a book
     <% end %>
   </div>
