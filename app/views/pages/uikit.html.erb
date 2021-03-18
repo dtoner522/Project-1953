@@ -44,13 +44,13 @@
   <!-- FORMS -->
   <h2 class="mt-3 text-center border-top pt-3">Search form</h2>
   
-  <div class="text-center d-flex my-4 position-relative">
+  <div class="text-center my-4 position-relative">
     <%= text_field_tag :query,
           params[:query],
           class: "form-control white-bar b-sh text-center",
           placeholder: "Barcelona..."
         %>
-    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+    <%= button_tag(type: "submit", class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
       <i class="fas fa-search"></i> 
     <% end %>
   </div>
