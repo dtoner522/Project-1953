@@ -8,22 +8,24 @@
 
   <div class="container pt-3">
     <% @chatrooms.each do |chatroom|%>
-      <%= link_to chatroom_path(chatroom) do %>
-        <div class="card-message d-flex b-sh align-items-center px-2 py-1">
-          <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path chatroom.get_other_user(current_user).photo.key%>')"></div>
-          <div class="message-info flex-grow-1">
-            <h2> <%= chatroom.get_other_user(current_user).first_name %> </h2>
-            <p> <%= chatroom.book.title %> </p>
+      <% if chatroom.messages.last %>
+        <%= link_to chatroom_path(chatroom) do %>
+          <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+            <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path chatroom.get_other_user(current_user).photo.key%>')"></div>
+            <div class="message-info flex-grow-1">
+              <h2> <%= chatroom.get_other_user(current_user).first_name %> </h2>
+              <p> <%= chatroom.book.title %> </p>
+            </div>
+            <div class="message-stats pr-2">
+              <% if chatroom.messages.last %>
+                <h3>
+                  <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
+                </h3>
+                <p class="icon-secondary">3</p>
+              <% end %>
+            </div>
           </div>
-          <div class="message-stats pr-2">
-            <% if chatroom.messages.last %>
-              <h3>
-                <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
-              </h3>
-              <p class="icon-secondary">3</p>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

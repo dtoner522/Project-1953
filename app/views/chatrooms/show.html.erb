@@ -5,13 +5,17 @@
 </div>
 
 <div class="card-message d-flex b-sh align-items-center px-2 py-1">
-  <%= link_to  do %>
+  <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
     <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path @chatroom.get_other_user(current_user).photo.key%>')"></div>
   <% end %>
   <div class="message-info flex-grow-1">
-    <h2> <%= @chatroom.get_other_user(current_user).first_name %> </h2>
-    <p> <%= @chatroom.book.title %> </p>
-    <p><%= @chatroom.book.author %></p>
+    <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
+      <h2> <%= @chatroom.get_other_user(current_user).first_name %> </h2>
+    <% end %>
+    <%= link_to library_book_path(@chatroom.book.id) do %>
+      <p><%= @chatroom.book.title %></p>
+      <p><%= @chatroom.book.author %></p>
+    <% end %>
   </div>
 </div>
 
