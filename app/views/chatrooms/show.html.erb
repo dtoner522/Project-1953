@@ -4,13 +4,15 @@
 
 <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
   <% @chatroom.messages.each do |message| %>
-    <%= render partial: 'messages/message', locals: {message: message} %>
+    <%= render 'messages/message', message: message %>
   <% end %>
 </div>
-
 
 <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
   <%= f.input :content, label: false, placeholder: "Message..." %>
 <% end %>
 
+<div class="m-5">
+  x
+</div>
 <%= render 'shared/nav-bottom' %>

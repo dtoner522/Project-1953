@@ -26,7 +26,7 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import initBooksearch from '../plugins/initBooksearch'
-import initChatroomCable from '../channels/chatroom_channel'
+import { initChatroomCable } from '../channels/chatroom_channel'
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
