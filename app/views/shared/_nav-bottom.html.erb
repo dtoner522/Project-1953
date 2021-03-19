@@ -4,11 +4,15 @@
   <% end %>
 
   <div class="chat-bell">
-    <%= image_tag "navbar/chat.png", class: "" %>
+    <%= link_to messages_path do %>
+      <%= image_tag "navbar/chat.png", class: "" %>
+    <% end %>
   </div>
   
   <div class="notification-bell">
-    <%= image_tag "navbar/bell.png"%>
+    <%= link_to notifications_path do %>
+      <%= image_tag "navbar/bell.png"%>
+    <% end %>
   </div>
   
   <% if user_signed_in? %>
@@ -16,9 +20,8 @@
       <div class="avatar-30 mr-2" style="background-image: url(' <%= cl_image_path current_user.photo.key%>')"></div>
     <% end %>
   <% else %>
-    <%= link_to '#' do %>
+    <%= link_to new_user_session_path do %>
       <%= image_tag "navbar/user.png" %>
     <% end %>
   <% end %>
-  
 </div>

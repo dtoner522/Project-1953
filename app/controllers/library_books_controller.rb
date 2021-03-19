@@ -1,11 +1,9 @@
 class LibraryBooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-
   def index
     @library_books = LibraryBook.all
     @library_books = LibraryBook.select {|lb| lb.library.user.location.downcase == params[:query].downcase} if params[:query].present?
-
 
     @library_books = @library_books.joins(:book).where("books.title ILIKE ? ", "%#{params[:title]}%") if params[:title].present?
     @library_books = @library_books.joins(:book).where("books.language ILIKE ? ", params[:language]) if params[:language].present?
@@ -26,30 +24,4 @@ class LibraryBooksController < ApplicationController
     @chatroom = Chatroom.new
   end
 
-  private
-
-  # def library_book_params
-  #   params.require(:library_book).permit(:id)
-  # end
-
-
-
 end
-
-
-
-
-
-# def self.search(search)
-#   if search
-#     books = Book.all
-#     books = book.where(language: search[:":language"][","])
-#     return books
-#   else
-#     Book.all
-#   end
-# end
-
-# @books = Book.select {|b| b.language == params[:query].downcase}
-# @books = Book.search(params[:book])
-

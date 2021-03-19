@@ -29,6 +29,24 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password", class: "form-control gray-bar" } %>
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first_name", class: "form-control gray-bar" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last_name", class: "form-control gray-bar" }%>
+    <%= f.input :bio,
+                required: true,
+                autofocus: true,
+                input_html: { class: "form-control gray-bar" }%>
+    <%= f.input :location,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "location", class: "form-control gray-bar" }%>
+    
+    <%= f.input :photo, as: :file %>
     </div>
   </div>
 

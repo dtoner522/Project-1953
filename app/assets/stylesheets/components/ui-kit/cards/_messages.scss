@@ -31,6 +31,11 @@
   }
 }
 
+#messages {
+  max-height: 55vh;
+  overflow: scroll;
+}
+
 .card-chat-message {
   // position: relative;
   background-color: white;
@@ -57,4 +62,6 @@
   border-bottom-left-radius: 0px;
   border-top-right-radius: 26px;
   border-bottom-right-radius: 26px;
+  background-color: $app-pink;
+  color: white;
 }

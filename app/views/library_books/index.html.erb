@@ -1,49 +1,35 @@
 <div class="fafafa">
-<div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
-  <h1>Explore</h1>
-
-  <%= link_to '#' do  %>
-    <i class="fas fa-ellipsis-v"></i>
-  <% end %>
-</div>
-
-<div class="container">
-
-  <div class="text-center d-flex my-4 position-relative">
-    <%= text_field_tag :query,
-          params[:query],
-          class: "form-control white-bar b-sh text-center",
-          placeholder: "Search..."
-        %>
-    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
-      <i class="fas fa-search"></i> 
+  <div class="nav-top d-flex p-5 justify-content-between align-items-center">
+    <h1>Explore</h1>
+    <%= link_to '#' do  %>
+      <i class="fas fa-ellipsis-v"></i>
     <% end %>
   </div>
 
-  <div class="d-flex justify-content-between">
-
+<div class="m-1">
     <%= form_tag(library_books_path, method: :get) do %>
-    <div class="text-center d-flex my-4 position-relative">
-     <%= text_field_tag :title,
-          params[:title],
-          class: "form-control white-bar b-sh text-center",
-          placeholder: "Search..."
-        %>
-    </div>
-    <%=  select_tag :language, options_for_select(["English", "French", "Spanish"], selected: params["language"]), include_blank: "All languages"  %>
-    <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Science-Fiction"], selected: params["genre"]),  include_blank: "All genres"  %>
-    
-      <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
-        <i class="fas fa-search"></i> 
+      <div class="ml-auto mr-auto mb-4 p-2 width">
+      <%= text_field_tag :title,
+            params[:title],
+            class: "form-control white-bar b-sh text-center",
+            placeholder: "Search..."
+          %>
+      </div>
+      <p class="nunito ml-5">Filter by</h2>
+      <div class="d-flex justify-content-around m-2 p-2">
+      <%=  select_tag :language, options_for_select(["English", "French", "Spanish"], selected: params["language"]), include_blank: "Language", class: "border-green" %>
+      <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Sci-Fi"], selected: params["genre"]),  include_blank: "Genre", class: "border-green"  %>
+      <%= button_tag(class: "btn icon-primary mt-1") do %>
+          <i class="fas fa-search"></i> 
       <% end %>
 
     <% end %>
-  
-        <a class="font-weight-bold black btn">A/Z</a>
+
+
   </div>
 
   <% @library_books.each do |lib_book| %>
-  <div class="book-results-card d-flex b-sh my-4">
+  <div class="book-results-card d-flex b-sh my-4 m-5">
       <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
       <div class="information p-3">
 
@@ -57,13 +43,13 @@
          <!--link should be black, not blue >> -->
 
          <%= link_to user_path(lib_book.library.user) do %>
-           <p> <%= lib_book.library.user.first_name %>
+           <p class="name"> <%= lib_book.library.user.first_name %>
          <% end %>
 
          <span style="font-style: italic; color: gray; font-weight: 300" class="span-location"><%= lib_book.library.user.location %></span></p>
         </div>
         <div class="tags d-flex">
-            <%= link_to lib_book.book.genre , library_book_path(lib_book.book.genre), class: "btn genre mr-2" %> <%#<< This doesn't work  %>
+            <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %>
         </div>
         <i class="fas fa-heart"></i>
       </div>
