@@ -20,7 +20,7 @@
       <div class="avatar-30 mr-2" style="background-image: url(' <%= cl_image_path current_user.photo.key%>')"></div>
     <% end %>
   <% else %>
-    <%= link_to '#' do %>
+    <%= link_to new_user_session_path do %>
       <%= image_tag "navbar/user.png" %>
     <% end %>
   <% end %>
