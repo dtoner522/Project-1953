@@ -55,3 +55,12 @@
 .book-info {
   transform: translateY(-30px);
 }
+
+.new-book-cover {
+  border-radius: 24px;
+  width: 140px;
+  height: 220px;
+  background-position: center;
+  background-size: cover;
+  margin: 0 auto;
+}
