@@ -32,9 +32,9 @@
     </div>
     
     <div class="chat-input">
-      <div class="text-center d-flex position-relative">
-        <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-          <%= f.input :content, label: false, placeholder: "Message...", class: "form-controlr"%>
+      <div class="text-center d-flex mt-4 position-relative">
+        <%= simple_form_for [ @chatroom, @message ], remote: true, html: {class: "w-100"} do |f| %>
+          <%= f.input :content, label: false, placeholder: "Message...", input_html: {class: "white-bar"}%>
         <% end %>
 
         <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
