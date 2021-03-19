@@ -43,13 +43,13 @@
          <!--link should be black, not blue >> -->
 
          <%= link_to user_path(lib_book.library.user) do %>
-           <p> <%= lib_book.library.user.first_name %>
+           <p class="name"> <%= lib_book.library.user.first_name %>
          <% end %>
 
          <span style="font-style: italic; color: gray; font-weight: 300" class="span-location"><%= lib_book.library.user.location %></span></p>
         </div>
         <div class="tags d-flex">
-            <%= link_to lib_book.book.genre , library_book_path(lib_book.book.genre), class: "btn genre mr-2" %> <%#<< This doesn't work  %>
+            <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %>
         </div>
         <i class="fas fa-heart"></i>
       </div>
