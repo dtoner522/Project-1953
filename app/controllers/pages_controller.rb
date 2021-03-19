@@ -9,4 +9,7 @@ class PagesController < ApplicationController
 
   def results
   end
+
+  def notifications
+  end
 end

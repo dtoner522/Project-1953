@@ -24,3 +24,37 @@
     color: $app-green;
   }
 }
+
+.message {
+  h3 {
+    margin: 2px;
+  }
+}
+
+.card-chat-message {
+  // position: relative;
+  background-color: white;
+  padding: 12px;
+  max-width: 70%;
+
+  p {
+    margin: 0;
+  }
+}
+
+.message-me {
+  border-top-left-radius: 26px;
+  border-bottom-left-radius: 26px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 26px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.message-you {
+  border-top-left-radius: 26px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 26px;
+  border-bottom-right-radius: 26px;
+}
