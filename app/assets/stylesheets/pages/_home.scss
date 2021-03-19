@@ -47,6 +47,12 @@ body {
   margin-bottom: 60px;
 }
 
+.app-container-pink {
+  background-color: $app-rose;
+  max-height: calc(100vh - 180px);
+  min-height: auto;
+}
+
 .background-style {
   background-color: #FFE5E5;
 }
