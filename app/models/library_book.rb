@@ -4,4 +4,6 @@ class LibraryBook < ApplicationRecord
 
   has_many :swap_requests
 
+
+
 end
