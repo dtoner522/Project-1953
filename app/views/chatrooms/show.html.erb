@@ -1,0 +1,18 @@
+<h1><%= @chatroom.get_other_user(current_user).username %></h1>
+<h2><%= @chatroom.book.title %></h2>
+<h2 class="border-bottom"><%= @chatroom.book.author %></h2>
+
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <% @chatroom.messages.each do |message| %>
+    <%= render 'messages/message', message: message %>
+  <% end %>
+</div>
+
+<%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
+  <%= f.input :content, label: false, placeholder: "Message..." %>
+<% end %>
+
+<div class="m-5">
+  x
+</div>
+<%= render 'shared/nav-bottom' %>

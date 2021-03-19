@@ -10,15 +10,12 @@ class LibraryBooksController < ApplicationController
     @library_books = @library_books.joins(:book).where("books.title ILIKE ? ", "%#{params[:title]}%") if params[:title].present?
     @library_books = @library_books.joins(:book).where("books.language ILIKE ? ", params[:language]) if params[:language].present?
     @library_books = @library_books.joins(:book).where("books.genre ILIKE ? ", params[:genre]) if params[:genre].present?
-  end
-  
-  def create
-    @book = Book.new()
-    @library_book = LibraryBook.new(book: @book, library_id: current_user.library)
+
   end
 
   def show
     @lib_book = LibraryBook.find(params[:id])
+    @chatroom = Chatroom.new
   end
 end
 

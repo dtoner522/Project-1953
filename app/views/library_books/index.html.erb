@@ -46,14 +46,24 @@
   <div class="book-results-card d-flex b-sh my-4">
       <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
       <div class="information p-3">
+
+      <%= link_to library_book_path(lib_book) do %>
         <h2><%= lib_book.book.title %></h2>
+      <% end %>
         <p><%= lib_book.book.author %></p>
         <div class="user-owner d-flex">
           <%= cl_image_tag lib_book.library.user.photo.key, class: "avatar-20 mr-2", alt: "avatar" %>
-          <p><%= lib_book.library.user.first_name %><span style="font-style: italic; color: gray; font-weight: 300"><%= lib_book.library.user.location %></span></p>
+
+         <!--link should be black, not blue >> -->
+
+         <%= link_to user_path(lib_book.library.user) do %>
+           <p> <%= lib_book.library.user.first_name %>
+         <% end %>
+
+         <span style="font-style: italic; color: gray; font-weight: 300" class="span-location"><%= lib_book.library.user.location %></span></p>
         </div>
         <div class="tags d-flex">
-            <%= link_to lib_book.book.genre , "#", class: "btn genre mr-2" %> <%#<< link doesn't work  %>
+            <%= link_to lib_book.book.genre , library_book_path(lib_book.book.genre), class: "btn genre mr-2" %> <%#<< This doesn't work  %>
         </div>
         <i class="fas fa-heart"></i>
       </div>
