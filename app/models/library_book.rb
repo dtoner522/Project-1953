@@ -9,5 +9,3 @@ class LibraryBook < ApplicationRecord
   end
 
 end
-
-
