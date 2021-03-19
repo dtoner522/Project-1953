@@ -31,7 +31,7 @@
       <% end %>
     </div>
     
-    <div class="chat-input">
+    <div class="chat-input"> <% # FIXME: make it fuckin sticky %>
       <div class="text-center d-flex mt-4 position-relative">
         <%= simple_form_for [ @chatroom, @message ], remote: true, html: {class: "w-100"} do |f| %>
           <%= f.input :content, label: false, placeholder: "Message...", input_html: {class: "white-bar"}%>
