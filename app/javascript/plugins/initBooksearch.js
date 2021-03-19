@@ -1,7 +1,7 @@
 
 const extractData = (data) => {
 
-  // Extract data from HTML dataset + fill the form inputs
+  // Extract dataset + fill the form inputs
 
   const formBookTitle = document.querySelector('#book_title')
   formBookTitle.value = data.title
@@ -10,7 +10,7 @@ const extractData = (data) => {
   formBookAuthor.value = data.author
 
   const formBookYear = document.querySelector('#book_year')
-  formBookYear.value = data.year // Year format issue with simple_form ?
+  formBookYear.value = data.year
 
   const formBookGenre = document.querySelector('#book_genre')
   formBookGenre.value = data.genre
@@ -33,11 +33,28 @@ const extractData = (data) => {
   // const formBookThumbnailImg = document.querySelector('#form-book-thumbnail_img')
   // formBookThumbnailImg.src = data.thumbnail_url
 
-  const formBookThumbnailImg = document.querySelector('#form-book-thumbnail_img')
-  formBookThumbnailImg.style.backgroundImage = `url(${data.thumbnail_url})`
-
   const formBookIsbn = document.querySelector('#book_isbn')
   formBookIsbn.value = data.isbn // Couldn't be parsed
+
+
+  // fill Book info HTML show confirmation
+
+  const confirmTitle = document.querySelector('#confirm-book-title')
+  confirmTitle.innerHTML = data.title
+
+  const confirmAuthor = document.querySelector('#confirm-book-author')
+  confirmAuthor.innerHTML = data.author
+
+  const confirmYear = document.querySelector('#confirm-book-year')
+  confirmYear.innerHTML = `(${data.year})`
+
+  const formBookThumbnailImg = document.querySelector('#confirm-book-cover')
+  formBookThumbnailImg.style.backgroundImage = `url(${data.thumbnail_url})`
+
+
+  // Removing the Display None Class = make visible
+  const bookConfirmationShow = document.querySelector('#book-confirmation-show')
+  bookConfirmationShow.classList.remove("d-none")
 
 }
 
@@ -47,6 +64,8 @@ const extractData = (data) => {
 const selectBook = () => {
 
   // Select Card upon Click + Locate the Parent Div for Dataset + call ExtractData function
+
+  const bookConfirmation = document.querySelector('#book-confirmation');
 
   const selectBookButtons = document.querySelectorAll('#btn-select'); // ARRAY
   console.log(selectBookButtons)
@@ -76,11 +95,13 @@ const initBooksearch = () => {
 
     const input = document.querySelector('#search-autocomplete');
     const cards = document.querySelector('#results');
+    const bgImage = document.querySelector('#bg-image');
 
     // TO DO - wait to type 5 x to Start the Autocomplete
 
     input.addEventListener('keyup', (e) => {
       cards.innerHTML = "";
+      bgImage.innerHTML = "";
       const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${input.value}&key=AIzaSyDOUUIk6Yw3a4YdJosG8IY9ikbXDIqo0sc`;
       fetch(url)
 
@@ -140,7 +161,7 @@ const initBooksearch = () => {
 
         });
     });
-  }
+  };
 }
 
 
