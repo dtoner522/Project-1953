@@ -21,17 +21,18 @@
       <p><strong>About me</strong></p>
       <p> <%= @user.bio %> </p>
 
-
-      <div class="stats d-flex justify-content-between text-center align-items-center position-absolute">
-        <div class="books-count">
-          <h2><%= @library_books.count %></h2>
-          <h3>books</h3>
+    <div class="d-flex justify-content-center">
+        <div class="stats d-flex justify-content-between text-center align-items-center position-absolute">
+          <div class="books-count">
+            <h2><%= @library_books.count %></h2>
+            <h3>books</h3>
+          </div>
+          <div class="swaps-count">
+            <h2>3</h2>
+            <h3>swaps</h3>
+          </div>
         </div>
-        <div class="swaps-count">
-          <h2>3</h2>
-          <h3>swaps</h3>
         </div>
-      </div>
       </div>
     </div>
 
@@ -86,7 +87,7 @@
         <% if lib_book.is_favoritable_to(current_user )%>
           <i class="fas fa-heart"></i>
         <% end %>
-
+        </div>
       </div>
     <% end %>
     </div>
