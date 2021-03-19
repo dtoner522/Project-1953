@@ -6,7 +6,7 @@
     <% end %>
   </div>
 
-<div class="m-1">
+  <div class="m-1">
     <%= form_tag(library_books_path, method: :get) do %>
       <div class="ml-auto mr-auto mb-4 p-2 width">
       <%= text_field_tag :title,
@@ -22,31 +22,28 @@
       <%= button_tag(class: "btn icon-primary mt-1") do %>
           <i class="fas fa-search"></i> 
       <% end %>
-
     <% end %>
-
-
   </div>
 
   <% @library_books.each do |lib_book| %>
-  <div class="book-results-card d-flex b-sh my-4 m-5">
-      <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
-      <div class="information p-3">
+  <div class="book-results-card d-flex b-sh m-3">
+    <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
+    <div class="information p-3">
 
       <%= link_to library_book_path(lib_book) do %>
         <h2><%= lib_book.book.title %></h2>
       <% end %>
-        <p><%= lib_book.book.author %></p>
-        <div class="user-owner d-flex">
-          <%= cl_image_tag lib_book.library.user.photo.key, class: "avatar-20 mr-2", alt: "avatar" %>
+      <p><%= lib_book.book.author %></p>
+      <div class="user-owner d-flex">
+        <%= cl_image_tag lib_book.library.user.photo.key, class: "avatar-20 mr-2", alt: "avatar" %>
 
-         <!--link should be black, not blue >> -->
+        <!--link should be black, not blue >> -->
 
-         <%= link_to user_path(lib_book.library.user) do %>
-           <p class="name"> <%= lib_book.library.user.first_name %>
-         <% end %>
+        <%= link_to user_path(lib_book.library.user) do %>
+          <p class="name"> <%= lib_book.library.user.first_name %>
+        <% end %>
 
-         <span style="font-style: italic; color: gray; font-weight: 300" class="span-location"><%= lib_book.library.user.location %></span></p>
+        <span style="font-style: italic; color: gray; font-weight: 300" class="span-location"><%= lib_book.library.user.location %></span></p>
         </div>
         <div class="tags d-flex">
             <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %>
@@ -58,4 +55,3 @@
 </div>
 
 <%= render 'shared/nav-bottom' %>
-</div>

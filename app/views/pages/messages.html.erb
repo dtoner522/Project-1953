@@ -7,7 +7,7 @@
   </div>
 
   <div class="container pt-3">
-    <% @chatrooms.each do |chatroom|%>
+    <% @chatrooms.each do |chatroom|%> <% #FIXME: sort messages ordered by lastest %>
       <% if chatroom.messages.last %>
         <%= link_to chatroom_path(chatroom) do %>
           <div class="card-message d-flex b-sh align-items-center px-2 py-1">
