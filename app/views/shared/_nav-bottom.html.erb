@@ -10,7 +10,9 @@
   </div>
   
   <div class="notification-bell">
-    <%= image_tag "navbar/bell.png"%>
+    <%= link_to notifications_path do %>
+      <%= image_tag "navbar/bell.png"%>
+    <% end %>
   </div>
   
   <% if user_signed_in? %>
