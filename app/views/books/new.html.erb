@@ -1,0 +1,90 @@
+<div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
+  <%= link_to '#' do %>
+    <i class="fas fa-chevron-left"></i>
+  <% end %>
+
+  <h1>Add a book</h1>
+
+  <%= link_to '#' do  %>
+    <i class="fas fa-ellipsis-v"></i>
+  <% end %>
+</div>
+
+
+<div class="container app-container">
+
+
+  <div class="text-center d-flex my-4">
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control white-bar b-sh text-center",
+          id: "search-autocomplete",
+          placeholder: "Search title, author..."
+        %>
+  </div>
+
+
+  <div id="bg-image" class="d-flex justify-content-center img-fluid">
+    <%= cl_image_tag("https://res.cloudinary.com/dtoner522/image/upload/v1615911570/home-img_tc3hke.png", class: "home_img") %>
+  </div>
+
+
+  <div id="results">
+    <!-- HERE WOULD GO THE JS INJECTION -->
+  </div>
+
+
+
+  <div id="book-confirmation-show" class="d-none">
+
+    <div id="confirm-book-cover" class="book-cover b-sh-strong my-4" style="background-image: url('')">
+    </div>
+
+    <div id="book-confirmation">
+
+      <%= simple_form_for(@book) do |f| %>
+
+        <%= f.input :title, as: :hidden %>
+        <%= f.input :author, as: :hidden %>
+        <%= f.input :year, as: :hidden %>
+        <%= f.input :isbn, as: :hidden %>
+        <%= f.input :genre, as: :hidden %>
+        <%= f.input :language, as: :hidden %>
+        <%= f.input :description, as: :hidden %>
+        <%= f.input :page_count, as: :hidden %>
+        <%= f.input :thumbnail_url, as: :hidden %>
+
+
+      <div class="text-center">
+
+        <div >
+          <h1 id="confirm-book-title">Title</h1>
+          <h2 id="confirm-book-author">Author</h2>
+          <p id="confirm-book-year">year</p>
+        </div>
+
+        <div>
+          <p>What is your book condition</p>
+          <select name="condition" id="condition" class="form-control white-bar b-sh mb-3">
+            <option value="good">Pretty old ;/</option>
+            <option value="new" selected="selected">Good condition</option>
+            <option value="new">Like it was new!</option>
+          </select>
+        </div>
+
+        <div>
+          <%= f.submit 'Add to library', class: 'btn btn-pink mb-3' %>
+        </div>
+
+      </div>
+
+    <% end %>
+
+    </div>
+
+  </div>
+
+</div>
+
+<%= render 'shared/nav-bottom' %>
+
