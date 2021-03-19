@@ -46,7 +46,7 @@ const extractData = (data) => {
   confirmAuthor.innerHTML = data.author
 
   const confirmYear = document.querySelector('#confirm-book-year')
-  confirmYear.innerHTML = `(${data.year})`
+  confirmYear.innerHTML = `${data.year} | ${data.language.toUpperCase()}`
 
   const formBookThumbnailImg = document.querySelector('#confirm-book-cover')
   formBookThumbnailImg.style.backgroundImage = `url(${data.thumbnail_url})`
@@ -131,29 +131,30 @@ const initBooksearch = () => {
             cards.insertAdjacentHTML('beforeend',
 
              `<div class="book-results-card d-flex b-sh my-4"
+                data-isbn="${isbn}"
+                data-title="${book.volumeInfo.title}"
+                data-year="${book.volumeInfo.publishedDate}"
+                data-genre="${category}"
+                data-author="${author}"
+                data-language="${book.volumeInfo.language}"
+                data-description="${book.volumeInfo.description}"
+                data-page_count="${book.volumeInfo.pageCount}"
+                data-thumbnail_url="${thumbnail}"
+                data-google_id="${book.id}">
 
-                  data-isbn="${isbn}"
-                  data-title="${book.volumeInfo.title}"
-                  data-year="${book.volumeInfo.publishedDate}"
-                  data-genre="${category}"
-                  data-author="${author}"
-                  data-language="${book.volumeInfo.language}"
-                  data-description="${book.volumeInfo.description}"
-                  data-page_count="${book.volumeInfo.pageCount}"
-                  data-thumbnail_url="${thumbnail}"
-                  data-google_id="${book.id}"
-              >
-                  <div class="image" style="background-image: url(${thumbnail});">
-                  </div>
-                  <div class="information p-3">
-                    <h2>${book.volumeInfo.title}</h2>
-                    <p>${author} (${book.volumeInfo.publishedDate})</p>
-                    <div class="tags d-flex">
-                      <a id="btn-select" class="btn genre mr-2" href="#">Select book</a>
-                    </div>
-                  </div>
 
-             </div>`);
+                <div class="image" style="background-image: url(${thumbnail});">
+                </div>
+
+                <div class="information p-3">
+                  <h2>${book.volumeInfo.title}</h2>
+                  <p>${author} (${book.volumeInfo.publishedDate} - ${book.volumeInfo.language.toUpperCase()})</p>
+                  <div class="tags d-flex">
+                    <a id="btn-select" class="btn genre mr-2" href="#">Select book</a>
+                  </div>
+                </div>
+
+              </div>`);
 
           });
 
