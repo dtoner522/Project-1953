@@ -6,3 +6,9 @@ class Message < ApplicationRecord
     created_at.strftime("%a %b %e at %l:%M%p")
   end
 end
+
+# if chatroom.messages.last.created_at
+
+# if chat sent day is today, show the hour
+# else, show the day
+# group them by day

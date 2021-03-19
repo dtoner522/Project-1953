@@ -1,7 +1,7 @@
 <% if message.user == current_user %>
   <div class="message">
       <h3 class="text-right">
-        <%= message.chat_message_at %>
+        <%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
       </h3>
       <div class="d-flex justify-content-end">
         <div class="card-chat-message message-me">
