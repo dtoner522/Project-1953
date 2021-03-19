@@ -9,7 +9,7 @@
 
   <div class="container sm-12 p-4">
 
-    <div class="profile-card b-sh-strong pb-5 position-relative">
+    <div class="profile-card b-sh-strong pb-5 position-relative mb-5">
       <div class="d-flex align-items-center mb-3">
         <div class="avatar-100 mr-5" style="background-image: url(' <%= cl_image_path @user.photo.key%>')"></div>
         <div>
@@ -23,7 +23,7 @@
       
       <div class="stats d-flex justify-content-between text-center align-items-center position-absolute">
         <div class="books-count">
-          <h2>7</h2>
+          <h2><%= @library_books.count %></h2>
           <h3>books</h3>
         </div>
         <div class="swaps-count">
@@ -32,15 +32,6 @@
         </div>
       </div>
     </div>
-
-    <p><strong>About me</strong></p>
-    <p> <%= @user.bio %> </p>
-
-    <div class="user-counter">
-      <p><strong><%= @library_books.count %></strong> books</p>
-      <p><strong>X</strong> swaps</p>
-    </div>
-  </div>
 
   <div class="container app-container b-sh-strong mt-5">
     <ul class="list-inline tabs-underlined p-3 justify-content-center">
@@ -51,13 +42,6 @@
         <a href="#" class="tab-underlined">My Wishlist</a>
       </li>
     </ul>
-
-    <div class="d-flex justify-content-center">
-      <%= link_to new_library_library_book_path(@user.libraries.first), class: "btn btn-pink" do %>
-        <i class="fas fa-plus"></i>  Add a book
-      <% end %>
-    </div>
-
     
   <div class="d-flex justify-content-center">
     <%= link_to new_book_path, class: "btn btn-pink" do %>
