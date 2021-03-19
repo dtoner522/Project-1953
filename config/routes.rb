@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :books, only: [:new, :create]
+  
   resources :libraries
   resources :library_books, only: [:index, :show]
   post 'library_books', to: 'library_books#create', as: 'create_library_book'
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   get 'uikit', to: 'pages#uikit'
+  get 'messages', to: 'pages#messages'
   get 'notifications', to: 'pages#notifications'
   
-  resources :users, only: [:show]
 end

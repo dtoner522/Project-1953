@@ -9,7 +9,12 @@ class PagesController < ApplicationController
 
   def results
   end
-
+  
+  def messages
+    @user = current_user
+    @chatrooms = @user.chatrooms
+  end
+  
   def notifications
   end
 end
