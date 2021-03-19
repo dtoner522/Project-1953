@@ -17,13 +17,13 @@
           <%= link_to "Edit my profile", "#", class: "btn genre" %>
         </div>
       </div>
-      
+
       <p><strong>About me</strong></p>
       <p> <%= @user.bio %> </p>
-      
+
       <div class="stats d-flex justify-content-between text-center align-items-center position-absolute">
         <div class="books-count">
-          <h2>7</h2>
+          <h2><%= @library_books.count %></h2>
           <h3>books</h3>
         </div>
         <div class="swaps-count">
@@ -33,13 +33,7 @@
       </div>
     </div>
 
-    <p><strong>About me</strong></p>
-    <p> <%= @user.bio %> </p>
 
-    <div class="user-counter">
-      <p><strong><%= @library_books.count %></strong> books</p>
-      <p><strong>X</strong> swaps</p>
-    </div>
   </div>
 
   <div class="container app-container b-sh-strong mt-5">
@@ -52,20 +46,13 @@
       </li>
     </ul>
 
-    <div class="d-flex justify-content-center">
-      <%= link_to new_library_library_book_path(@user.libraries.first), class: "btn btn-pink" do %>
-        <i class="fas fa-plus"></i>  Add a book
-      <% end %>
-    </div>
-
-    
   <div class="d-flex justify-content-center">
     <%= link_to new_book_path, class: "btn btn-pink" do %>
       <i class="fas fa-plus"></i>  Add a book
     <% end %>
   </div>
 
-    
+
   <% @library_books.each do |lib_book| %>
 
     <div class="book-results-card d-flex b-sh my-4">
@@ -76,17 +63,31 @@
           <h2><%= lib_book.book.title %></h2>
         <% end %>
 
-        <p><%= lib_book.book.author %></p>
-
-        <div class="tags d-flex">
-          <%= link_to lib_book.book.genre , "#", class: "btn genre mr-2" %> <%#<< link doesn't work  %>
+        <div>
+          <p><%= lib_book.book.author %></p>
         </div>
+
+        <div class="d-flex space-between">
+          <div class="tags d-flex">
+            <%= link_to lib_book.book.genre , "#", class: "btn genre mr-2" %> <%#<< link doesn't work  %>
+          </div>
+
+          <div class="tags d-flex">
+            <%= link_to "╳ Delete",
+              delete_library_book_path(lib_book),
+              method: :delete, class: "btn genre mr-2", style: "background-color: #2CAEB1;",
+              data: { confirm: "Do you really want to delete #{lib_book.book.title} ?", title: 'Delete from your Library', commit: 'Yes', cancel: 'Cancel'}
+            %>
+          </div>
+
+        </div>
+
         <% if lib_book.is_favoritable_to(current_user )%>
           <i class="fas fa-heart"></i>
         <% end %>
       </div>
     </div>
-    
+
   <% end %>
 
   </div>

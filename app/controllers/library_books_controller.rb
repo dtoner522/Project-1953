@@ -3,20 +3,37 @@ class LibraryBooksController < ApplicationController
 
 
   def index
-    @library_books = LibraryBook.all 
+    @library_books = LibraryBook.all
     @library_books = LibraryBook.select {|lb| lb.library.user.location.downcase == params[:query].downcase} if params[:query].present?
 
-  
+
     @library_books = @library_books.joins(:book).where("books.title ILIKE ? ", "%#{params[:title]}%") if params[:title].present?
     @library_books = @library_books.joins(:book).where("books.language ILIKE ? ", params[:language]) if params[:language].present?
     @library_books = @library_books.joins(:book).where("books.genre ILIKE ? ", params[:genre]) if params[:genre].present?
-
   end
+
+
+  def destroy
+    @library_book = LibraryBook.find(params[:id])
+    @library_book.destroy
+
+    redirect_to user_path(current_user)
+  end
+
 
   def show
     @lib_book = LibraryBook.find(params[:id])
     @chatroom = Chatroom.new
   end
+
+  private
+
+  # def library_book_params
+  #   params.require(:library_book).permit(:id)
+  # end
+
+
+
 end
 
 
@@ -24,7 +41,7 @@ end
 
 
 # def self.search(search)
-#   if search 
+#   if search
 #     books = Book.all
 #     books = book.where(language: search[:":language"][","])
 #     return books
@@ -33,6 +50,6 @@ end
 #   end
 # end
 
-# @books = Book.select {|b| b.language == params[:query].downcase} 
+# @books = Book.select {|b| b.language == params[:query].downcase}
 # @books = Book.search(params[:book])
 
