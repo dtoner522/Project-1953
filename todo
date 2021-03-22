@@ -22,3 +22,17 @@ chatroom show > read
 messages show > @chatroom.messages.where(read: false).count if ANY UNREAD MESSAGES
 
 nav: if @chatrooms.each { |chatroom| }
+
+
+
+
+
+<!-- <% if current_user.chatrooms.any? { |chat| chat.chat_notifications? }  %>
+
+ <% end %>
+
+
+
+unless Chatroom.chat_notifications?
+ .chat-bell.no-after:after{content:none;}
+-->

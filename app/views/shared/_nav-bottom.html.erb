@@ -4,7 +4,7 @@
   <% end %>
 
   <% if user_signed_in? %>
-    <div class="chat-bell">
+    <div class="chat-bell <%= 'has_notifications' if current_user.chat_notifications? %>">
       <%= link_to messages_path do %>
         <%= image_tag "navbar/chat.png", class: "" %>
       <% end %>
@@ -24,8 +24,3 @@
     <% end %>
   <% end %>
 </div>
-
-
-<!-- unless Chatroom.chat_notifications?
-// .chat-bell.no-after:after{content:none;}
--->

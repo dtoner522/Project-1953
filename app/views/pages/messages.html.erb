@@ -13,13 +13,13 @@
         <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path chatroom.get_other_user(current_user).photo.key%>')"></div>
         <div class="message-info flex-grow-1">
           <h2> <%= chatroom.get_other_user(current_user).first_name %> </h2>
-          <p> <%= chatroom.book.title %> </p>
+          <p> <%= chatroom.library_book.book.title %> </p>
         </div>
         <div class="message-stats pr-2">
           <h3>
             <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
           </h3>
-          <% if chatroom.messages.last.read == false %>
+          <% if chatroom.messages.where(user: chatroom.get_other_user(current_user))&.last&.read == false %>
             <p class="icon-secondary"> <%= chatroom.unread_messages %> </p>
           <% end %>
         </div>

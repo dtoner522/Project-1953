@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def create_wishlist
     Wishlist.create(user: self)
   end
+
+  def chat_notifications?
+    chatrooms.select { |chatroom| chatroom.unread_messages(self).positive? }.count.positive?
+  end
 end

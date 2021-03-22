@@ -12,9 +12,9 @@
       <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
         <h2> <%= @chatroom.get_other_user(current_user).first_name %> </h2>
       <% end %>
-      <%= link_to library_book_path(@chatroom.book.id) do %>
-        <p><%= @chatroom.book.title %></p>
-        <p><%= @chatroom.book.author %></p>
+      <%= link_to library_book_path(@chatroom.library_book.id) do %>
+        <p><%= @chatroom.library_book.book.title %></p>
+        <p><%= @chatroom.library_book.book.author %></p>
       <% end %>
     </div>
     </div>
@@ -25,12 +25,15 @@
   </div>
 
   <div class="container app-container app-container-pink mt-5 pt-4 d-flex flex-column justify-content-end">
-    <div id="messages" data-chatroom-id=""<%= @chatroom.id %>">
-      <% @chatroom.messages.each do |message| %>
-        <%= render 'messages/message', message: message %>
-      <% end %>
-    </div>
     
+    <% unless Chatroom.all.empty? %>
+      <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+        <% @chatroom.messages.order(:created_at).each do |message| %>
+          <%= render 'messages/message', message: message %>
+        <% end %>
+      </div>
+    <% end %>
+
     <% # FIXME: make it fuckin sticky %>
     <div class="chat-input">
       <div class="text-center d-flex mt-4 position-relative">
