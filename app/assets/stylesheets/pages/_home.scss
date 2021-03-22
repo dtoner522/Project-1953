@@ -108,10 +108,15 @@ body {
 .select2-container--default .select2-selection--single {
   border: 1px solid  #7ACCCE;
   border-radius: 24px;
-  padding: 8px 10px;
+  padding: 0px 10px;
   background-color: #FAFAFA;
   margin: 6px;
   transition: background 0.3s ease;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 40px;
+  right: 15px;
 }
 
 option {
