@@ -9,12 +9,12 @@ class PagesController < ApplicationController
 
   def results
   end
-  
+
   def messages
     @user = current_user
-    @chatrooms = @user.chatrooms
+    @chatrooms = @user.chatrooms.reject { |chat| chat.messages.empty? }
   end
-  
+
   def notifications
   end
 end
