@@ -50,9 +50,16 @@
   .add-wishlist {
     position: absolute;
     color: white;
-    font-size: 24px;
-    bottom: 12px;
-    right: 12px;
+    font-size: 42px;
+    bottom: 5px;
+    right: 10px;
+  }
+  .added-wishlist {
+    position: absolute;
+    color: $app-ambar;
+    font-size: 42px;
+    bottom: 5px;
+    right: 10px;
   }
 }
 
