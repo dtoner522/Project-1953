@@ -9,7 +9,7 @@
 </div>
 
 <div class="container app-container fafafa sm-12 p-4">
- <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar-100 d-flex ml-auto mr-auto", alt: "avatar" %>
+  <%= image_tag "https://www.cruzyortiz.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png", class: "avatar-100 d-flex ml-auto mr-auto", alt: "avatar" %>
 
 
 
@@ -44,7 +44,7 @@
     <%= f.input :location,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "location", class: "form-control gray-bar" }%>
+                input_html: { autocomplete: "location", class: "form-control gray-bar", id: "location-input" }%>
     
     <%= f.input :photo, as: :file %>
     </div>
