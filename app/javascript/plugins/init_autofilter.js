@@ -18,8 +18,6 @@ const initAutoFilter = () => {
           event.preventDefault();
           document.querySelector("form").submit()
         });
-
-        
     }
 }
 
