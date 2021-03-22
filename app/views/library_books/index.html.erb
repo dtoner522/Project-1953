@@ -12,7 +12,7 @@
 
   <div>
     <%= form_tag(library_books_path, method: :get) do %>
-      <div class="mb-4 py-2 width multi-search-form w-100">
+      <div class="mb-4 width multi-search-form w-100">
       <%= text_field_tag :title,
             params[:title],
             class: "form-control white-bar b-sh text-center",
@@ -20,10 +20,10 @@
           %>
       </div>
       <p class="nunito text-center">Filter by</h2>
-      <div class="d-flex justify-content-around pt-1 pb-3">
+      <div class="d-flex justify-content-between align-items-center mb-3">
       <%=  select_tag :language, options_for_select([["English", "en"], ["French", "fr"], ["Spanish", "es"]], selected: params["language"]), include_blank: "Language", class: "border-green select2", id: "language-select" %>
       <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Science-Fiction"], selected: params["genre"]),  include_blank: "Genre", class: "border-green select2", id: "genre-select"  %>
-      <%= button_tag(class: "btn icon-primary mt-1") do %>
+      <%= button_tag(class: "btn icon-primary") do %>
           <i class="fas fa-search"></i> 
       <% end %>
     <% end %>
@@ -38,7 +38,7 @@
 </div>
 <% else %>
   <% @library_books.each do |lib_book| %>
-  <div class="book-results-card d-flex b-sh my-3">
+  <div class="book-results-card d-flex b-sh mb-3">
     <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
     <div class="information p-3">
 
