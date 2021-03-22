@@ -1,3 +1,15 @@
+<% unless user_signed_in? %>
+  <div class="nav-top d-flex p-4 justify-content-end align-items-center">
+    <%= link_to user_session_path  do %>
+      <p class="mr-1">Log in</p>
+    <% end %>
+    <p>|</p>
+    <%= link_to new_user_session_path  do %>
+      <p class="ml-1">Sign up</p>
+    <% end %>
+  </div>
+  <% end %>
+
 <div class="home-container p-4 sm-col-12 text-center">
   <div>
     <h1 class="text-white logo mb-0 pb-0">1953</h1>
@@ -23,3 +35,4 @@
     <%= cl_image_tag("https://res.cloudinary.com/dtoner522/image/upload/v1615911570/home-img_tc3hke.png", class: "home_img") %>
   </div>
 </div>
+

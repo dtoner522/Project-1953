@@ -4,15 +4,16 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Message.delete_all
 Chatroom.delete_all
+# WishlistBook.delete_all
 LibraryBook.delete_all
+# Wishlist.delete_all
 Library.delete_all
 User.delete_all
 Book.delete_all
-
 
 
 # CREATE 3 USERS
@@ -49,12 +50,11 @@ p " First user, N° #{User.first.id} : #{User.first.first_name} #{User.first.las
 p " Last user, N° #{User.last.id} : #{User.last.first_name} #{User.last.last_name}"
 
 
-# CREATE 1 LIBRARY FOR EACH USER
-
-library1 = Library.create(user_id: user1.id)
-library2 = Library.create(user_id: user2.id)
+# LIBRARY & WISHLIST are created automatically FOR EACH USER
 
 p "created #{Library.count} libraries"
+
+# p "created #{Wishlist.count} wishlist"
 
 
 
@@ -127,8 +127,9 @@ p "The last book was #{Book.last.title}, from author #{Book.last.author}. It's #
 
 # CREATE LIBRARY_BOOKS
 
+
 books =  [ book1, book2, book3, book4, book5, book6 ]
-libraries =  [ library1, library2 ]
+libraries =  [ user1.libraries.first, user2.libraries.first ]
 conditions = [ "Very used", "Used", "Good condition", "Great condition", "New"]
 
 15.times do
@@ -136,6 +137,26 @@ conditions = [ "Very used", "Used", "Good condition", "Great condition", "New"]
 end
 
 p "created #{LibraryBook.count} Library_books"
+
+
+
+
+# CREATE WISHLIST_BOOKS
+
+# books =  [ book1, book2, book3, book4, book5, book6 ]
+# wishlists =  [ user1.wishlists.first, user2.wishlists.first ]
+
+# 6.times do
+#   WishlistBook.create( { wishlist_id: wishlists.sample.id, book_id: books.sample.id } )
+# end
+
+# p "created #{WishlistBook.count} Wishlist_Books"
+
+
+
+
+
+
 
   # Associate the Instance of the Book to A random User
   # Add a "book_condition" for each library_book
