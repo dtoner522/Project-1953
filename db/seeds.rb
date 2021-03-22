@@ -8,9 +8,9 @@
 
 Message.delete_all
 Chatroom.delete_all
-WishlistBook.delete_all
+# WishlistBook.delete_all
 LibraryBook.delete_all
-Wishlist.delete_all
+# Wishlist.delete_all
 Library.delete_all
 User.delete_all
 Book.delete_all
@@ -54,7 +54,7 @@ p " Last user, N° #{User.last.id} : #{User.last.first_name} #{User.last.last_na
 
 p "created #{Library.count} libraries"
 
-p "created #{Wishlist.count} wishlist"
+# p "created #{Wishlist.count} wishlist"
 
 
 
@@ -143,14 +143,14 @@ p "created #{LibraryBook.count} Library_books"
 
 # CREATE WISHLIST_BOOKS
 
-books =  [ book1, book2, book3, book4, book5, book6 ]
-wishlists =  [ user1.wishlists.first, user2.wishlists.first ]
+# books =  [ book1, book2, book3, book4, book5, book6 ]
+# wishlists =  [ user1.wishlists.first, user2.wishlists.first ]
 
-6.times do
-  WishlistBook.create( { wishlist_id: wishlists.sample.id, book_id: books.sample.id } )
-end
+# 6.times do
+#   WishlistBook.create( { wishlist_id: wishlists.sample.id, book_id: books.sample.id } )
+# end
 
-p "created #{WishlistBook.count} Wishlist_Books"
+# p "created #{WishlistBook.count} Wishlist_Books"
 
 
 
