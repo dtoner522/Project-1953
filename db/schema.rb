@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2021_03_22_101543) do
 
   # These are extensions that must be enabled in order to support this database
@@ -117,6 +118,22 @@ ActiveRecord::Schema.define(version: 2021_03_22_101543) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishlist_books", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "wishlist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_wishlist_books_on_book_id"
+    t.index ["wishlist_id"], name: "index_wishlist_books_on_wishlist_id"
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "libraries", "users"
   add_foreign_key "library_books", "books"
@@ -125,4 +142,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_101543) do
   add_foreign_key "messages", "users"
   add_foreign_key "swap_requests", "library_books"
   add_foreign_key "swap_requests", "users"
+  add_foreign_key "wishlist_books", "books"
+  add_foreign_key "wishlist_books", "wishlists"
+  add_foreign_key "wishlists", "users"
 end
