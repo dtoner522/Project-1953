@@ -10,9 +10,9 @@
     <% end %>
   </div>
 
-  <div class>
+  <div>
     <%= form_tag(library_books_path, method: :get) do %>
-      <div class="ml-auto mr-auto mb-4 p-2 width">
+      <div class="ml-auto mr-auto mb-4 p-2 width multi-search-form">
       <%= text_field_tag :title,
             params[:title],
             class: "form-control white-bar b-sh text-center",
@@ -21,8 +21,8 @@
       </div>
       <p class="nunito ml-5">Filter by</h2>
       <div class="d-flex justify-content-around m-2 p-2">
-      <%=  select_tag :language, options_for_select([["English", "en"], ["French", "fr"], ["Spanish", "es"]], selected: params["language"]), include_blank: "Language", class: "border-green select2" %>
-      <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Science-Fiction"], selected: params["genre"]),  include_blank: "Genre", class: "border-green select2"  %>
+      <%=  select_tag :language, options_for_select([["English", "en"], ["French", "fr"], ["Spanish", "es"]], selected: params["language"]), include_blank: "Language", class: "border-green select2", id: "language-select" %>
+      <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Science-Fiction"], selected: params["genre"]),  include_blank: "Genre", class: "border-green select2", id: "genre-select"  %>
       <%= button_tag(class: "btn icon-primary mt-1") do %>
           <i class="fas fa-search"></i> 
       <% end %>
