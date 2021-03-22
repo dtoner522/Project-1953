@@ -21,7 +21,8 @@
     <%= form_tag library_books_path, method: :get do %>
      <%= text_field_tag :query,
           params[:query],
-          class: "form-control white-bar b-sh text-center",
+          class: "form-control white-bar b-sh text-center", 
+          id: "address-input",
           placeholder: "Barcelona..."
         %>
     <%= button_tag(type: "submit", class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
