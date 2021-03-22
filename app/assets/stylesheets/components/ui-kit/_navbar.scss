@@ -14,7 +14,7 @@
 .notification-bell {
   position: relative;
 
-  &::after {
+  &.has_notifications::after {
     position: absolute;
     content: "";
     width: 10px;
@@ -26,8 +26,8 @@
   }
 }
 
-.chat-bell::after {
-  right: -6px;
+.has_notifications::after {
+  right: -6px !important;
 }
 
 

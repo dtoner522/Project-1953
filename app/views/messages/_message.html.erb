@@ -1,40 +1,9 @@
-<% if message.user == current_user %>
-  <div class="message">
-      <h3 class="text-right">
-        <%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
-      </h3>
-      <div class="d-flex justify-content-end">
-        <div class="card-chat-message message-me">
-          <p><%= message.content %></p>
-        </div>
-      </div>
-    </div>
-
-  <!-- ORIGINAL CODE -->
-
-  <!--
-
-  <div class="message-container" id="message-<%= message.id %>">
-    <i class="author">
-      <span><%= message.user.username %></span>
-      <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-    </i>
+<div class="message <%= message.user == current_user ? 'message-me' : 'message-you' %>"
+  id="message-<%= message.id %>" data-author="<%= message.user.id %>" >
+  <h3 class="sent-at" >
+    <%= message.chat_message_time %>
+  </h3>
+  <div class="d-flex card-chat-message "> 
     <p><%= message.content %></p>
   </div>
-
-  -->
-
-<% else %>
-
- <div class="message">
-    <h3>
-      <%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
-    </h3>
-    <div class="d-flex justify-content-start">
-      <div class="card-chat-message message-you mb-2">
-        <p><%= message.content %></p>
-      </div>
-    </div>
-  </div>
-
-<% end %>
+</div>
