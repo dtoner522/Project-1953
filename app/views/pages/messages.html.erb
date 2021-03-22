@@ -7,7 +7,6 @@
   </div>
 
   <div class="container pt-3">
-    <% #FIXME: sort messages ordered by lastest %>
     <% @chatrooms.each do |chatroom|%>
       <%= link_to chatroom_path(chatroom) do %>
         <div class="card-message d-flex b-sh align-items-center px-2 py-1">
@@ -20,7 +19,9 @@
           <h3>
             <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
           </h3>
-          <p class="icon-secondary">3</p>
+          <% if chatroom.messages.last.read == false %>
+            <p class="icon-secondary"> <%= chatroom.unread_messages %> </p>
+          <% end %>
         </div>
         </div>
       <% end %>

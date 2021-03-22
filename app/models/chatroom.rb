@@ -13,4 +13,12 @@ class Chatroom < ApplicationRecord
   def self.existing(recipient_user, current_user, book)
     where(recipient: recipient_user, sender: current_user, book: book)
   end
+
+  def unread_messages
+    self.messages.select { |message| message.read == false }.count
+  end
+
+  def self.chat_notifications?
+    Chatroom.select { |chatroom| chatroom.unread_messages.positive? }.count.positive?
+  end
 end
