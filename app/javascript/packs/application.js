@@ -28,11 +28,13 @@ import "bootstrap";
 import initBooksearch from '../plugins/initBooksearch'
 import { initChatroomCable } from '../channels/chatroom_channel'
 import { initSelect2 } from '../plugins/init_select2';
+import { initAutoFilter } from '../plugins/init_autofilter';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  initBooksearch()
-  initChatroomCable()
+  initBooksearch();
+  initChatroomCable();
   initSelect2();
+  initAutoFilter();
 });
