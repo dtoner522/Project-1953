@@ -3,9 +3,15 @@ class Message < ApplicationRecord
   belongs_to :user
 
   def chat_message_time
-    created_at.strftime("%a %b %e at %l:%M%p")
+    if created_at.today?
+      created_at.strftime("%l:%M%p")
+    else
+      created_at.strftime("%a %b %e at %l:%M%p")
+    end
   end
 end
+
+# TODO: sent time
 
 # if chatroom.messages.last.created_at
 

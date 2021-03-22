@@ -48,20 +48,33 @@
 }
 
 .message-me {
-  border-top-left-radius: 26px;
-  border-bottom-left-radius: 26px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 26px;
-  text-align: right;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .card-chat-message {
+    border-top-left-radius: 26px;
+    border-bottom-left-radius: 26px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 26px;
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .sent-at { text-align: right; }
 }
 
 .message-you {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .card-chat-message {
   border-top-left-radius: 26px;
   border-bottom-left-radius: 0px;
   border-top-right-radius: 26px;
   border-bottom-right-radius: 26px;
   background-color: $app-pink;
   color: white;
+  }
 }

@@ -19,6 +19,8 @@ class User < ApplicationRecord
   has_many :chatrooms_as_recipient, foreign_key: :recipient_id, class_name: "Chatroom"
 
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 
   def chatrooms
     chatrooms_as_sender + chatrooms_as_recipient
@@ -30,5 +32,9 @@ class User < ApplicationRecord
 
   def create_wishlist
     Wishlist.create(user: self)
+  end
+
+  def chat_notifications?
+    chatrooms.select { |chatroom| chatroom.unread_messages(self).positive? }.count.positive?
   end
 end

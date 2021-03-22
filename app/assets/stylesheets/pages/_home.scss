@@ -1,4 +1,9 @@
 // Specific CSS for your home-page
+
+// body#results-page {
+//   background-color: #FAFAFA;
+// }
+
 body {
   font-size: 14px;
   color: $app-dark;
@@ -9,7 +14,7 @@ body {
     font-weight: 900;
     color: black;
   }
-  
+
   h2 {
     font-size: 18px;
   }
@@ -73,13 +78,13 @@ body {
   font-size: 2rem;
 }
 
-// RESULTS 
+// RESULTS
 .fafafa {
   background-color: #FAFAFA
 }
 
 .log-in {
-  width: 90%;
+  width: 100%;
 }
 
 .center {
@@ -90,6 +95,7 @@ body {
   padding-left: 1rem;
 }
 
+
 .border-green {
   border: 1px solid  #7ACCCE;
   border-radius: 24px;
@@ -99,10 +105,33 @@ body {
   transition: background 0.3s ease;
 }
 
+.select2-container--default .select2-selection--single {
+  border: 1px solid  #7ACCCE;
+  border-radius: 24px;
+  padding: 0px 10px;
+  background-color: #FAFAFA;
+  margin: 6px;
+  transition: background 0.3s ease;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 40px;
+  right: 15px;
+}
+
 option {
   text-align: center !important;
 }
 
 .width {
   width: 90%;
+}
+
+.not-found {
+  width: auto;
+  height: 230px;
+}
+
+.fa-search-location {
+  font-size: 1.7em;
 }
