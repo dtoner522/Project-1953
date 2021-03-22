@@ -56,7 +56,14 @@
         <%= f.input :thumbnail_url, as: :hidden %>
 
 
+
+
       <div class="text-center">
+
+          <div>
+            <%= hidden_field_tag(type: "library") %>
+            <%= f.submit '♡ Wishlist', class: 'btn btn-pink mb-3' %>
+          </div>
 
         <div >
           <h1 id="confirm-book-title">Title</h1>
@@ -64,17 +71,23 @@
           <p id="confirm-book-year">year</p>
         </div>
 
-        <div>
-          <p>Select book condition</p>
-          <select name="condition" id="condition" class="form-control white-bar b-sh mb-3 p-1" placeholder="Book condition">
-            <option value="old">Quite old 👎</option>
-            <option value="good" selected="selected">Good condition 👍</option>
-            <option value="new">Like it was new 👌</option>
-          </select>
-        </div>
+        <p>Select book condition</p>
 
-        <div>
-          <%= f.submit 'Add to library', class: 'btn btn-pink mb-3' %>
+        <div class="d-flex justify-content-between space-between">
+
+          <div>
+            <select name="condition" id="condition" class="form-control white-bar b-sh mb-3 p-1" placeholder="Book condition">
+              <option value="old">Quite old 👎</option>
+              <option value="good" selected="selected">Good condition 👍</option>
+              <option value="new">Like it was new 👌</option>
+            </select>
+          </div>
+
+          <div>
+            <%= hidden_field_tag(type: "wishlist") %>
+            <%= f.submit 'Add to Library', class: 'btn btn-green mb-3' %>
+          </div>
+
         </div>
 
       </div>
