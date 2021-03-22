@@ -1,4 +1,9 @@
 // Specific CSS for your home-page
+
+// body#results-page {
+//   background-color: #FAFAFA;
+// }
+
 body {
   font-size: 14px;
   color: $app-dark;
@@ -106,3 +111,9 @@ option {
 .width {
   width: 90%;
 }
+
+.not-found {
+  width: auto;
+  height: 230px;
+}
+
