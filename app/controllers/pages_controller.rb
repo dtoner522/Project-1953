@@ -13,6 +13,7 @@ class PagesController < ApplicationController
   def messages
     @user = current_user
     @chatrooms = @user.chatrooms.reject { |chat| chat.messages.empty? }
+    @chatrooms = @chatrooms.sort_by { |chat| - chat.messages.last.created_at.to_i }
   end
 
   def notifications

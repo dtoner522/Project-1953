@@ -2,6 +2,8 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.includes(:book, :sender, :recipient, :messages).find(params[:id])
     @message = Message.new
+
+    mark_messages_as_read
   end
 
   def create
@@ -11,5 +13,14 @@ class ChatroomsController < ApplicationController
     )
 
     redirect_to chatroom_path(@chatroom)
+  end
+
+  private
+
+  def mark_messages_as_read
+    @messages = @chatroom.messages.where(user: @chatroom.get_other_user(current_user))
+    @messages.each do |message|
+      message.update(read: true)
+    end
   end
 end
