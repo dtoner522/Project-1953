@@ -11,6 +11,15 @@ class BooksController < ApplicationController
     thumbnail_url = params[:book][:thumbnail_url]
     thumbnail = URI.open(thumbnail_url)
     @book.photo.attach(io: thumbnail, filename: 'thumbnail.png', content_type: 'image/png')
+
+    if params["commit"].include?("ibrary")
+      create_lib_book
+    elsif params["commit"].include?("ishlist")
+      create_wish_book
+    end
+  end
+
+  def create_lib_book
     if @book.save
       LibraryBook.create(
         book_id: @book.id,
@@ -22,6 +31,19 @@ class BooksController < ApplicationController
       render :new
     end
   end
+
+  def create_wish_book
+    if @book.save
+      WishlistBook.create(
+        book_id: @book.id,
+        wishlist_id: current_user.wishlists.first.id,
+        )
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
+  end
+
 
   private
 
