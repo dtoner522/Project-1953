@@ -27,7 +27,10 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import initBooksearch from '../plugins/initBooksearch'
 import { initChatroomCable } from '../channels/chatroom_channel'
+
+import { initAutocomplete } from '../plugins/init_autocomplete'
 import { initSelect2 } from '../plugins/init_select2';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -35,4 +38,9 @@ document.addEventListener('turbolinks:load', () => {
   initBooksearch()
   initChatroomCable()
   initSelect2();
+  initAutocomplete()
 });
+
+  
+
+
