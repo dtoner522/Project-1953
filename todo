@@ -5,3 +5,20 @@ rails db:migrate
 rails g controller chatrooms show
 
 rails g controller messages
+
+
+mensajes
+default read: false
+counter method: cuantos tienen read false
+cuando abris chat: todos los mensajes tienen read true
+
+
+notificaciones: jobs, y modelo especifico para las notificaciones
+
+
+rails g migration AddColumnToMessages read:boolean default:false
+
+chatroom show > read
+messages show > @chatroom.messages.where(read: false).count if ANY UNREAD MESSAGES
+
+nav: if @chatrooms.each { |chatroom| }
