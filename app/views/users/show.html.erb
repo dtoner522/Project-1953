@@ -81,23 +81,28 @@
             </div>
 
             <div class="d-flex space-between">
-                <div class="tags d-flex">
+
+              <div class="tags">
                 <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %> <%#<< link doesn't work  %>
               </div>
 
-              <div class="tags d-flex">
-                <%= link_to "╳ Delete",
-                  delete_library_book_path(lib_book),
-                  method: :delete, class: "btn-small-green-ghost mr-2",
-                  data: { confirm: "Do you really want to delete #{lib_book.book.title} and all related conversations?", title: 'Delete from your Library', commit: 'Yes', cancel: 'Cancel'}
-                %>
-              </div>
+              <% if @user == current_user %>
+                <div>
+                  <%= link_to delete_library_book_path(lib_book),
+                    method: :delete, data: { confirm: "Do you really want to delete #{lib_book.book.title} and all related conversations?",
+                    title: 'Delete from your Library', commit: 'Yes', cancel: 'Cancel'} do
+                  %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                </div>
+              <% end %>
+              
+
+              <% if lib_book.is_favoritable_to(current_user)%>
+                <i class="fas fa-heart"></i>
+              <% end %>
 
             </div>
-
-            <% if lib_book.is_favoritable_to(current_user )%>
-              <i class="fas fa-heart"></i>
-            <% end %>
           </div>
         </div>
       <% end %>
@@ -127,14 +132,15 @@
                 <%= link_to wish_book.book.genre , library_books_path("?genre=#{wish_book.book.genre}"), class: "btn genre mr-2" %> <%#<< link doesn't work  %>
               </div>
               <div class="tags d-flex">
-                <%= link_to "💔 remove",
-                  delete_wishlist_book_path(wish_book),
-                  method: :delete, class: "btn genre mr-2", style: "background-color: #2CAEB1;",
-                  data: { confirm: "Do you really want to delete #{wish_book.book.title} ?", title: 'Remove from wishlist', commit: 'Yes', cancel: 'Cancel'}
-                %>
-              </div>
-              </div>
-                <i class="fas fa-heart"></i>
+                <% if @user == current_user %>
+                  <%= link_to delete_wishlist_book_path(wish_book),
+                    method: :delete,
+                    data: { confirm: "Do you really want to delete #{wish_book.book.title} ?", title: 'Remove from wishlist', commit: 'Yes', cancel: 'Cancel'} do
+                  %>
+                    <i class="fas fa-trash"></i>
+                  <% end %>
+                  
+                <% end %>
               </div>
             </div>
           <% end %>
