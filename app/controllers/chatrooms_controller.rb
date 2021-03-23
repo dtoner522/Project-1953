@@ -12,6 +12,8 @@ class ChatroomsController < ApplicationController
       sender_id: current_user.id, library_book_id: params[:chatroom][:library_book_id]
     )
 
+    create_swap_request
+
     redirect_to chatroom_path(@chatroom)
   end
 
@@ -22,5 +24,9 @@ class ChatroomsController < ApplicationController
     @messages.each do |message|
       message.update(read: true)
     end
+  end
+
+  def create_swap_request
+    @swap_requests = SwapRequest.create(user: current_user, library_book: params[:chatroom][:library_book])
   end
 end
