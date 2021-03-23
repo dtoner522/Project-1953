@@ -45,3 +45,10 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete()
 });
 
+// need to put in separate file and import, probably
+
+$(document).on('turbolinks:load', function() {
+  setTimeout(function() {
+    $('.alert').fadeOut();
+  }, 3000);
+})
