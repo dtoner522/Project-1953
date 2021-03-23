@@ -6,7 +6,7 @@
     <% end %>
   </div>
 
-  <div class="container pt-3">
+  <div class="container messages-container pt-3">
     <% @chatrooms.each do |chatroom|%>
       <%= link_to chatroom_path(chatroom) do %>
         <div class="card-message d-flex b-sh align-items-center px-2 py-1">
