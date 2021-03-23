@@ -32,6 +32,7 @@ import { initChatroomCable } from '../channels/chatroom_channel'
 import { initAutocomplete } from '../plugins/init_autocomplete'
 import { initSelect2 } from '../plugins/init_select2';
 import { initAutoFilter } from '../plugins/init_autofilter';
+import { previewImageOnFileSelect } from '../plugins/photo_preview';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -43,5 +44,6 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   initAutoFilter();
   initAutocomplete()
+  previewImageOnFileSelect();
 });
 
