@@ -53,7 +53,7 @@
     <div class="avatar-30 mr-2" style="background-image: url(' <%= cl_image_path @lib_book.library.user.photo.key%>')"></div>
 
     <div class="d-flex justify-content-between flex-grow-1 px-2">
-      <h2><%= @lib_book.library.user.first_name %></h2>
+      <h2><%= @lib_book.library.user.first_name.capitalize %></h2>
       <p style="font-style: italic; color: gray; font-weight: 300"><%= @lib_book.library.user.location %></p>
 
       <% unless @lib_book.library.user == current_user %>
