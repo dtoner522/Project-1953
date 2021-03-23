@@ -10,23 +10,28 @@
 
 <div class="container app-container sm-12 p-4">
 
-  <div class="book-cover b-sh-strong" style="background-image: url(' <%= cl_image_path @lib_book.book.photo.key%>')">
+  <div class="book-cover b-sh-strong"
+       style="background-image: url('<%= cl_image_path @lib_book.book.photo.key%>')">
 
-    <% # if # @library_book.book == current_user.wishlist.first.books%>
-    <% # end %>
+    <% # checking if @book is included in the Wishlist Books of current user  %>
 
+    <% if @wishlist_books.include?(@book) # true : book in wishlist %>
 
-    <%= simple_form_for(@wishlist_book) do |f| %>
-    <%= hidden_field_tag "book_id", @book.id %>
-    <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
-    <%= button_tag(class: "add-wishlist t-sh btn-transparent") do %>
-       <i class='fas fa-heart'></i>
+      <%= link_to delete_wishlist_book_path(@wishlist_book), method: :delete, class: "remove-wishlist t-sh btn-transparent" do %>
+        <i class='fas fa-heart'></i>
+      <% end %>
+
+    <% else # false : book not in wishlist %>
+
+      <%= simple_form_for(@wishlist_book) do |f| %>
+      <%= hidden_field_tag "book_id", @book.id %>
+      <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
+      <%= button_tag(class: "add-wishlist t-sh btn-transparent") do %>
+         <i class='fas fa-heart'></i>
+        <% end %>
+      <% end %>
+
     <% end %>
-
-    <% end %>
-
-
-
 
   </div>
 

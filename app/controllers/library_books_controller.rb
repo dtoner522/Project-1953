@@ -15,15 +15,23 @@ class LibraryBooksController < ApplicationController
   def destroy
     @library_book = LibraryBook.find(params[:id])
     @library_book.destroy
-
     redirect_to user_path(current_user)
   end
 
   def show
     @lib_book = LibraryBook.find(params[:id])
-    @chatroom = Chatroom.new
-    @wishlist_book = WishlistBook.new
     @book = @lib_book.book
+
+    @chatroom = Chatroom.new
+    @wishlist_books = current_user.wishlists.first.books
+    @wishlist_wishlist_books = current_user.wishlists.first.wishlist_books
+
+    @wishlist_book = @wishlist_books.include?(@book) ? @wishlist_wishlist_books.find { |wish_book| wish_book.book == @book } : WishlistBook.new
   end
 
 end
+
+
+
+
+
