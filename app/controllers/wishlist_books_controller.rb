@@ -3,8 +3,8 @@ class WishlistBooksController < ApplicationController
   def destroy
     @wishlist_book = WishlistBook.find(params[:id])
     @wishlist_book.destroy
-
-    redirect_to user_path(current_user)
+    flash[:alert] = "Added to your wishlist"
+    redirect_back(fallback_location: root_path)
   end
 
   def create

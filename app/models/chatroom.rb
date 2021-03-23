@@ -4,6 +4,7 @@ class Chatroom < ApplicationRecord
   belongs_to :recipient, class_name: "User"
   belongs_to :sender, class_name: "User"
   belongs_to :library_book
+  has_one :swap_request
 
   def get_other_user(current_user)
     sender == current_user ? recipient : sender

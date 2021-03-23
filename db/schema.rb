@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_143334) do
+
+ActiveRecord::Schema.define(version: 2021_03_23_112829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_143334) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "condition"
+    t.string "status", default: "available"
     t.index ["book_id"], name: "index_library_books_on_book_id"
     t.index ["library_id"], name: "index_library_books_on_library_id"
   end
@@ -96,6 +98,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_143334) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "chatroom_id"
+    t.index ["chatroom_id"], name: "index_swap_requests_on_chatroom_id"
     t.index ["library_book_id"], name: "index_swap_requests_on_library_book_id"
     t.index ["user_id"], name: "index_swap_requests_on_user_id"
   end
@@ -141,6 +145,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_143334) do
   add_foreign_key "library_books", "libraries"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "swap_requests", "chatrooms"
   add_foreign_key "swap_requests", "library_books"
   add_foreign_key "swap_requests", "users"
   add_foreign_key "wishlist_books", "books"
