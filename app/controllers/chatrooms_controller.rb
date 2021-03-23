@@ -13,8 +13,6 @@ class ChatroomsController < ApplicationController
     )
 
     create_swap_request
-
-    redirect_to chatroom_path(@chatroom)
   end
 
   private
@@ -27,6 +25,10 @@ class ChatroomsController < ApplicationController
   end
 
   def create_swap_request
-    @swap_requests = SwapRequest.create(user: current_user, library_book: params[:chatroom][:library_book])
+    @swap_requests = SwapRequest.create(user_id: current_user.id,
+                                        library_book_id: params[:chatroom][:library_book_id],
+                                        chatroom_id: @chatroom.id
+                                      )
+    redirect_to chatroom_path(@chatroom)
   end
 end

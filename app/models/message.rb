@@ -10,11 +10,3 @@ class Message < ApplicationRecord
     end
   end
 end
-
-# TODO: sent time
-
-# if chatroom.messages.last.created_at
-
-# if chat sent day is today, show the hour
-# else, show the day
-# group them by day
