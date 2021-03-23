@@ -32,7 +32,6 @@
   </div>
 
   <% if @library_books.empty? %>
-
     <div class="text-center">
       <%= cl_image_tag("https://res.cloudinary.com/dfgdbji11/image/upload/v1616376980/reading-corner-colour_ak0ida.svg", class: "not-found") %>
       <h1 class="mt-3">No results  found.</h1>
@@ -50,7 +49,7 @@
           <%= link_to library_book_path(lib_book) do %>
             <h2><%= lib_book.book.title %></h2>
           <% end %>
-          
+
           <p><%= lib_book.book.author %></p>
 
           <div class="user-owner d-flex">
@@ -73,9 +72,9 @@
             <!-- <i class="fas fa-heart"></i> -->
           <% # end %>
 
-          <!-- checkling if lib_book is in the user's wishlist -->
+          <% if user_signed_in? %>
 
-          <% if @wishlist_books.include?(lib_book.book)# should give back first instance o nil %>
+          <% if @wishlist_books.include?(lib_book.book) %>
 
             <%= link_to delete_wishlist_book_path(lib_book.is_in_wishlist(lib_book, current_user)), method: :delete, class: "remove-wishlist t-sh btn-transparent" do %>
               <i class='fas fa-heart'></i>
@@ -92,6 +91,8 @@
               </div>
             <% end %>
           <% end %>
+        <% end %>
+
         </div>
       </div>
     <% end %>

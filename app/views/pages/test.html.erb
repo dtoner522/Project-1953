@@ -1,0 +1,19 @@
+          <% if user_signed_in? %>
+
+            <% if @wishlist_books.include?(lib_book.book) %>
+
+              <%= link_to delete_wishlist_book_path(lib_book.is_in_wishlist(lib_book, current_user)), method: :delete, class: "remove-wishlist t-sh btn-transparent" do %>
+                <i class='fas fa-heart'></i>
+              <% end %>
+
+            <% else %>
+              <%= simple_form_for(@wishlist_book) do |f| %>
+              <%= hidden_field_tag "book_id", lib_book.book.id %>
+              <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
+              <%= button_tag(class: "add-wishlist t-sh btn-transparent") do %>
+                 <i class='fas fa-heart'></i>
+                <% end %>
+              <% end %>
+            <% end %>
+
+          <% end %>
