@@ -1,5 +1,5 @@
 <div class="fafafa">
-  <div class="nav-top d-flex justify-content-between align-items-center px-3 pt-3">
+  <div class="nav-top d-flex justify-content-between align-items-center px-4 pt-4">
   <%= link_to root_path, title: "Location search" do %>
   <i class="fas fa-search-location"></i>
   <% end %>
@@ -9,7 +9,7 @@
     <% end %>
   </div>
 
-  <div class="pb-5 p-3">
+  <div class="pb-5 p-4">
     <%= form_tag(library_books_path, method: :get) do %>
       <div class="mb-4 width multi-search-form w-100">
       <%= text_field_tag :title,
