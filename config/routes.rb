@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'uikit', to: 'pages#uikit'
   get 'messages', to: 'pages#messages'
   get 'notifications', to: 'pages#notifications'
+  get 'chatrooms/:id/swap', to: 'swap_requests#mark_as_swapped', as: :swap
 
   resources :users, only: [:show]
 

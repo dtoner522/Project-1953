@@ -22,6 +22,7 @@ const initChatroomCable = () => {
         
         messagesContainer.insertAdjacentHTML('beforeend', dummyDiv.innerHTML);
 
+        // #FIXME:
         // console.log(message.id)
         // console.log(document.querySelector(`#${message.id}`))
         // document.querySelector(`#${message.id}`).scrollIntoView()
