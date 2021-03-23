@@ -2,10 +2,6 @@ class LibraryBooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @wishlist_books = current_user.wishlists.first.books
-    @wishlist_wishlist_books = current_user.wishlists.first.wishlist_books
-
-    @wishlist_book = @wishlist_books.include?(@book) ? @wishlist_wishlist_books.find { |wish_book| wish_book.book == @book } : WishlistBook.new
 
     @library_books = LibraryBook.where(status: 'available')
     @library_books = @library_books.select { |lb| lb.library.user.location.downcase == params[:query].downcase } if params[:query].present?
@@ -16,7 +12,11 @@ class LibraryBooksController < ApplicationController
     @library_books = @library_books.joins(:book).where("books.language ILIKE ? ", params[:language]) if params[:language].present?
     @library_books = @library_books.joins(:book).where("books.genre ILIKE ? ", params[:genre]) if params[:genre].present?
 
+    if current_user
+      wishlist_instances
+    end
   end
+
 
   def destroy
     @library_book = LibraryBook.find(params[:id])
@@ -30,11 +30,20 @@ class LibraryBooksController < ApplicationController
     @book = @lib_book.book
 
     @chatroom = Chatroom.new
+    if current_user
+      wishlist_instances
+    end
+  end
+
+  private
+
+  def wishlist_instances
     @wishlist_books = current_user.wishlists.first.books
     @wishlist_wishlist_books = current_user.wishlists.first.wishlist_books
-
     @wishlist_book = @wishlist_books.include?(@book) ? @wishlist_wishlist_books.find { |wish_book| wish_book.book == @book } : WishlistBook.new
   end
+
+
 end
 
 
