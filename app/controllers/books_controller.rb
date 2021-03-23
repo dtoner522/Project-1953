@@ -26,7 +26,7 @@ class BooksController < ApplicationController
         library_id: current_user.libraries.first.id,
         condition: params['condition']
         )
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: "Book added to your library!"
     else
       render :new
     end
@@ -38,7 +38,7 @@ class BooksController < ApplicationController
         book_id: @book.id,
         wishlist_id: current_user.wishlists.first.id,
         )
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: "Book added to your wishlist!"
     else
       render :new
     end
