@@ -16,7 +16,7 @@
   }
 
   i {
-    color: $app-ambar;
+    // color: $app-ambar;
     font-size: 22px;
     position: absolute;
     bottom: 18px;
@@ -46,23 +46,26 @@
   position: relative;
   margin: 0 auto;
   transform: translateY(-50px);
+}
 
-  .add-wishlist {
+// to refactor with only color
+
+.add-wishlist i {
     position: absolute;
     color: white;
-    font-size: 42px;
+    font-size: 38px;
     bottom: 5px;
     right: 10px;
-  }
+}
 
-  .remove-wishlist {
+.remove-wishlist i {
     position: absolute;
     color: $app-ambar;
-    font-size: 42px;
+    font-size: 38px;
     bottom: 5px;
     right: 10px;
-  }
 }
+
 
 .book-info {
   transform: translateY(-30px);
