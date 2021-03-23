@@ -8,9 +8,9 @@
 
 Message.delete_all
 Chatroom.delete_all
-# WishlistBook.delete_all
+WishlistBook.delete_all
 LibraryBook.delete_all
-# Wishlist.delete_all
+Wishlist.delete_all
 Library.delete_all
 User.delete_all
 Book.delete_all
