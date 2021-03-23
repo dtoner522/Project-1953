@@ -4,7 +4,12 @@
       <i class="fas fa-chevron-left"></i>
     <% end %>
 
-    <div class="card-message d-flex b-sh align-items-center px-2 py-1 flex-grow-1 mx-3">
+    <%= link_to '#' do  %>
+      <i class="fas fa-ellipsis-v"></i>
+    <% end %>
+  </div>
+
+  <div class="card-message d-flex b-sh align-items-center px-2 py-2 flex-grow-1 mx-3">
     <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
       <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path @chatroom.get_other_user(current_user).photo.key%>')"></div>
     <% end %>
@@ -16,15 +21,33 @@
         <p><%= @chatroom.library_book.book.title %></p>
         <p><%= @chatroom.library_book.book.author %></p>
       <% end %>
-    </div>
-    </div>
+      
 
-    <%= link_to '#' do  %>
-      <i class="fas fa-ellipsis-v"></i>
-    <% end %>
+      <% if @chatroom.library_book.library.user == current_user %> 
+        
+        <% if @chatroom.swap_request.status == 'accepted' %>
+          <p>You swapped this book! Go you!</p>
+        <% elsif @chatroom.library_book.status == 'swapped' %>
+          <p>You already swapped this book</p>
+        <% elsif @chatroom.swap_request.status == 'pending' %>
+          <%= link_to "SWAP!", swap_path(@chatroom), class: "btn genre mt-1" %>
+        <% end %>
+
+      <% else %>
+
+        <% if @chatroom.library_book.status == 'swapped' %>
+          <p>This book is not available</p>
+        <% elsif @chatroom.swap_request.status == 'pending' %>
+          <p>Pending swap</p>
+        <% elsif @chatroom.swap_request.status == 'accepted'%>
+          <p>Swap accepted!</p>
+        <% end %>
+
+      <% end %>
+    </div>
   </div>
 
-  <div class="container app-container app-container-pink mt-5 pt-4 d-flex flex-column justify-content-end">
+  <div class="container app-container app-container-pink mt-2 pt-4 d-flex flex-column justify-content-end">
     
     <% unless Chatroom.all.empty? %>
       <div id="messages" data-chatroom-id="<%= @chatroom.id %>">

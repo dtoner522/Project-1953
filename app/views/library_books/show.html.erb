@@ -57,7 +57,7 @@
           <%= simple_form_for @chatroom do |f| %>
             <%= f.input :recipient_id, as: :hidden, input_html: {value: @lib_book.library.user.id} %>
             <%= f.input :library_book_id, as: :hidden, input_html: {value: @lib_book.id} %>
-            <button class="bg-transparent border-0"><i class="fas fa-comment" style="font-size:20px"></i></button>
+            <button class="bg-transparent border-0 app-green" style="font-weight:700">SWAP!</button>
           <% end %>
         <% else %>
           <%= link_to chatroom_path(Chatroom.existing(@lib_book.library.user, current_user, @lib_book).first) do %>
@@ -71,3 +71,6 @@
 </div>
 
 <%= render 'shared/nav-bottom' %>
+
+
+<!-- <i class="fas fa-comment" style="font-size:20px"></i> -->

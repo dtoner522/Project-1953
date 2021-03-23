@@ -24,15 +24,8 @@ messages show > @chatroom.messages.where(read: false).count if ANY UNREAD MESSAG
 nav: if @chatrooms.each { |chatroom| }
 
 
+UPDATE # OF SWAPS
 
+@user.swap_requests.where(status: 'accepted').count
 
-
-<!-- <% if current_user.chatrooms.any? { |chat| chat.chat_notifications? }  %>
-
- <% end %>
-
-
-
-unless Chatroom.chat_notifications?
- .chat-bell.no-after:after{content:none;}
--->
+PUT STATUS ON BOOKSHELF BOOKS (PROFILE) / DON'T SHOW

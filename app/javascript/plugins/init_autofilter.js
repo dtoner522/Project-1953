@@ -1,7 +1,6 @@
 const initAutoFilter = () => {
     const form = document.querySelector("form")
     if (form) {
-        console.log("hi")
         const languageSelect = document.querySelector("#language-select");
         const genreSelect = document.querySelector("#genre-select");
 

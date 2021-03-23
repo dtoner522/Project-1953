@@ -1,12 +1,12 @@
 <div class="fafafa">
   <div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
     <h1>Profile</h1>
-
-    <%= link_to destroy_user_session_path, method: :delete do  %>
-      <i class="fas fa-ellipsis-v"></i>
-    <% end %>
-
   </div>
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+<div class="alert alert-info alert-dismissible fade show m-1"></div>
 
   <div class="container sm-12 p-4">
 
@@ -15,7 +15,8 @@
         <div class="avatar-100 mr-5" style="background-image: url(' <%= cl_image_path @user.photo.key%>')"></div>
         <div>
           <h2> <%= @user.first_name%> <%= @user.last_name%> </h2>
-          <%= link_to "Edit my profile", "#", class: "btn genre" %>
+          <%= link_to "Edit my profile", edit_user_registration_path, class: "btn genre" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn genre mr-2", style: "background-color: #2CAEB1;" %>
         </div>
       </div>
 
@@ -33,7 +34,8 @@
             <h3>Wishes</h3>
           </div>
           <div class="swaps-count">
-            <h2>3</h2>
+            <% #TODO: fix number of swaps %>
+            <h2> <%= @user.swap_requests.where(status: 'accepted').count %></h2>
             <h3>swaps</h3>
           </div>
         </div>
@@ -88,7 +90,7 @@
                   <%= link_to "╳ Delete",
                     delete_library_book_path(lib_book),
                     method: :delete, class: "btn genre mr-2", style: "background-color: #2CAEB1;",
-                    data: { confirm: "Do you really want to delete #{lib_book.book.title} ?", title: 'Delete from your Library', commit: 'Yes', cancel: 'Cancel'}
+                    data: { confirm: "Do you really want to delete #{lib_book.book.title} and all related conversations?", title: 'Delete from your Library', commit: 'Yes', cancel: 'Cancel'}
                   %>
                 </div>
 
