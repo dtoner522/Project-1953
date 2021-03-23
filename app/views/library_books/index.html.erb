@@ -51,7 +51,7 @@
         <!--link should be black, not blue >> -->
 
         <%= link_to user_path(lib_book.library.user) do %>
-          <p class="name"> <%= lib_book.library.user.first_name %>
+          <p class="name"> <%= lib_book.library.user.first_name.capitalize %>
         <% end %>
 
         <span style="font-style: italic; color: gray; font-weight: 300" class="span-location"><%= lib_book.library.user.location %></span></p>
