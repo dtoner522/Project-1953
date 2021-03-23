@@ -16,7 +16,7 @@ class LibraryBooksController < ApplicationController
     @library_book = LibraryBook.find(params[:id])
     @library_book.destroy
 
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: "Book deleted from your library"
   end
 
   def show
