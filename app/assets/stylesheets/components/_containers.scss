@@ -1,0 +1,21 @@
+.app-container {
+  border-top-left-radius: 44px;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 44px;
+  border-bottom-right-radius: 0;
+  width: 100%;
+  background-color: $app-gray;
+  min-height: calc(100vh - 130px);
+  margin-bottom: 60px;
+}
+
+.app-container-pink {
+  background-color: $app-rose;
+  max-height: calc(100vh - 180px);
+  min-height: auto;
+}
+
+.notifications-container,
+.messages-container {
+  min-height: calc(100vh - 130px);
+}
