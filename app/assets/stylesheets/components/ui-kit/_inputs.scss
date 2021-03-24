@@ -5,13 +5,6 @@
   border-radius: 26px;
 }
 
-.chat-bar {
-  border: 2px solid white;
-  background-color: transparent;
-  padding: 24px;
-  border-radius: 26px;
-}
-
 .input-bar {
   .gray-bar {
     background-color: #EDEDEF;
@@ -35,4 +28,11 @@
 
 .form-group {
   margin: 0;
+}
+
+.chat-input {
+  position: fixed;
+  bottom: 70px;
+  right: 0;
+  left: 0;
 }
