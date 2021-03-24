@@ -11,9 +11,9 @@
     <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
       <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path @chatroom.get_other_user(current_user).photo.key%>')"></div>
     <% end %>
-    <div class="message-info flex-grow-1">
+    <div class="chatroom-info flex-grow-1">
       <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
-        <h2> <%= @chatroom.get_other_user(current_user).first_name %> </h2>
+        <h2> <%= @chatroom.get_other_user(current_user).first_name.capitalize %> </h2>
       <% end %>
       <%= link_to library_book_path(@chatroom.library_book.id) do %>
         <p><%= @chatroom.library_book.book.title %></p>
@@ -58,7 +58,6 @@
   
 </div>
 
-<% # FIXME: make it fuckin sticky %>
 <div class="chat-input mx-2">
   <div class="text-center d-flex mt-4 position-relative">
     <%= simple_form_for [ @chatroom, @message ], remote: true, html: {class: "w-100"} do |f| %>
