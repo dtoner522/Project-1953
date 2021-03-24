@@ -20,5 +20,7 @@ class PagesController < ApplicationController
   def notifications
     @user = current_user
     @notifications = @user.chatrooms
+
+    @library_books = @user.libraries.first.library_books.all
   end
 end
