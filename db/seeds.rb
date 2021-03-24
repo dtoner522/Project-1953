@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Message.delete_all
+SwapRequest.delete_all
 Chatroom.delete_all
 WishlistBook.delete_all
 LibraryBook.delete_all
