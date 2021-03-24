@@ -4,47 +4,11 @@
       <i class="fas fa-chevron-left"></i>
     <% end %>
 
-    <%= link_to '#' do  %>
-      <i class="fas fa-ellipsis-v"></i>
-    <% end %>
+    <%= image_tag "1953.png", class: "", style:"height:20px"%>
   </div>
 
-  <div class="card-message d-flex b-sh align-items-center px-2 py-2 flex-grow-1 mx-3">
-    <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
-      <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path @chatroom.get_other_user(current_user).photo.key%>')"></div>
-    <% end %>
-    <div class="message-info flex-grow-1">
-      <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
-        <h2> <%= @chatroom.get_other_user(current_user).first_name %> </h2>
-      <% end %>
-      <%= link_to library_book_path(@chatroom.library_book.id) do %>
-        <p><%= @chatroom.library_book.book.title %></p>
-        <p><%= @chatroom.library_book.book.author %></p>
-      <% end %>
-      
-
-      <% if @chatroom.library_book.library.user == current_user %> 
-        
-        <% if @chatroom.swap_request.status == 'accepted' %>
-          <p>You swapped this book! Go you!</p>
-        <% elsif @chatroom.library_book.status == 'swapped' %>
-          <p>You already swapped this book</p>
-        <% elsif @chatroom.swap_request.status == 'pending' %>
-          <%= link_to "SWAP!", swap_path(@chatroom), class: "btn genre mt-1" %>
-        <% end %>
-
-      <% else %>
-
-        <% if @chatroom.library_book.status == 'swapped' %>
-          <p>This book is not available</p>
-        <% elsif @chatroom.swap_request.status == 'pending' %>
-          <p>Pending swap</p>
-        <% elsif @chatroom.swap_request.status == 'accepted'%>
-          <p>Swap accepted!</p>
-        <% end %>
-
-      <% end %>
-    </div>
+  <div class="card-message d-flex b-sh align-items-start px-2 py-2 flex-grow-1 mx-3">
+    <%= render 'chatroom-info'%>
   </div>
 
   <div class="container app-container app-container-pink mt-2 pt-4 d-flex flex-column justify-content-end">
@@ -56,19 +20,19 @@
         <% end %>
       </div>
     <% end %>
+  </div>
+  
+</div>
 
-    <% # FIXME: make it fuckin sticky %>
-    <div class="chat-input">
-      <div class="text-center d-flex mt-4 position-relative">
-        <%= simple_form_for [ @chatroom, @message ], remote: true, html: {class: "w-100"} do |f| %>
-          <%= f.input :content, label: false, placeholder: "Message...", input_html: {class: "white-bar"}%>
-        <% end %>
+<div class="chat-input mx-2">
+  <div class="text-center d-flex mt-4 position-relative">
+    <%= simple_form_for [ @chatroom, @message ], remote: true, html: {class: "w-100"} do |f| %>
+      <%= f.input :content, label: false, placeholder: "Message...", input_html: {class: "white-bar"}%>
+    <% end %>
 
-        <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
-          <i class="fab fa-telegram-plane"></i>
-        <% end %>
-      </div>
-    </div>
+    <%= button_tag(class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
+      <i class="fab fa-telegram-plane"></i>
+    <% end %>
   </div>
 </div>
 
