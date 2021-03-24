@@ -2,7 +2,6 @@ class LibraryBooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-
     @library_books = LibraryBook.where(status: 'available')
     @library_books = @library_books.select { |lb| lb.library.user.location.downcase == params[:query].downcase } if params[:query].present?
 

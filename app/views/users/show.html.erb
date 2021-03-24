@@ -45,104 +45,161 @@
 
     <ul class="list-inline tabs-underlined p-3 justify-content-center">
       <li>
-        <a href="#" id="profile-link-library" class="tab-underlined active">My Bookshelf</a>
+        <a href="#" id="profile-link-library" class="tab-underlined active">Bookshelf</a>
       </li>
       <li>
-        <a href="#wishlist" id="profile-link-wishlist" class="tab-underlined">My Wishlist</a>
+        <a href="#wishlist" id="profile-link-wishlist" class="tab-underlined">Wishlist</a>
       </li>
     </ul>
 
-    <!-- HERE PUT LIBRARY AND WISHLIST + "Add book" with HIDE/SHOW CLASS-->
+
+    <!-- LIBRARY -->
 
     <div class="profile-library pb-3">
 
-      <div class="d-flex justify-content-center">
-        <%= link_to new_book_path, class: "btn btn-pink" do %>
-          <i class="fas fa-plus"></i>  Add a book
-        <% end %>
-      </div>
-
-      <% @library_books.each do |lib_book| %>
-
-        <div class="book-results-card d-flex b-sh my-4">
-          <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
-          <div class="information p-3">
-
-            <%= link_to library_book_path(lib_book) do %>
-              <h2><%= lib_book.book.title %></h2>
-            <% end %>
-
-            <div>
-              <p><%= lib_book.book.author %></p>
-            </div>
-
-            <div class="d-flex space-between">
-
-              <div class="tags">
-                <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %> <%#<< link doesn't work  %>
-              </div>
-
-              <% if @user == current_user %>
-                <div>
-                  <%= link_to delete_library_book_path(lib_book),
-                    method: :delete, data: { confirm: "Do you really want to delete #{lib_book.book.title} and all related conversations?",
-                    title: 'Delete from your Library', commit: 'Yes', cancel: 'Cancel'} do
-                  %>
-                    <i class="fas fa-trash"></i>
-                  <% end %>
-                </div>
-              <% end %>
-              
-
-              <% if lib_book.is_favoritable_to(current_user)%>
-                <i class="fas fa-heart"></i>
-              <% end %>
-
-            </div>
-          </div>
+      <!-- showing only on current_user's profile page -->
+      <% if @user == current_user %>
+        <div class="d-flex justify-content-center">
+          <%= link_to new_book_path, class: "btn btn-pink" do %>
+            <i class="fas fa-plus"></i>  Add a book
+          <% end %>
         </div>
       <% end %>
+
+      <!-- Message if @user's library is empty -->
+      <% if @library_books.empty? %>
+        <div class="text-center">
+          <p><%= @user.first_name %> has no Book in their Bookshelf yet 😞</p>
+        </div>
+      <% else %>
+
+        <% @library_books.each do |lib_book| %>
+
+          <div class="book-results-card d-flex b-sh my-4">
+            <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
+            <div class="information p-3">
+
+              <%= link_to library_book_path(lib_book) do %>
+                <h2><%= lib_book.book.title %></h2>
+              <% end %>
+              <div>
+                <p><%= lib_book.book.author %></p>
+              </div>
+              <div class="d-flex space-between">
+                <div class="tags">
+                  <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %> <%#<< link doesn't work  %>
+                </div>
+
+                <!-- if not @user is current_user add Delete Icons -->
+                <% if @user == current_user %>
+
+                  <div>
+                    <%= link_to delete_library_book_path(lib_book),
+                      method: :delete, data: { confirm: "Do you really want to delete #{lib_book.book.title} and all related conversations?",
+                      title: 'Delete from your Library', commit: 'Yes', cancel: 'Cancel'} do
+                    %>
+                      <div class="icon-trash">
+                        <i class="fas fa-trash"></i>
+                      </div>
+                    <% end %>
+                  </div>
+
+
+                <!-- if not @user is not current_user add wishlist Icons -->
+                <% else %>
+
+                  <% if current_user.wishlists.first.books.include?(lib_book.book) %>
+
+                    <%= link_to delete_wishlist_book_path(lib_book.is_in_wishlist(lib_book, current_user)), method: :delete, class: "heart btn-transparent" do %>
+                      <i class='fas fa-heart'></i>
+                    <% end %>
+
+                  <!-- if Book is not in User's Wishlist -->
+                  <% else %>
+
+                    <%= simple_form_for(@wishlist_book) do |f| %>
+                      <%= hidden_field_tag "book_id", lib_book.book.id %>
+                      <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
+                      <div style="height: 0">
+                        <%= button_tag(class: "heart btn-transparent") do %>
+                          <i class='fas fa-heart' style="color:white"></i>
+                          <i class='far fa-heart'></i>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% end %>
+
+                <% end %>
+
+
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+
+      <% end %>
+
     </div>
 
     <!-- WISHLIST -->
 
     <div class="profile-wishlist d-none pb-3">
-      <div class="d-flex justify-content-center">
-        <%= link_to new_book_path, class: "btn btn-pink" do %>
-          <i class="fas fa-plus"></i>  Add to my Wishlist
-        <% end %>
-      </div>
 
-      <% @wishlist_books.each do |wish_book| %>
-        <div class="book-results-card d-flex b-sh my-4">
-          <div class="image" style="background-image: url('<%= cl_image_path wish_book.book.photo.key %>')"></div>
-          <div class="information p-3">
-            <%= link_to library_book_path(wish_book) do %>
-              <h2><%= wish_book.book.title %></h2>
-            <% end %>
-            <div>
-              <p><%= wish_book.book.author %></p>
-            </div>
-            <div class="d-flex space-between">
-              <div class="tags d-flex">
-                <%= link_to wish_book.book.genre , library_books_path("?genre=#{wish_book.book.genre}"), class: "btn genre mr-2" %> <%#<< link doesn't work  %>
-              </div>
-              <div class="tags d-flex">
-                <% if @user == current_user %>
-                  <%= link_to delete_wishlist_book_path(wish_book),
-                    method: :delete,
-                    data: { confirm: "Do you really want to delete #{wish_book.book.title} ?", title: 'Remove from wishlist', commit: 'Yes', cancel: 'Cancel'} do
-                  %>
-                    <i class="fas fa-trash"></i>
-                  <% end %>
-                  
-                <% end %>
-              </div>
-            </div>
+      <!-- showing only on current_user's profile page -->
+      <% if @user == current_user %>
+        <div class="d-flex justify-content-center">
+          <%= link_to new_book_path, class: "btn btn-pink" do %>
+            <i class="fas fa-plus"></i>  Add to my Wishlist
           <% end %>
         </div>
-      </div>
+      <% end %>
+
+      <!-- Message if @user's wishlist is empty -->
+      <% if @wishlist_books.empty? %>
+        <div class="text-center">
+          <p><%= @user.first_name %> has no Book in whishlist yet 😞</p>
+        </div>
+      <% else %>
+
+        <% @wishlist_books.each do |wish_book| %>
+          <div class="book-results-card d-flex b-sh my-4">
+            <div class="image" style="background-image: url('<%= cl_image_path wish_book.book.photo.key %>')"></div>
+            <div class="information p-3">
+              <%= link_to library_book_path(wish_book) do %>
+                <h2><%= wish_book.book.title %></h2>
+              <% end %>
+              <div>
+                <p><%= wish_book.book.author %></p>
+              </div>
+              <div class="d-flex space-between">
+                <div class="tags d-flex">
+                  <%= link_to wish_book.book.genre , library_books_path("?genre=#{wish_book.book.genre}"), class: "btn genre mr-2" %> <%#<< link doesn't work  %>
+                </div>
+                <div class="tags d-flex">
+                  <% if @user == current_user %>
+                    <%= link_to delete_wishlist_book_path(wish_book),
+                      method: :delete,
+                      data: { confirm: "Do you really want to delete #{wish_book.book.title} ?", title: 'Remove from wishlist', commit: 'Yes', cancel: 'Cancel'} do
+                    %>
+                      <div class="icon-trash">
+                        <i class="fas fa-trash"></i>
+                      </div>
+                    <% end %>
+
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+      <% end %>
+
+
+
     </div>
+
   </div>
 
 </div>
