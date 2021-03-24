@@ -53,7 +53,8 @@ body {
 }
 
 .tagline-2 {
-  font-size: 2rem;
+  color: $app-green;
+  font-size: 1.5rem;
 }
 
 // RESULTS
@@ -117,3 +118,19 @@ option {
 .fa-search-location {
   font-size: 1.7em;
 }
+
+
+.txt-light {
+  font-weight: 300;
+  opacity: 0.4;
+}
+
+
+.halo-txt {
+  text-shadow: 0 0 5px white;
+}
+
+.halo-box {
+  box-shadow: 0px 0px 8px white;
+}
+

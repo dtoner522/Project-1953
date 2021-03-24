@@ -2,13 +2,14 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :uikit, :results ]
 
   def home
+    @location = current_user ? current_user.location : "Type city..."
   end
 
-  def uikit
-  end
+  def uikit; end
 
-  def results
-  end
+  def results; end
+
+  def error; end
 
   def messages
     @user = current_user

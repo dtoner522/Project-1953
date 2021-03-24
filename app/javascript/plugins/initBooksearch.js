@@ -152,7 +152,7 @@ const initBooksearch = () => {
                   <h2>${book.volumeInfo.title}</h2>
                   <p>${author} (${book.volumeInfo.publishedDate} - ${book.volumeInfo.language.toUpperCase()})</p>
                   <div class="tags d-flex">
-                    <a id="btn-select" class="btn genre mr-2" href="#">Select book</a>
+                    <a id="btn-select" class="btn-green mr-2 py-1 px-3" href="#">Select book</a>
                   </div>
                 </div>
 
