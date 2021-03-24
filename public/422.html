@@ -55,13 +55,16 @@
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+ 
+  <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh">
+    <%= image_tag "illustrations/wonder.png", class: "mb-3", style:"max-width: 100%"%>
+    <h2>Oooops! Something went wrong</i></h2>
+    <p>We'll work on that</p>
+  
+    <%= link_to "Take me back home", root_path, class: "btn btn-green" %>
+  
+  
   </div>
+
 </body>
 </html>

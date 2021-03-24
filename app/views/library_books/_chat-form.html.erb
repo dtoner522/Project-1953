@@ -1,0 +1,25 @@
+<div class="card-user-message d-flex b-sh align-items-center px-2 py-1">
+
+  <div class="avatar-30 mr-2" style="background-image: url(' <%= cl_image_path @lib_book.library.user.photo.key%>')"></div>
+
+  <div class="d-flex justify-content-between flex-grow-1 px-2">
+    <h2> <%= @lib_book.library.user.first_name.capitalize %></h2>
+    <p style="font-style: italic; color: gray; font-weight: 300"><%= @lib_book.library.user.location %></p>
+
+    <% unless @lib_book.library.user == current_user %>
+      <% if Chatroom.existing(@lib_book.library.user, current_user, @lib_book).empty? %>
+        <% unless @lib_book.status == 'swapped' %>
+          <%= simple_form_for @chatroom do |f| %>
+          <%= f.input :recipient_id, as: :hidden, input_html: {value: @lib_book.library.user.id} %>
+          <%= f.input :library_book_id, as: :hidden, input_html: {value: @lib_book.id} %>
+          <button class="bg-transparent border-0 app-green" style="font-weight:700">SWAP!</button>
+        <% end %>
+        <% end %>
+      <% else %>
+        <%= link_to chatroom_path(Chatroom.existing(@lib_book.library.user, current_user, @lib_book).first) do %>
+          <i class="fas fa-comment" style="font-size:20px"></i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
