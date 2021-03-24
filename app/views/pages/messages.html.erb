@@ -5,23 +5,34 @@
   </div>
 
   <div class="container messages-container pt-3">
-    <% @chatrooms.each do |chatroom|%>
-      <%= link_to chatroom_path(chatroom) do %>
-        <div class="card-message d-flex b-sh align-items-center px-2 py-1">
-        <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path chatroom.get_other_user(current_user).photo.key%>')"></div>
-        <div class="message-info flex-grow-1">
-          <h2> <%= chatroom.get_other_user(current_user).first_name.capitalize %> </h2>
-          <p> <%= chatroom.library_book.book.title.truncate(24) %> </p>
-        </div>
-        <div class="message-stats pr-2">
-          <h3>
-            <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
-          </h3>
-          <% if chatroom.messages.where(user: chatroom.get_other_user(current_user))&.last&.read == false %>
-            <p class="icon-secondary"> <%= chatroom.unread_messages %> </p>
-          <% end %>
-        </div>
-        </div>
+    
+    <% if @chatrooms.empty? %>
+      <div class="text-center">
+        <%= image_tag "illustrations/empty.png", class: "", style:"max-width: 100%"%>
+        <h2>No messages to display</h2>
+        <p>Make a search, and start swaping books!</p>
+        <%= link_to "Search", library_books_path, class: "btn btn-green" %>
+      </div>
+    <% else %>
+    
+      <% @chatrooms.each do |chatroom|%>
+        <%= link_to chatroom_path(chatroom) do %>
+          <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+          <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path chatroom.get_other_user(current_user).photo.key%>')"></div>
+          <div class="message-info flex-grow-1">
+            <h2> <%= chatroom.get_other_user(current_user).first_name.capitalize %> </h2>
+            <p> <%= chatroom.library_book.book.title.truncate(24) %> </p>
+          </div>
+          <div class="message-stats pr-2">
+            <h3>
+              <%= time_ago_in_words(chatroom.messages.last.created_at.to_datetime) %> ago
+            </h3>
+            <% if chatroom.messages.where(user: chatroom.get_other_user(current_user))&.last&.read == false %>
+              <p class="icon-secondary"> <%= chatroom.unread_messages %> </p>
+            <% end %>
+          </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>

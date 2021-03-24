@@ -19,3 +19,12 @@
 .messages-container {
   min-height: calc(100vh - 130px);
 }
+
+
+.notifications-container a {
+  text-decoration: none;
+}
+
+.home-container {
+  height: calc(100vh - 60px);
+}

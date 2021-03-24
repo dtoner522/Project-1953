@@ -34,7 +34,7 @@
             <h3>Wishes</h3>
           </div>
           <div class="swaps-count">
-            <h2> <%= @user.swap_requests.where(status: 'accepted').count %></h2>
+            <h2> <%= @swaps %></h2>
             <h3>swaps</h3>
           </div>
         </div>
@@ -118,7 +118,7 @@
                   <!-- if Book is not in User's Wishlist -->
                   <% else %>
 
-                    <%= simple_form_for(@wishlist_book) do |f| %>
+                    <%= simple_form_for(@wishlist_book) do |f| %> <!-- action = /wishlists ??? -->
                       <%= hidden_field_tag "book_id", lib_book.book.id %>
                       <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
                       <div style="height: 0">
@@ -158,8 +158,8 @@
 
       <!-- Message if @user's wishlist is empty -->
       <% if @wishlist_books.empty? %>
-        <div class="text-center">
-          <p><%= @user.first_name %> has no Book in whishlist yet 😞</p>
+        <div class="text-center mt-3">
+          <p><%= @user.first_name %> has no Book in their wishlist yet 😞</p>
         </div>
       <% else %>
 
