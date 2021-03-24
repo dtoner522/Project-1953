@@ -7,8 +7,6 @@ class PagesController < ApplicationController
 
   def uikit; end
 
-  def results; end
-
   def error; end
 
   def messages
