@@ -18,6 +18,6 @@ class PagesController < ApplicationController
 
   def notifications
     @user = current_user
-    @notifications = @user.chatrooms
+    @notifications = @user.chatrooms.all
   end
 end

@@ -10,8 +10,10 @@
 
   <div class="container notifications-container pt-3">
     
+      <%# if statement is incorrect  %>
+      
     <% @notifications.each do |note| %>
-    <% if note.library_book.status == "available" %>
+    <% if note.library_book.status == "available" %> 
       <div class="card-message d-flex b-sh align-items-center px-2 py-1">
         <div class="notification not-chat mr-2">
           <%= image_tag "notifications/open-book.png", class: "" %>
