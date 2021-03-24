@@ -1,10 +1,19 @@
 .btn-green {
   color: white;
-  padding: 8px 24px;
+  padding: 7px 24px;
   border-radius: 24px;
   background-color: $app-green;
   transition: background 0.3s ease;
+  border: 2px solid $app-green;
+
 }
+
+.btn-ghost {
+  color: $app-green;
+  background-color: transparent;
+  border: 2px solid $app-green;
+}
+
 
 .btn-pink {
   color: white;
