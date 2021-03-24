@@ -24,9 +24,9 @@
       <% if @chatroom.library_book.library.user == current_user %> 
         
         <% if @chatroom.swap_request.status == 'accepted' %>
-          <p>You swapped this book! Go you!</p>
+          <p class="swap-status-accepted"><i class="fas fa-medal"></i> You swapped this book! Go you!</p>
         <% elsif @chatroom.library_book.status == 'swapped' %>
-          <p>You already swapped this book</p>
+          <p class="swap-status-done">You already swapped this book</p>
         <% elsif @chatroom.swap_request.status == 'pending' %>
           <%= link_to "SWAP!", swap_path(@chatroom), class: "btn genre mt-1" %>
         <% end %>
@@ -34,11 +34,11 @@
       <% else %>
 
         <% if @chatroom.library_book.status == 'swapped' %>
-          <p>This book is not available</p>
+          <p class="swap-status-not-available"><i class="fas fa-frown-open"></i>This book is not available</p>
         <% elsif @chatroom.swap_request.status == 'pending' %>
-          <p>Pending swap</p>
+          <p class="swap-status-pending"><i class="fas fa-hourglass-half"></i> Pending swap</p>
         <% elsif @chatroom.swap_request.status == 'accepted'%>
-          <p>Swap accepted!</p>
+          <p class="swap-status">Swap accepted!</p>
         <% end %>
 
       <% end %>

@@ -30,8 +30,18 @@
   a {
     color: $app-dark;
   }
-}
 
+  .swap-status-accepted {
+    font-weight: 500;
+    color: $app-green;
+  }
+
+  .swap-status-pending,
+  .swap-status-not-available {
+    font-weight: 500;
+    color: $app-pink;
+  }
+}
 
 .message {
   h3 {
