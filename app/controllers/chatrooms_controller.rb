@@ -27,7 +27,8 @@ class ChatroomsController < ApplicationController
   def create_swap_request
     @swap_requests = SwapRequest.create(user_id: current_user.id,
                                         library_book_id: params[:chatroom][:library_book_id],
-                                        chatroom_id: @chatroom.id
+                                        chatroom_id: @chatroom.id,
+                                        status: "pending"
                                       )
     redirect_to chatroom_path(@chatroom)
   end
