@@ -1,0 +1,5 @@
+meta_product_name: "1953"
+meta_title: "1953 - Share your stories"
+meta_description: "Share your stories"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
