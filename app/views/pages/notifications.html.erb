@@ -1,17 +1,14 @@
 <div class="fafafa pb-5">
   <div class="nav-top d-flex px-4 pt-4 justify-content-between align-items-center">
     <h1>Notifications</h1>
-
-    <%= link_to '#' do  %>
-      <% # TODO: replace with app icon %>
-      <i class="fas fa-ellipsis-v"></i>
-    <% end %>
+    <%= image_tag "1953.png", class: "", style:"height:20px"%>
   </div>
 
   <div class="container notifications-container pt-3">
     
     
-    <% unless @user.chatrooms.empty? %>
+      <%# if statement is incorrect  %>
+    <% unless @notifications.empty? %>
       <% @notifications.each do |note| %>
         <% if note.library_book.status == "available" %> 
           <div class="card-message d-flex b-sh align-items-center px-2 py-1">
