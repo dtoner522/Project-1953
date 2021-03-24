@@ -27,19 +27,31 @@
 }
 
 .chatroom-info {
-  a {
+
+  .genre {
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  a p {
     color: $app-dark;
   }
 
-  .swap-status-accepted {
-    font-weight: 500;
+  a h2 {
     color: $app-green;
   }
 
-  .swap-status-pending,
-  .swap-status-not-available {
+  .swap-accepted {
+    font-weight: 500;
+    color: $app-green;
+    padding: 5px 0;
+  }
+
+  .swap-pending,
+  .swap-not-available {
     font-weight: 500;
     color: $app-pink;
+    padding: 5px 0;
   }
 }
 

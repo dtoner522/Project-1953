@@ -7,7 +7,7 @@
     <%= image_tag "1953.png", class: "", style:"height:20px"%>
   </div>
 
-  <div class="card-message d-flex b-sh align-items-center px-2 py-2 flex-grow-1 mx-3">
+  <div class="card-message d-flex b-sh align-items-start px-2 py-2 flex-grow-1 mx-3">
     <%= link_to user_path(@chatroom.get_other_user(current_user)) do %>
       <div class="avatar-50 mr-2" style="background-image: url(' <%= cl_image_path @chatroom.get_other_user(current_user).photo.key%>')"></div>
     <% end %>
@@ -16,7 +16,7 @@
         <h2> <%= @chatroom.get_other_user(current_user).first_name.capitalize %> </h2>
       <% end %>
       <%= link_to library_book_path(@chatroom.library_book.id) do %>
-        <p><%= @chatroom.library_book.book.title %></p>
+        <p><strong><%= @chatroom.library_book.book.title %></strong></p>
         <p><%= @chatroom.library_book.book.author %></p>
       <% end %>
       
@@ -24,9 +24,9 @@
       <% if @chatroom.library_book.library.user == current_user %> 
         
         <% if @chatroom.swap_request.status == 'accepted' %>
-          <p class="swap-status-accepted"><i class="fas fa-medal"></i> You swapped this book! Go you!</p>
+          <p class="swap-accepted"><i class="fas fa-medal"></i> You swapped this book! Go you!</p>
         <% elsif @chatroom.library_book.status == 'swapped' %>
-          <p class="swap-status-done">You already swapped this book</p>
+          <p class="swap-not-available">You already swapped this book</p>
         <% elsif @chatroom.swap_request.status == 'pending' %>
           <%= link_to "SWAP!", swap_path(@chatroom), class: "btn genre mt-1" %>
         <% end %>
@@ -34,11 +34,11 @@
       <% else %>
 
         <% if @chatroom.library_book.status == 'swapped' %>
-          <p class="swap-status-not-available"><i class="fas fa-frown-open"></i>This book is not available</p>
+          <p class="swap-not-available"><i class="fas fa-frown-open"></i>This book is not available</p>
         <% elsif @chatroom.swap_request.status == 'pending' %>
-          <p class="swap-status-pending"><i class="fas fa-hourglass-half"></i> Pending swap</p>
+          <p class="swap-pending"><i class="fas fa-hourglass-half"></i> Pending swap</p>
         <% elsif @chatroom.swap_request.status == 'accepted'%>
-          <p class="swap-status">Swap accepted!</p>
+          <p class="swap-accepted">Swap accepted!</p>
         <% end %>
 
       <% end %>
