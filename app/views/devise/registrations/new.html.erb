@@ -48,7 +48,8 @@
                 autofocus: true,
                 input_html: { autocomplete: "location", class: "form-control gray-bar", id: "location-input" }%>
     
-     <%= f.input :photo, input_html: { class: 'd-none',  id: 'photo-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload a photo', as: :file %>
+     <%= f.input :photo, input_html: { class: 'd-none',  id: 'photo-input'},
+                  label_html: { class: 'upload-photo'}, label: '📷 Upload a photo', as: :file %>
      <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
     </div>
   </div>
@@ -59,7 +60,9 @@
   <% end %>
 
   <div class="mt-4">
-    <p class="text-center font-weight-bold">I have an account. <span><%= link_to "Log in", new_session_path(resource_name), class:"black" %></span></p>
+    <p class="text-center font-weight-bold">I have an account.
+    <span><%= link_to "Log in", new_session_path(resource_name),class:"black ambar-underline" %></span>
+    </p>
   </div
 
 </div>
