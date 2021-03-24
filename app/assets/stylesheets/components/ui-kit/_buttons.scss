@@ -56,15 +56,10 @@
   font-weight: 700;
 }
 
-.fa-telegram-plane {
-  transform: translateX(-2px);
-}
-
 .btn-transparent {
   border: none;
   background: transparent;
 }
-
 
 .upload-photo {
   cursor: pointer;
@@ -76,4 +71,13 @@
   transition: background 0.3s ease;
   text-align: center;
   margin-top: 1.7rem !important;
+}
+
+// ICONS
+.fa-telegram-plane {
+  transform: translateX(-2px);
+}
+
+.fa-trash {
+  color: $app-ambar;
 }

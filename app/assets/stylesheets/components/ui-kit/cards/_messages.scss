@@ -26,6 +26,35 @@
   }
 }
 
+.chatroom-info {
+
+  .genre {
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  a p {
+    color: $app-dark;
+  }
+
+  a h2 {
+    color: $app-green;
+  }
+
+  .swap-accepted {
+    font-weight: 500;
+    color: $app-green;
+    padding: 5px 0;
+  }
+
+  .swap-pending,
+  .swap-not-available {
+    font-weight: 500;
+    color: $app-pink;
+    padding: 5px 0;
+  }
+}
+
 .message {
   h3 {
     margin: 2px;
@@ -33,7 +62,7 @@
 }
 
 #messages {
-  max-height: 55vh;
+  max-height: 51vh;
   overflow: scroll;
 }
 

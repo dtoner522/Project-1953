@@ -9,14 +9,21 @@
   </div>
 
   <div class="container notifications-container pt-3">
-    <div class="card-message d-flex b-sh align-items-center px-2 py-1">
-      <div class="notification not-chat mr-2">
-        <%= image_tag "notifications/open-book.png", class: "" %>
+    
+      <%# if statement is incorrect  %>
+      
+    <% @notifications.each do |note| %>
+    <% if note.library_book.status == "available" %> 
+      <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+        <div class="notification not-chat mr-2">
+          <%= image_tag "notifications/open-book.png", class: "" %>
+        </div>
+        <div class="message-info flex-grow-1">
+          <p><strong><%= note.sender.first_name %> </strong>has requested a swap for your book <strong><%= note.library_book.book.title %>!</strong></p>
+        </div>
       </div>
-      <div class="message-info flex-grow-1">
-        <p><strong>Username</strong> wants to swap <strong>Booktitle</strong> with you.</p>
-      </div>
-    </div>
+      <% end %>
+    <% end %>
 
     <div class="card-message d-flex b-sh align-items-center px-2 py-1">
       <div class="notification not-discover mr-2">
