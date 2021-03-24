@@ -24,8 +24,7 @@
      style="background-image: url(https://res.cloudinary.com/dtoner522/image/upload/v1615911570/home-img_tc3hke.png);
      background-repeat: no-repeat;
      background-position: bottom;
-     background-size: 95%;
-     background-opacity: 0.3;
+     background-size: 85%;
      height: 86vh;"
 >
 
@@ -50,8 +49,8 @@
   </div>
 
   <% if user_signed_in? %>
-    <div class="justify-content-center pt-5 mt-5 ">
-      <p class="txt-light halo-txt">Update library & wishlist</p>
+    <div class="justify-content-center pt-2 ">
+      <p class="txt-light halo-txt mb-1">Your library & wishlist</p>
       <div>
         <%= link_to new_book_path, class: "btn btn-pink halo-box" do %>
           <i class="fas fa-plus"></i>  Add a book
