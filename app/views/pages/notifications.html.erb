@@ -10,13 +10,17 @@
       <%# if statement is incorrect  %>
     <% unless @notifications.empty? %>
       <% @notifications.each do |note| %>
-        <% if note.library_book.status == "available" %> 
+        <% if note.sender.id != current_user.id && note.swap_request.status == "pending" %>
           <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+          
             <div class="notification not-chat mr-2">
-              <%= image_tag "notifications/open-book.png", class: "" %>
+              <%= link_to chatroom_path(note) do %>
+                <%= image_tag "notifications/open-book.png", class: "" %>
+              <% end %>
             </div>
+            
             <div class="message-info flex-grow-1">
-              <p><strong><%= note.sender.first_name %> </strong>has requested a swap for your book <strong><%= note.library_book.book.title %>!</strong></p>
+              <p><strong><%= note.sender.first_name.capitalize %> </strong>has requested a swap for your book <strong><%= note.library_book.book.title %>!</strong></p>
             </div>
           </div>
           <% end %>

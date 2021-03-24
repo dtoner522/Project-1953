@@ -6,6 +6,10 @@
   transition: background 0.3s ease;
   border: 2px solid $app-green;
 
+  &:hover{
+    color: white;
+    background-color: $app-light-green;
+  }
 }
 
 .btn-ghost {

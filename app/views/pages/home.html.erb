@@ -10,6 +10,7 @@
   </div>
 
 <% else %>
+
   <div class="d-flex justify-content-between align-items-center p-3">
     <div>
       <p class="mb-0 txt-light">Hello <%= current_user.first_name %>✌️ </p>
@@ -17,7 +18,15 @@
     <div>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn-green btn-ghost mr-2 py-1 px-3"%>
     </div>
+
   </div>
+  <div class="container home-container p-3 sm-col-12 text-center">
+    <div>
+      <h1 class="text-white logo mb-0 pb-0">1953</h1>
+      <p class="text-white tagline">share your stories</p>
+    </div>
+  </div>
+
 <% end %>
 
 

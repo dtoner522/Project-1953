@@ -4,8 +4,6 @@
     <title>1953 - Share your stories</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag %>
-    <meta name="description" content="<%= meta_description %>">
 
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
@@ -30,6 +28,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    <%= favicon_link_tag(source = "favicon.ico", options = {})  %> 
   </head>
 
   <body data-user="<%= current_user&.id %>">
