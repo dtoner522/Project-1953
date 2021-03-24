@@ -6,18 +6,18 @@
 
   <div class="container notifications-container pt-3">
 
-    <% if @library_books.empty? %>
-      <div class="card-message d-flex b-sh align-items-center px-2 py-1">
-        <div class="notification not-chat mr-2">
-          <%= link_to user_path(current_user) do %>
-            <%= image_tag "notifications/open-book.png", class: "" %>
-          <% end %>
+    <% unless @library_books.empty? %>
+      <%= link_to user_path(current_user) do %>
+        <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+          <div class="notification not-chat mr-2">
+              <%= image_tag "notifications/open-book.png", class: "" %>
+          </div>
+          <div class="message-info flex-grow-1">
+            <p>You have no books in your library! Click the icon to go to your library and add a book :)</p>
+          </div>
         </div>
-        <div class="message-info flex-grow-1">
-          <p>You have no books in your library! Click the icon to go to your library and add a book :)</p>
-        </div>
-      </div>
       <% end %>
+    <% end %>
 
     
     
