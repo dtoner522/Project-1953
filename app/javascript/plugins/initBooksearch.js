@@ -102,7 +102,9 @@ const initBooksearch = () => {
     input.addEventListener('keyup', (e) => {
       cards.innerHTML = "";
       bgImage.innerHTML = "";
-      const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${input.value}&key=AIzaSyDOUUIk6Yw3a4YdJosG8IY9ikbXDIqo0sc`;
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${input.value}&key=AIzaSyDOUUIk6Yw3a4YdJosG8IY9ikbXDIqo0sc`;
+      // search params : intitle: inauthor: isbn: --> ?q=inauthor:${input.value}
+
       fetch(url)
 
         .then(response => response.json())// response.json()) ==> then get (data)

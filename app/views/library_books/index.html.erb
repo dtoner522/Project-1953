@@ -3,9 +3,9 @@
     <%= link_to root_path, title: "Location search" do %>
       <i class="fas fa-search-location"></i>
     <% end %>
-    
+
     <h1>Explore</h1>
-    
+
     <%= link_to '#' do  %>
       <i class="fas fa-ellipsis-v"></i>
     <% end %>
@@ -63,35 +63,42 @@
               </span>
             </p>
           </div>
-            
+
           <div class="tags d-flex">
               <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %>
           </div>
 
-          <% # if lib_book.is_favoritable_to(current_user )%>
-            <!-- <i class="fas fa-heart"></i> -->
-          <% # end %>
 
           <% if user_signed_in? %>
 
-          <% if @wishlist_books.include?(lib_book.book) %>
+            <!-- if Book is not in User's library -> show add/remove Wishlist-->
+            <% if !current_user.libraries.first.books.include?(lib_book.book) %>
 
-            <%= link_to delete_wishlist_book_path(lib_book.is_in_wishlist(lib_book, current_user)), method: :delete, class: "remove-wishlist t-sh btn-transparent" do %>
-              <i class='fas fa-heart'></i>
-            <% end %>
-
-          <% else # false : book not in wishlist %>
-            <%= simple_form_for(@wishlist_book) do |f| %>
-              <%= hidden_field_tag "book_id", lib_book.book.id %>
-              <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
-              <div style="height: 0">
-                <%= button_tag(class: "add-wishlist t-sh btn-transparent") do %>
+              <!-- if Book is  in User's Wishlist -->
+              <% if @wishlist_books.include?(lib_book.book) %>
+                <%= link_to delete_wishlist_book_path(lib_book.is_in_wishlist(lib_book, current_user)), method: :delete, class: "heart btn-transparent" do %>
                   <i class='fas fa-heart'></i>
                 <% end %>
-              </div>
+
+              <!-- if Book is not in User's Wishlist -->
+              <% else %>
+                <%= simple_form_for(@wishlist_book) do |f| %>
+                  <%= hidden_field_tag "book_id", lib_book.book.id %>
+                  <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
+                  <div style="height: 0">
+                    <%= button_tag(class: "heart btn-transparent") do %>
+                      <i class='fas fa-heart' style="color:white"></i>
+                      <i class='far fa-heart'></i>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
+
+            <!-- if Book is in User's library -> show nothing -->
             <% end %>
+
           <% end %>
-        <% end %>
+
 
         </div>
       </div>

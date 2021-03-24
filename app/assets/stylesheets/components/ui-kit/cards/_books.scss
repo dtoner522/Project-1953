@@ -50,21 +50,31 @@
 
 // to refactor with only color
 
-.add-wishlist i {
+.heart i {
+    color: $app-ambar;
     position: absolute;
-    color: white;
     font-size: 38px;
-    bottom: 5px;
+    bottom: 7px;
     right: 10px;
+
+    &:hover {
+      color: $app-ambar-trans;
+    }
 }
 
-.remove-wishlist i {
+.icon-trash i {
+    color: $app-light-green;
     position: absolute;
-    color: $app-ambar;
-    font-size: 38px;
-    bottom: 5px;
-    right: 10px;
+    font-size: 26px;
+    bottom: 17px;
+    right: 17px;
+
+    &:hover {
+      color: $app-green;
+    }
 }
+
+
 
 
 .book-info {

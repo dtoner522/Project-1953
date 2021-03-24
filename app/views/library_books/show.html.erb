@@ -14,25 +14,29 @@
 
     <% if user_signed_in? %>
 
-      <% # checking if @book is included in the Wishlist Books of current user  %>
-      <% if @wishlist_books.include?(@book) # true : book in wishlist %>
+      <!-- if Book is not in User's library -> show add/remove Wishlist-->
+      <% if !current_user.libraries.first.books.include?(@lib_book.book) %>
 
-        <%= link_to delete_wishlist_book_path(@wishlist_book), method: :delete, class: "remove-wishlist t-sh btn-transparent" do %>
-          <i class='fas fa-heart'></i>
-        <% end %>
+        <% # checking if @book is included in the Wishlist Books of current user  %>
+        <% if @wishlist_books.include?(@book) # true : book in wishlist %>
 
-      <% else # false : book not in wishlist %>
+          <%= link_to delete_wishlist_book_path(@wishlist_book), method: :delete, class: "heart t-sh btn-transparent" do %>
+            <i class='fas fa-heart'></i>
+         <% end %>
 
-        <%= simple_form_for(@wishlist_book) do |f| %>
-        <%= hidden_field_tag "book_id", @book.id %>
-        <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
-        <%= button_tag(class: "add-wishlist t-sh btn-transparent") do %>
-           <i class='fas fa-heart'></i>
+        <% else # false : book not in wishlist %>
+
+          <%= simple_form_for(@wishlist_book) do |f| %>
+            <%= hidden_field_tag "book_id", @book.id %>
+            <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
+            <%= button_tag(class: "heart btn-transparent") do %>
+              <i class='fas fa-heart' style="color:white"></i>
+              <i class='far fa-heart'></i>
+            <% end %>
           <% end %>
+
         <% end %>
-
       <% end %>
-
     <% end %>
 
   </div>
