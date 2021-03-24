@@ -8,7 +8,7 @@
     
     
       <%# if statement is incorrect  %>
-    <% unless @notifications.empty? %>
+    <% if @notifications.empty? %>
       <% @notifications.each do |note| %>
         <% if note.sender.id != current_user.id && note.swap_request.status == "pending" %>
           <div class="card-message d-flex b-sh align-items-center px-2 py-1">
