@@ -1,14 +1,13 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :uikit, :results ]
 
-  def home
-  end
+  def home; end
 
-  def uikit
-  end
+  def uikit; end
 
-  def results
-  end
+  def results; end
+
+  def error; end
 
   def messages
     @user = current_user

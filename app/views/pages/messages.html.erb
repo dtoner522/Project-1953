@@ -14,6 +14,7 @@
         <%= link_to "Search", library_books_path, class: "btn btn-green" %>
       </div>
     <% else %>
+    
       <% @chatrooms.each do |chatroom|%>
         <%= link_to chatroom_path(chatroom) do %>
           <div class="card-message d-flex b-sh align-items-center px-2 py-1">
