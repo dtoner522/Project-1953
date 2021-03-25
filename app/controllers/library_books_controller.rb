@@ -5,7 +5,7 @@ class LibraryBooksController < ApplicationController
     @library_books = LibraryBook.where(status: 'available')
 
     @library_books = @library_books.select { |lb| lb.library.user.location.downcase == params[:query].downcase } if params[:query].present?
-
+    @params_coordinates = Geocoder.coordinates(params[:query]) if params[:query].present?
     @library_books = params[:query].present? ? User.near(params[:query], 15).map{|user| user.library_books}.flatten : @library_books
 
     @library_books = @library_books.joins(:book).where("books.title ILIKE ? ", "%#{params[:title]}%") if params[:title].present?
