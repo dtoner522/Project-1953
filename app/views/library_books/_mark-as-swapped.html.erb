@@ -1,15 +1,16 @@
-<% if @lib_book.library.user == current_user && @lib_book.status == 'available' %>
+<% if @lib_book.status == 'available' %>
   <%= link_to swapped_book_path(@lib_book), data: { confirm: "Do you really want to mark
       #{@lib_book.book.title} as swapped?", title: 'Mark this book as swapped',
       commit: 'Yes', cancel: 'Cancel'} do %>
-    <button class="bg-transparent border-0 p-0 app-green my-2" style="font-weight:700; width:100%;letter-spacing: 1px !important;">
+    <button class="bg-transparent border-0 p-0 app-green"
+      style="font-weight:700; width:100%;letter-spacing: 1px !important;">
       <div class="btn btn-pink" style="width:100%">
         Mark as swapped
       </div>
     </button>
   <% end %>
-<% elsif @lib_book.library.user == current_user && @lib_book.status == 'swapped'%>
-    <div class="btn-pink btn-swapped my-2" style="width:100%">
+<% elsif @lib_book.status == 'swapped'%>
+    <div class="btn-pink btn-swapped" style="width:100%">
       You swapped this book
     </div>
 <% end %>

@@ -52,12 +52,13 @@
   </div>
 
   <p style="color: gray; font-size:16px" class="mb-4"><%= @lib_book.book.description %></p>
-
-  <%= render 'chat-form' %> 
   
-  <%= render 'mark-as-swapped' %>
+  <% if @lib_book.library.user == current_user %>
+    <%= render 'mark-as-swapped' %>
+  <% else %>
+    <%= render 'chat-form' %>
+  <% end %>
 
 </div>
 
 <%= render 'shared/nav-bottom' %>
-
