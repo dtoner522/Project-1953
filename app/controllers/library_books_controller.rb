@@ -16,7 +16,6 @@ class LibraryBooksController < ApplicationController
     end
   end
 
-
   def destroy
     @library_book = LibraryBook.find(params[:id])
     @library_book.destroy
@@ -34,6 +33,14 @@ class LibraryBooksController < ApplicationController
     end
   end
 
+  def mark_as_swapped
+    @library_book = LibraryBook.find(params[:id])
+    @library_book.status = 'swapped'
+    @library_book.save
+
+    redirect_to library_book_path(@library_book)
+  end
+
   private
 
   def wishlist_instances
@@ -41,11 +48,4 @@ class LibraryBooksController < ApplicationController
     @wishlist_wishlist_books = current_user.wishlists.first.wishlist_books
     @wishlist_book = @wishlist_books.include?(@book) ? @wishlist_wishlist_books.find { |wish_book| wish_book.book == @book } : WishlistBook.new
   end
-
-
 end
-
-
-
-
-

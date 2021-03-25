@@ -3,12 +3,13 @@
   padding: 7px 24px;
   border-radius: 24px;
   background-color: $app-green;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   border: 2px solid $app-green;
 
   &:hover{
     color: white;
     background-color: $app-light-green;
+    border: 2px solid $app-light-green;
   }
 }
 
@@ -25,6 +26,27 @@
   border-radius: 24px;
   background-color: $app-pink;
   transition: background 0.3s ease;
+}
+
+.btn-swapped{
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #7e4949;
+  background-color: $app-rose;
+}
+
+.genre-pill {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
 }
 
 .genre {
