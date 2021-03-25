@@ -9,25 +9,28 @@
 
   <div class="container notifications-container pt-3">
 
-    <!--swap request notification-->
-      <% unless @notifications.empty? %>
-      <% @notifications.each do |note| %>
-        <% if note.sender.id == current_user.id && note.swap_request.status == "accepted" %>
-          <div class="card-message d-flex b-sh align-items-center px-2 py-1">
 
-            <div class="notification not-chat mr-2">
-              <%= link_to chatroom_path(note) do %>
-                <%= image_tag "notifications/open-book.png", class: "" %>
-              <% end %>
-            </div>
 
-            <div class="message-info flex-grow-1">
-              <p><strong><%= note.recipient.first_name.capitalize %> </strong>has accepted your swap request for <strong><%= note.library_book.book.title %>!</strong> Don't forget to mark which book you swapped for it :)</p>
-            </div>
+  <!--swap accepted notification-->
+
+  <% unless @notifications.empty? %>
+    <% @notifications.each do |note| %>
+      <% if note.sender.id == current_user.id && note.swap_request.status == "accepted" %>
+        <div class="card-message d-flex b-sh align-items-center px-2 py-1">
+        
+          <div class="notification not-chat mr-2">
+            <%= link_to chatroom_path(note) do %>
+              <%= image_tag "notifications/open-book.png", class: "" %>
+            <% end %>
           </div>
-          <% end %>
+          
+          <div class="message-info flex-grow-1">
+            <p><strong><%= note.recipient.first_name.capitalize %> </strong>has accepted your swap request for <strong><%= note.library_book.book.title %>!</strong> Don't forget to mark which book you swapped for it :)</p>
+          </div>
+        </div>
       <% end %>
     <% end %>
+  <% end %>
 
     <% if @library_books.empty? %>
       <%= link_to user_path(current_user) do %>
@@ -45,6 +48,7 @@
     
     
       <!--swap request notification-->
+
     <% unless @notifications.empty? %>
       <% @notifications.each do |note| %>
         <% if note.sender.id != current_user.id && note.swap_request.status == "pending" %>
