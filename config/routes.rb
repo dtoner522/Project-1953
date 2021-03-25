@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   post 'wishlist_books', to: 'wishlist_books#create', as: 'create_wishlist_book'
   delete 'wish_books/:id', to: 'wishlist_books#destroy', as: 'delete_wishlist_book'
 
-
   resources :chatrooms, only: [:show, :create] do
     resources :messages, only: :create
   end
