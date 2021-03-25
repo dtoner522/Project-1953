@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_112829) do
   create_table "swap_requests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "library_book_id", null: false
-    t.string "status", default: "pending"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "chatroom_id"
