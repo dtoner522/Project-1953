@@ -37,5 +37,4 @@ class User < ApplicationRecord
   def chat_notifications?
     chatrooms.select { |chatroom| chatroom.unread_messages(self).positive? }.count.positive?
   end
-
 end
