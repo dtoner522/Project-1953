@@ -52,6 +52,16 @@
             <%= link_to library_book_path(lib_book) do %>
               <h2><%= lib_book.book.title %></h2>
             <% end %>
+              <span class="span-location" style="font-style: italic; color: gray; font-weight: 300">
+                <%= coordinates = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:query]), [lib_book.library.user.latitude, lib_book.library.user.longitude]).round(1) %>
+                km away</span></p>
+              </span>
+            </p>
+          </div>
+
+          <div class="tags d-flex">
+              <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %>
+          </div>
 
             <p><%= lib_book.book.author %></p>
 
