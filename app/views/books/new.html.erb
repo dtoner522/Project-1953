@@ -18,7 +18,9 @@
           params[:query],
           class: "form-control white-bar b-sh text-center",
           id: "search-autocomplete",
-          placeholder: "Search title, author..."
+          placeholder: "type title, author, ISBN...",
+          onfocus: "this.placeholder = ''",
+          onblur: "this.placeholder = 'type title, author, ISBN...'"
         %>
   </div>
 
