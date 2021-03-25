@@ -40,7 +40,9 @@
             params[:query],
             class: "form-control white-bar b-sh ",
             id: "address-input",
-            placeholder: @location
+            placeholder: @location,
+            onfocus: "this.placeholder = ''",
+            onblur: "this.placeholder = 'type city or address...'"
           %>
       <%= button_tag(type: "submit", class: "btn icon-primary mt-2 position-absolute", style: "top: -4px; right:6px") do %>
         <i class="fas fa-map-marker-alt"></i>
@@ -49,8 +51,7 @@
   </div>
 
   <% if user_signed_in? %>
-    <div class="justify-content-center pt-2 ">
-      <p class="txt-light halo-txt mb-1">Your library & wishlist</p>
+    <div class="justify-content-center pt-4 ">
       <div>
         <%= link_to new_book_path, class: "btn btn-pink halo-box" do %>
           <i class="fas fa-plus"></i>  Add a book
