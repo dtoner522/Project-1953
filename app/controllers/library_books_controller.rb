@@ -3,6 +3,7 @@ class LibraryBooksController < ApplicationController
 
   def index
     @library_books = LibraryBook.where(status: 'available')
+
     @library_books = @library_books.select { |lb| lb.library.user.location.downcase == params[:query].downcase } if params[:query].present?
 
     @library_books = params[:query].present? ? User.near(params[:query], 15).map{|user| user.library_books}.flatten : @library_books
@@ -15,7 +16,6 @@ class LibraryBooksController < ApplicationController
       wishlist_instances
     end
   end
-
 
   def destroy
     @library_book = LibraryBook.find(params[:id])
@@ -34,6 +34,14 @@ class LibraryBooksController < ApplicationController
     end
   end
 
+  def mark_as_swapped
+    @library_book = LibraryBook.find(params[:id])
+    @library_book.status = 'swapped'
+    @library_book.save
+
+    redirect_to library_book_path(@library_book)
+  end
+
   private
 
   def wishlist_instances
@@ -41,11 +49,4 @@ class LibraryBooksController < ApplicationController
     @wishlist_wishlist_books = current_user.wishlists.first.wishlist_books
     @wishlist_book = @wishlist_books.include?(@book) ? @wishlist_wishlist_books.find { |wish_book| wish_book.book == @book } : WishlistBook.new
   end
-
-
 end
-
-
-
-
-

@@ -11,15 +11,13 @@
       <div class="mb-3 width multi-search-form w-100">
       <%= text_field_tag :title,
             params[:title],
-            class: "form-control white-bar b-sh text-center",
-            placeholder: "type title, author...",
-            onfocus: "this.placeholder, ''",
-            onblur: "this.placeholder, 'type title, author...'"
+            class: "form-control white-bar b-sh text-center", placeholder: "type title, author...",
+            onfocus: "this.placeholder, ''", onblur: "this.placeholder, 'type title, author...'"
           %>
       </div>
       <div class="d-flex justify-content-between align-items-center mb-3">
         <%=  select_tag :language, options_for_select([["English", "en"], ["French", "fr"], ["Spanish", "es"]],
-                        selected: params["language"]), include_blank: "Language", class: "border-green select2",
+                        selected: params["language"]), include_blank: "Language", class: "border-green select2 m-0",
                         id: "language-select" %>
         <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Science-Fiction"],
                         selected: params["genre"]),  include_blank: "Genre", class: "border-green select2",
@@ -27,7 +25,7 @@
         <%= button_tag(class: "btn icon-primary") do %>
             <i class="fas fa-search"></i>
         <% end %>
-      
+
     <% end %>
   </div>
 
@@ -40,12 +38,13 @@
     </div>
 
   <% else %>
+
     <% @library_books.each do |lib_book| %>
 
       <div class="book-results-card d-flex b-sh mb-3">
         <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
         <div class="information p-3">
-          <%= link_to library_book_path(lib_book), class: "text-decoration" do %>
+          <%= link_to library_book_path(lib_book) do %>
             <h2><%= lib_book.book.title %></h2>
           <% end %>
 
@@ -53,18 +52,18 @@
 
           <div class="user-owner d-flex">
             <%= cl_image_tag lib_book.library.user.photo.key, class: "avatar-20 mr-2", alt: "avatar" %>
-            <%= link_to user_path(lib_book.library.user), class: "text-decoration" do %>
-            <p class="name"> <%= lib_book.library.user.first_name.capitalize %>
+
+            <%= link_to user_path(lib_book.library.user) do %>
+              <p class="name"> <%= lib_book.library.user.first_name.capitalize %>
             <% end %>
-            
-            <% coordinates = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:query]), [lib_book.library.user.latitude, lib_book.library.user.longitude]).round(1) %>
-            <% if params[:query].present? %>
-              <span class="span-location" style="font-style: italic; color: gray; font-weight: 300">
-               <%= coordinates %> km away
-            <% else %>
-               <span class="span-location" style="font-style: italic; color: gray; font-weight: 300"> <%= lib_book.library.user.location %>
-            </span></p>
-            <% end %>
+
+                <span class="span-location" style="font-style: italic; color: gray; font-weight: 300">
+                  <%= coordinates = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:query]), [lib_book.library.user.latitude, lib_book.library.user.longitude]).round(2) %>
+                  km away
+                </span>
+
+              </p>
+
           </div>
 
           <div class="tags d-flex">
@@ -105,7 +104,10 @@
 
         </div>
       </div>
-    <% end %>
+
+      <%= render 'library-book', lib_book: lib_book %>
+ 
+  <% end %>
   <% end %>
 </div>
 
