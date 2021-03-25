@@ -1,8 +1,10 @@
 class WishlistBook < ApplicationRecord
   belongs_to :wishlist
   belongs_to :book
-
+  has_many :matches, dependent: :destroy
+  
   after_create :check_match
+  
 
   private
 
