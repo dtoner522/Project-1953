@@ -5,6 +5,17 @@
         <h2><%= lib_book.book.title %></h2>
       <% end %>
 
+        <span class="span-location" style="font-style: italic; color: gray; font-weight: 300">
+        <!--
+          <%= coordinates = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:query]), [lib_book.library.user.latitude, lib_book.library.user.longitude]).round(1) %>
+          km away</span></p>
+        -->
+          <%= Geocoder.search("#{lib_book.library.user.latitude},#{lib_book.library.user.longitude}").first.data["address"]["city"] %>
+        </span>
+      </p>
+    </div>
+
+
       <p><%= lib_book.book.author %></p>
 
       <div class="user-owner d-flex">
