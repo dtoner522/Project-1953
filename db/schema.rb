@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_112829) do
+ActiveRecord::Schema.define(version: 2021_03_25_104146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,17 @@ ActiveRecord::Schema.define(version: 2021_03_23_112829) do
     t.index ["library_id"], name: "index_library_books_on_library_id"
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.string "status"
+    t.bigint "library_book_id", null: false
+    t.bigint "wishlist_book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "distance"
+    t.index ["library_book_id"], name: "index_matches_on_library_book_id"
+    t.index ["wishlist_book_id"], name: "index_matches_on_wishlist_book_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.bigint "chatroom_id", null: false
@@ -94,7 +105,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_112829) do
   create_table "swap_requests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "library_book_id", null: false
-    t.string "status", default: "pending"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "chatroom_id"
@@ -142,6 +153,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_112829) do
   add_foreign_key "libraries", "users"
   add_foreign_key "library_books", "books"
   add_foreign_key "library_books", "libraries"
+  add_foreign_key "matches", "library_books"
+  add_foreign_key "matches", "wishlist_books"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "swap_requests", "chatrooms"
