@@ -40,7 +40,7 @@ user2 = User.new( {
     email: "guill@aume.fr",
     password: "password",
     bio: "French living in BCN. Love outdoors, art & design, food, triathlon. Started my career in e-commerce, then entrepreneur in Advertising Technology.",
-    location: "Carrer d'En Grassot, Barcelona"
+    location: "Carrer de Verdaguer i Callís, Barcelona"
   } )
 avatar2 = URI.open('https://images.unsplash.com/photo-1493106819501-66d381c466f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')
 user2.photo.attach(io: avatar2, filename: 'pic.png', content_type: 'image/png')
