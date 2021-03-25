@@ -11,10 +11,8 @@
       <div class="mb-3 width multi-search-form w-100">
       <%= text_field_tag :title,
             params[:title],
-            class: "form-control white-bar b-sh text-center",
-            placeholder: "type title, author...",
-            onfocus: "this.placeholder, ''",
-            onblur: "this.placeholder, 'type title, author...'"
+            class: "form-control white-bar b-sh text-center", placeholder: "type title, author...",
+            onfocus: "this.placeholder, ''", onblur: "this.placeholder, 'type title, author...'"
           %>
       </div>
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -41,70 +39,7 @@
 
   <% else %>
     <% @library_books.each do |lib_book| %>
-
-      <div class="book-results-card d-flex b-sh mb-3">
-        <div class="image" style="background-image: url('<%= cl_image_path lib_book.book.photo.key %>')"></div>
-        <div class="information p-3">
-          <%= link_to library_book_path(lib_book), class: "text-decoration" do %>
-            <h2><%= lib_book.book.title %></h2>
-          <% end %>
-
-          <p><%= lib_book.book.author %></p>
-
-          <div class="user-owner d-flex">
-            <%= cl_image_tag lib_book.library.user.photo.key, class: "avatar-20 mr-2", alt: "avatar" %>
-            <%= link_to user_path(lib_book.library.user), class: "text-decoration" do %>
-            <p class="name"> <%= lib_book.library.user.first_name.capitalize %>
-            <% end %>
-            
-            <% coordinates = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:query]), [lib_book.library.user.latitude, lib_book.library.user.longitude]).round(1) %>
-            <% if params[:query].present? %>
-              <span class="span-location" style="font-style: italic; color: gray; font-weight: 300">
-               <%= coordinates %> km away
-            <% else %>
-               <span class="span-location" style="font-style: italic; color: gray; font-weight: 300"> <%= lib_book.library.user.location %>
-            </span></p>
-            <% end %>
-          </div>
-
-          <div class="tags d-flex">
-              <%= link_to lib_book.book.genre , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %>
-          </div>
-
-
-          <% if user_signed_in? %>
-
-            <!-- if Book is not in User's library -> show add/remove Wishlist-->
-            <% if !current_user.libraries.first.books.include?(lib_book.book) %>
-
-              <!-- if Book is  in User's Wishlist -->
-              <% if @wishlist_books.include?(lib_book.book) %>
-                <%= link_to delete_wishlist_book_path(lib_book.is_in_wishlist(lib_book, current_user)), method: :delete, class: "heart btn-transparent" do %>
-                  <i class='fas fa-heart'></i>
-                <% end %>
-
-              <!-- if Book is not in User's Wishlist -->
-              <% else %>
-                <%= simple_form_for(@wishlist_book) do |f| %>
-                  <%= hidden_field_tag "book_id", lib_book.book.id %>
-                  <%= hidden_field_tag "wishlist_id", current_user.wishlists.first.id %>
-                  <div style="height: 0">
-                    <%= button_tag(class: "heart btn-transparent") do %>
-                      <i class='fas fa-heart' style="color:white"></i>
-                      <i class='far fa-heart'></i>
-                    <% end %>
-                  </div>
-                <% end %>
-              <% end %>
-
-            <!-- if Book is in User's library -> show nothing -->
-            <% end %>
-
-          <% end %>
-
-
-        </div>
-      </div>
+      <%= render 'library-book', lib_book: lib_book %>
     <% end %>
   <% end %>
 </div>

@@ -1,8 +1,17 @@
-<%= link_to user_path(@lib_book.library.user), class:"color-dark text-decoration" do %>
+<div class="text-center">
+  <!-- USER CARD -->
+  <%= link_to user_path(@lib_book.library.user), class:"color-dark" do %>
   <div class="card-user-message d-flex b-sh align-items-center px-2 py-1">
 
-    <div class="avatar-40 mr-2" style="background-image: url(' <%= cl_image_path @lib_book.library.user.photo.key%>')"></div>
+  <div class="avatar-40 mr-2" style="background-image: url(' <%= cl_image_path @lib_book.library.user.photo.key%>')"></div>
 
+<!-- thur-mornign              
+  <div class="d-flex justify-content-between flex-grow-1 px-2">
+    <h2> <%= @lib_book.library.user.first_name.capitalize %></h2>
+    <p style="font-style: italic; color: gray; font-weight: 300">
+      <%= Geocoder.search("#{@lib_book.library.user.latitude},#{@lib_book.library.user.longitude}").first.data["address"]["city"] %>
+    </p>
+-->
     <div class="d-flex justify-content-between flex-grow-1 px-2">
       <h2> <%= @lib_book.library.user.first_name.capitalize %></h2>
       
@@ -14,36 +23,37 @@
       <% end %>
     </div>
   </div>
-<% end %>
-
-
-<div class="text-center">
-  <% unless @lib_book.library.user == current_user %>
-    <% if Chatroom.existing(@lib_book.library.user, current_user, @lib_book).empty? %>
-      <% unless @lib_book.status == 'swapped' %>
-        <%= simple_form_for @chatroom do |f| %>
-        <%= f.input :recipient_id, as: :hidden, input_html: {value: @lib_book.library.user.id} %>
-        <%= f.input :library_book_id, as: :hidden, input_html: {value: @lib_book.id} %>
-        <button class="bg-transparent border-0 p-0 app-green" style="font-weight:700; width:100%">
-          <div class="btn btn-green" style="width:100%">
-            SWAP!
-          </div>
-        </button>
-      <% end %>
-      <% end %>
-    <% else %>
-      <button class="bg-transparent border-0 p-0 app-green" style="font-weight:700; width:100%">
-          <div class="btn btn-green" style="width:100%">
-            SWAP!
-          </div>
-        </button>
-      <%= link_to chatroom_path(Chatroom.existing(@lib_book.library.user, current_user, @lib_book).first),
-          class:"bg-transparent border-0 p-0 app-green", style:"font-weight:700; width:100%" do %>
-        Chat <i class="fas fa-comment" style="font-size:20px"></i>
-      <% end %>
-    <% end %>
+  </div>
   <% end %>
 
+  <!-- Link to create a Chatroom -->
+  <% if Chatroom.existing(@lib_book.library.user, current_user, @lib_book).empty? %>
+    <% unless @lib_book.status == 'swapped' %>
+      <%= simple_form_for @chatroom do |f| %>
+        <%= f.input :recipient_id, as: :hidden, input_html: {value: @lib_book.library.user.id} %>
+        <%= f.input :library_book_id, as: :hidden, input_html: {value: @lib_book.id} %>
+        <button class="bg-transparent border-0 p-0 app-green my-2" style="font-weight:700; width:100%;letter-spacing: 1px !important;">
+          <div class="btn btn-green" style="width:100%">
+            SWAP!
+          </div>
+        </button>
+      <% end %>
+    <% end %>
+
+  <% else %>
+
+    <!-- Link to Chatroom -->
+    <%= link_to chatroom_path(Chatroom.existing(@lib_book.library.user, current_user, @lib_book).first),
+        class:"bg-transparent border-0 p-0 app-green", style:"font-weight:700; width:100%" do %>
+      <button class="bg-transparent border-0 p-0 app-green my-2" style="font-weight:700; width:100%">
+        <div class="btn btn-green" style="width:100%">
+          Chat <i class="fas fa-comment ml-2" style="font-size:20px"></i>
+        </div>
+      </button>
+    <% end %>
+  <% end %>
+  
+  <!-- Link to User's bookshelf -->
   <%= link_to user_path(@lib_book.library.user), class:"ambar-underline color-dark" do %>
     Check <%= @lib_book.library.user.first_name.capitalize %>'s Bookshelf
   <% end %>
