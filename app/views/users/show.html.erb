@@ -76,13 +76,10 @@
                     <% end %>
                   </div>
                   
-                  <%= link_to '#' do %>
+                  <!-- ADD SOME TEXT, LIKE: Please mark the book you swapped /icon/ -->
+                  <%= link_to swapped_book_path(lib_book) do %>
                     <i class="fas fa-sync"></i>
                   <% end %>
-                  
-                  <!--
-                  <%= link_to "Swapped!", '#', class: "btn genre mt-1" %>
-                  -->
 
                 <!-- if not @user is not current_user add wishlist Icons -->
                 <% else %>
