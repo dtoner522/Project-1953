@@ -1,10 +1,9 @@
 <div class="fafafa">
   <div class="nav-top d-flex justify-content-between align-items-center px-4 pt-4">
-    <%= link_to root_path, title: "Location search" do %>
-      <i class="fas fa-search-location"></i>
+    <%= link_to root_path do  %>
+      <%= image_tag "1953.png", class: "", style:"height:20px"%>
     <% end %>
     <h1>Explore</h1>
-    <%= image_tag "1953.png", class: "", style:"height:25px"%>
   </div>
 
   <div class="container messages-container pt-3 pb-5">
@@ -18,13 +17,17 @@
             onblur: "this.placeholder, 'type title, author...'"
           %>
       </div>
-      <!--  <p class="nunito text-center">Filter by</h2> -->
       <div class="d-flex justify-content-between align-items-center mb-3">
-      <%=  select_tag :language, options_for_select([["English", "en"], ["French", "fr"], ["Spanish", "es"]], selected: params["language"]), include_blank: "Language", class: "border-green select2", id: "language-select" %>
-      <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Science-Fiction"], selected: params["genre"]),  include_blank: "Genre", class: "border-green select2", id: "genre-select"  %>
-      <%= button_tag(class: "btn icon-primary") do %>
-          <i class="fas fa-search"></i>
-      <% end %>
+        <%=  select_tag :language, options_for_select([["English", "en"], ["French", "fr"], ["Spanish", "es"]],
+                        selected: params["language"]), include_blank: "Language", class: "border-green select2",
+                        id: "language-select" %>
+        <%=  select_tag :genre, options_for_select(["Fiction", "Non-Fiction", "Poetry", "Drama", "Science-Fiction"],
+                        selected: params["genre"]),  include_blank: "Genre", class: "border-green select2",
+                        id: "genre-select"  %>
+        <%= button_tag(class: "btn icon-primary") do %>
+            <i class="fas fa-search"></i>
+        <% end %>
+      
     <% end %>
   </div>
 
