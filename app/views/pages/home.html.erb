@@ -1,10 +1,10 @@
 <div class="home-container">
   <% unless user_signed_in? %>
   <div class="nav-top d-flex p-4 justify-content-end align-items-center">
-    <%= link_to user_session_path  do %>
+    <%= link_to user_session_path, class: "text-decoration" do %>
       <p class="btn-green btn-ghost mr-2 py-1 px-3">Log in</p>
     <% end %>
-    <%= link_to new_user_registration_path do %>
+    <%= link_to new_user_registration_path, class: "text-decoration" do %>
       <p class="btn-green py-1 px-3">Sign up</p>
     <% end %>
   </div>
