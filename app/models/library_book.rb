@@ -4,6 +4,7 @@ class LibraryBook < ApplicationRecord
 
   has_many :chatrooms, dependent: :destroy
   has_many :swap_requests, dependent: :destroy
+  has_many :matches, dependent: :destroy
 
   after_create :check_match
 

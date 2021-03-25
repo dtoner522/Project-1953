@@ -1,4 +1,6 @@
 class Match < ApplicationRecord
+  belongs_to :library_book
+  belongs_to :wishlist_book
 end
 
 
