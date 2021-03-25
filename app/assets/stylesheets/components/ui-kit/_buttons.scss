@@ -3,13 +3,13 @@
   padding: 7px 24px;
   border-radius: 24px;
   background-color: $app-green;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
   border: 2px solid $app-green;
 
   &:hover{
     color: white;
     background-color: $app-light-green;
-    border: $app-light-green;
+    border: 2px solid $app-light-green;
   }
 }
 

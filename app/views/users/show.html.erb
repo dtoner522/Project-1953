@@ -40,8 +40,8 @@
 
       <!-- Message if @user's library is empty -->
       <% if @library_books.empty? %>
-        <div class="text-center">
-          <p><%= @user.first_name %> has no Book in their Bookshelf yet 😞</p>
+        <div class="text-center mt-3">
+          <p><%= @user.first_name.capitalize %> has no books in their bookshelf yet 😞</p>
         </div>
       <% else %>
 
@@ -99,18 +99,12 @@
                       </div>
                     <% end %>
                   <% end %>
-
                 <% end %>
-
-
               </div>
             </div>
           </div>
-
         <% end %>
-
       <% end %>
-
     </div>
 
     <!-- WISHLIST -->
@@ -157,7 +151,6 @@
                         <i class="fas fa-trash"></i>
                       </div>
                     <% end %>
-
                   <% end %>
                 </div>
               </div>
@@ -166,13 +159,8 @@
         <% end %>
 
       <% end %>
-
-
-
     </div>
-
   </div>
-
 </div>
 
 <%= render 'shared/nav-bottom' %>
