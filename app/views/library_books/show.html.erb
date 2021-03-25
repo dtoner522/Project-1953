@@ -37,7 +37,6 @@
               <i class='far fa-heart'></i>
             <% end %>
           <% end %>
-
         <% end %>
       <% end %>
     <% end %>
@@ -48,7 +47,10 @@
     <h1><%= @lib_book.book.title %></h1>
     <h2><%= @lib_book.book.author %></h2>
     <p><%= @lib_book.book.year %> / <i class="far fa-file"></i>  <%= @lib_book.book.page_count %></p>
-    <%= link_to @lib_book.book.genre.capitalize, "#", class: "btn genre" %>
+    <div class="genre-pill genre">
+        <!-- IF GENRE PREFILLED SEARCH WORKS, REPLACE WITH AN LT -->
+        <%= @lib_book.book.genre.capitalize %>
+    </div>
   </div>
 
   <p style="color: gray; font-size:16px" class="mb-4"><%= @lib_book.book.description %></p>

@@ -58,8 +58,10 @@
                 <p><%= lib_book.book.author %></p>
               </div>
               <div class="d-flex space-between">
-                <div class="tags">
-                  <%= link_to lib_book.book.genre.truncate(20) , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %> <%#<< link doesn't work  %>
+                <div class="genre-pill genre ">
+                  <!-- search does't work -->
+                  <!-- <%= link_to lib_book.book.genre.truncate(20) , library_books_path("?genre=#{lib_book.book.genre}"), class: "btn genre mr-2" %> -->
+                  <%= lib_book.book.genre.capitalize.truncate(20) %>
                 </div>
 
                 <!-- if not @user is current_user add Delete Icons -->
