@@ -94,3 +94,9 @@
 .fa-trash {
   color: $app-ambar;
 }
+
+
+//TEXT DECORATION ON BUTTONS
+.text-decoration:link, .text-decoration:visited, .text-decoration:hover, .text-decoration:active {
+  text-decoration: none;
+}

@@ -1,12 +1,17 @@
-<%= link_to user_path(@lib_book.library.user), class:"color-dark" do %>
+<%= link_to user_path(@lib_book.library.user), class:"color-dark text-decoration" do %>
   <div class="card-user-message d-flex b-sh align-items-center px-2 py-1">
 
     <div class="avatar-40 mr-2" style="background-image: url(' <%= cl_image_path @lib_book.library.user.photo.key%>')"></div>
 
     <div class="d-flex justify-content-between flex-grow-1 px-2">
       <h2> <%= @lib_book.library.user.first_name.capitalize %></h2>
-      <p style="font-style: italic; color: gray; font-weight: 300"><%= Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [@lib_book.library.user.latitude, @lib_book.library.user.longitude]).round(1) %>
-      km away</p>
+      
+      <% if user_signed_in? %>
+        <p style="font-style: italic; color: gray; font-weight: 300"><%= Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [@lib_book.library.user.latitude, @lib_book.library.user.longitude]).round(1) %>
+        km away</p>
+      <% else %>
+        <p style="font-style: italic; color: gray; font-weight: 300"><%= @lib_book.library.user.location %></p>
+      <% end %>
     </div>
   </div>
 <% end %>
