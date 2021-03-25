@@ -9,7 +9,7 @@
 
   <div class="container notifications-container pt-3">
 
-    <% unless @library_books.empty? %>
+    <% if @library_books.empty? %>
       <%= link_to user_path(current_user) do %>
         <div class="card-message d-flex b-sh align-items-center px-2 py-1">
           <div class="notification not-chat mr-2">
