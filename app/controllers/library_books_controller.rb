@@ -38,7 +38,7 @@ class LibraryBooksController < ApplicationController
     @library_book.status = 'swapped'
     @library_book.save
 
-    redirect_to user_path(current_user)
+    redirect_to library_book_path(@library_book)
   end
 
   private
