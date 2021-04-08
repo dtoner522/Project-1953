@@ -141,3 +141,13 @@ option {
 .color-dark {
   color: $app-dark;
 }
+
+
+// For phone > up
+@media only screen and (min-width: 490px) {
+   
+  body {
+    max-width: 490px;
+    margin: 0 auto;
+  }
+}

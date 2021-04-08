@@ -33,6 +33,29 @@
 .chat-input {
   position: fixed;
   bottom: 70px;
-  right: 0;
-  left: 0;
+  margin: 0 8px;
+}
+
+
+
+// For phone > up
+@media only screen and (max-width: 489px) {
+   
+  .chat-input {
+    max-width: 490px;
+    bottom: 70px;
+    right: 0;
+    left: 0;
+  }
+}
+
+
+
+@media only screen and (min-width: 490px) {
+   
+  .chat-input {
+    max-width: 490px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
