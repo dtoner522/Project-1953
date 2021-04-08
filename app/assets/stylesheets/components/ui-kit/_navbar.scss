@@ -46,3 +46,14 @@
     font-size: 20px;
   }
 }
+
+
+
+// For phone > up
+@media only screen and (min-width: 490px) {
+   
+  .nav-bottom {
+    max-width: 490px;
+    margin: 0 auto;
+  }
+}
