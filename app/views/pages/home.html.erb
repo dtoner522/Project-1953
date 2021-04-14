@@ -32,8 +32,11 @@
     <%= image_tag "1953-home-logo.png", class: "w-50", style: "max-width: 300px;" %>
   </div>
 
-  <p class="tagline-2"><strong>Find books near you</strong></p>
-
+  <%= link_to 'http://www.1953.live/library_books?query=Barcelona' do %>
+    <p class="tagline-2"><strong>Swap books in Barcelona</strong></p>
+  <% end %>
+  
+  <!--
   <div class="text-center my-3 position-relative">
     <%= form_tag library_books_path, method: :get do %>
       <%= text_field_tag :query,
@@ -49,6 +52,7 @@
       <% end %>
     <% end %>
   </div>
+  -->
 
   <% if user_signed_in? %>
     <div class="justify-content-center pt-4 ">
